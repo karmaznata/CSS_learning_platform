@@ -1,0 +1,17 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #CDD5DA;
+}
+.footer-links{
+    display: flex;
+    justify-content: space-around;
+}
