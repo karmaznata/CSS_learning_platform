@@ -8,6 +8,8 @@
     flex-shrink: 0;
     border-radius: 10px;
     background: #CDD5DA;
+    position: relative;
+    z-index: 1;
 }
 .nav-logo>img{
     width: 155px;
@@ -52,3 +54,4 @@
 .nav-link.active{
     color: rgb(81 123 236) !important;
 }
+

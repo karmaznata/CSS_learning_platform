@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon, FaLaptopMedical } from "react-icons/fa";
+import { FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
 import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
@@ -24,11 +24,12 @@ const Navbar = () => {
                 <div className="tutorial-menu-dropdown"
                     onMouseEnter={() => setDropdownVisible(true)}
                     onMouseLeave={() => setDropdownVisible(false)}
+                    role="button"
                 >
                     <li className="nav-item" onClick={() => { setMenu("tutorial") }} >
-                        <Link to='/tutorial' className={`nav-link ${menu === "tutorial" ? "active" : ""}`} >Tutorial</Link>
+                        <Link to='/tutorial' className={`nav-link ${menu === "tutorial" ? "active" : ""}`} >Tutorials</Link>
                     </li>
-                    {isDropdownVisible && <TutorialMenu />}
+                    {isDropdownVisible && <TutorialMenu setMenu={setMenu}/>}
                 </div>
             </ul>
             <div className="nav-theme-login">
