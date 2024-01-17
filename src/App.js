@@ -7,6 +7,7 @@ import Tutorial from './Pages/All_Tutorials';
 import LoginSignUp from './Pages/LoginSignUp';
 import Quiz from './Pages/Quiz';
 import Footer from './Components/Footer/Footer';
+import '@ads/core-components/dist/core-components/core-components.css';
 
 function App() {
 

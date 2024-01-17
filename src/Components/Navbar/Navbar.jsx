@@ -4,8 +4,9 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
 import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import TutorialMenu from "../TutorialMenu/TutorialMenu.jsx";
+import { AdsButton } from '@ads/core-components-react';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("homePage");
@@ -37,7 +38,7 @@ const Navbar = () => {
                     <FaSun className="react-icon" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div>
                 <div className="nav-login">
-                    <Link to='/login'><Button variant="primary" onClick={() => { setMenu("login") }}>Login</Button></Link>
+                    <Link to='/login'><AdsButton  round="true" onClick={() => { setMenu("login") }}>Login</AdsButton></Link>
                 </div>
             </div>
         </div>
