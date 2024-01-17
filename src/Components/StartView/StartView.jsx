@@ -1,6 +1,5 @@
 import React from "react";
 import "./StartView.css";
-import Button from 'react-bootstrap/Button';
 import Typed from 'typed.js';
 
 const StartView = () => {
@@ -23,10 +22,19 @@ const StartView = () => {
         <div className="start-view-div">
 
             <div className="start-view-left">
+
                 <h1>Welcome to CSS world!</h1>
-                <p>Here you going to learn the most  common CSS layouts,<br />
+                <p>Here you are going to learn the most common CSS layouts,<br />
                     and which of them you can use for your purposes.</p>
-                <Button variant="secondary">Start</Button>
+                {/* <Button className="start-button" variant="secondary">Start</Button> */}
+
+                <a href="/tutorial" className="cta" >
+                    <span>Start to learn</span>
+                    <svg width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
             </div>
             <div className="start-view-right">
                 <div className="typing-text" ref={el}></div>
