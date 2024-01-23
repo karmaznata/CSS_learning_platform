@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./TutorialMenu.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { TutorialContext } from "../../Context/TutorialContext";
 
 const TutorialMenu = ({ setMenu }) => {
+  const [selectedTutorial, setSelectedTutorial] = useState('');
+  const navigate = useNavigate();
+  const { all_tutorials } = useContext(TutorialContext);
 
-    return (
-        <div className="tutorial-dropdown-menu">
-            <ul className="nav-menu-dropdown">
-                <li className="nav-item" >
-                    <Link to='/tutorial/flexbox' className="nav-link-tutorial" onClick={() => setMenu("tutorial")}>Flexbox</Link>
-                </li>
-                <li className="nav-item" >
-                    <Link to='/tutorial/grid' className="nav-link-tutorial" onClick={() => setMenu("tutorial")}>Grid</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/tutorial/subgrid' className="nav-link-tutorial" onClick={() => setMenu("tutorial")}>CSS Grid Subgrid</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/tutorial/multi-column-layout' className="nav-link-tutorial" onClick={() => setMenu("tutorial")}>Multi-column Layout</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/tutorial/container-queries' className="nav-link-tutorial" onClick={() => setMenu("tutorial")}>Container Queries</Link>
-                </li>
-            </ul>
-        </div>
-    );
+  return (
+    <div className="tutorial-dropdown-menu">
+      <ul className="nav-menu-dropdown">
+        {all_tutorials.map((tutorial) => (
+          <li className="nav-item" key={tutorial.id}>
+            <Link
+              to={`/tutorial/${tutorial.path}`}
+              className="nav-link-tutorial"
+              onClick={() => {
+                setMenu('tutorial');
+                navigate(`/tutorial/${tutorial.path}`);
+              }}
+            >
+              {tutorial.tutorial_theme}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default TutorialMenu;

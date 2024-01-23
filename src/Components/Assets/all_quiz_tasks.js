@@ -1,3 +1,5 @@
+import {all_tutorials} from "./all_tutorials";
+
 //answer_options: {a: "", b: "", c: "", d: ""},
 let all_quiz_tasks = [
     {

@@ -3,10 +3,12 @@ import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import Tutorial from './Pages/All_Tutorials';
+import All_Tutorials from './Pages/All_Tutorials';
 import LoginSignUp from './Pages/LoginSignUp';
 import Quiz from './Pages/Quiz';
 import Footer from './Components/Footer/Footer';
+import Tutorial from './Pages/Tutorial/Tutorial';
+import Flexbox from './Pages/Tutorial/Flexbox';
 
 function App() {
 
@@ -16,9 +18,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/tutorial' element={<Tutorial />} >
-            <Route path=':tutorialId' element={<Tutorial />} />
-          </Route>
+          <Route path='/tutorial' element={<All_Tutorials />} />
+          <Route path='/tutorial/flexbox' element={<Flexbox theme="flexbox" />} />
           <Route path='/login' element={<LoginSignUp />} />
           <Route path='/quiz' element={<Quiz />}>
             <Route path=':quizId' element={<Quiz />} />

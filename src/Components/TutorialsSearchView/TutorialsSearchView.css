@@ -28,3 +28,32 @@ hr{
     border-color: white;
     margin: 30px;
 }
+.select-tutorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    justify-items: center;
+    padding-bottom: 150px;
+  }
+  
+  .tutorial-item {
+    width: 303px;
+    height: 300px;;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .tutorial-link {
+    /* Add any styles for the link */
+    text-decoration: none;
+    color: #333;
+  }
+  
+  /* Add media query for larger screens */
+  /* @media (min-width: 768px) {
+    .select-tutorial {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  } */

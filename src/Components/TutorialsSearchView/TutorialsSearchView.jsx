@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./TutorialsSearchView.css";
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { TutorialContext } from '../../Context/TutorialContext';
 
 const TutorialsSearchView = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredTutorials, setFilteredTutorials] = useState([]);
-  
-    const tutorials = [
-      { id: 1, title: 'Flexbox', path: '/tutorial/flexbox' },
-      { id: 2, title: 'Grid', path: '/tutorial/grid' },
-      { id: 3, title: 'CSS Grid Subgrid', path: '/tutorial/subgrid' },
-      { id: 4, title: 'Multi-column Layout', path: '/tutorial/multi-column-layout' },
-      { id: 5, title: 'Container Queries', path: '/tutorial/container-queries' },
-    ];
-  
-    // Initialize filteredTutorials with all tutorials
-    useState(() => setFilteredTutorials(tutorials));
+    const {all_tutorials} = useContext(TutorialContext)
+    
+    useState(() => setFilteredTutorials(all_tutorials));
   
     const handleSearch = (event) => {
       const query = event.target.value.toLowerCase();
       setSearchQuery(query);
   
-      const filtered = tutorials.filter((tutorial) =>
+      const filtered = all_tutorials.filter((tutorial) =>
         tutorial.title.toLowerCase().includes(query)
       );
   
@@ -43,20 +36,18 @@ const TutorialsSearchView = () => {
           </div>
         </div>
         <hr />
-        <div className="tutorial-dropdown-menu">
-          <ul className="nav-menu-dropdown">
+        <div className="select-tutorial">
             {filteredTutorials.map((tutorial) => (
-              <li className="nav-item" key={tutorial.id}>
+              <div className="tutorial-item" key={tutorial.id}>
                 <Link
                   to={tutorial.path}
-                  className="nav-link-tutorial"
+                  className="tutorial-link"
                   onClick={() => setMenu("tutorial")}
                 >
-                  {tutorial.title}
+                  {tutorial.tutorial_theme}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
         </div>
       </div>
     );

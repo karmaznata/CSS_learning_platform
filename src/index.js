@@ -4,13 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import QuizContextProvider from './Context/QuizContext';
+import TutorialContextProvider from './Context/TutorialContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <QuizContextProvider> */}
+    <QuizContextProvider>
+      <TutorialContextProvider>
         <App />
-    {/* </QuizContextProvider>  */}
+      </TutorialContextProvider>
+
+    </QuizContextProvider>
   </React.StrictMode>
 
 );
