@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
-import { QuizContext } from "../../Context/QuizContext";
+import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import QuizContent from "../../Components/QuizContent/QuizContent";
 
-const Flexbox = (props) => {
-
-    const {all_quiz_tasks} = useContext(QuizContext);
-    const {startQuiz} = useContext(QuizContext);
+const Flexbox = () => {
 
     return (
         <div>
             <div>
-                <Button onClick={()=>{startQuiz("flexbox")}}>Start A Quiz</Button>
+            {localStorage.getItem('auth-token')
+                    ?<Link to={`/quiz/flexbox`}><Button>Start A Quiz: <QuizContent quizTheme={"flexbox"}/></Button></Link>
+                    :<Link to='/login'><Button>Start A Quiz</Button></Link>       
+                }
             </div>
         </div>
     );

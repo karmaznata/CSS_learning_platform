@@ -46,3 +46,6 @@
     flex-direction: column;
     justify-content: space-around;
 }
+.login-fields .error{
+    border-color: red;
+}

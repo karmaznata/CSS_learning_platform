@@ -37,7 +37,10 @@ const Navbar = () => {
                     <FaSun className="react-icon" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div>
                 <div className="nav-login">
-                    <Link to='/login'><Button variant="primary" onClick={() => { setMenu("login") }}>Login</Button></Link>
+                    {localStorage.getItem('auth-token')
+                    ? <Link to='/account'><Button variant="primary" onClick={() => {setMenu("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>
+                    :<Link to='/login'><Button variant="primary" onClick={() => {setMenu("login")}}>Login</Button></Link>       
+                }
                 </div>
             </div>
         </div>

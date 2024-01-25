@@ -7,8 +7,8 @@ import All_Tutorials from './Pages/All_Tutorials';
 import LoginSignUp from './Pages/LoginSignUp';
 import Quiz from './Pages/Quiz';
 import Footer from './Components/Footer/Footer';
-import Tutorial from './Pages/Tutorial/Tutorial';
 import Flexbox from './Pages/Tutorial/Flexbox';
+import UserAccount from './Pages/UserAccount'
 
 function App() {
 
@@ -21,8 +21,9 @@ function App() {
           <Route path='/tutorial' element={<All_Tutorials />} />
           <Route path='/tutorial/flexbox' element={<Flexbox theme="flexbox" />} />
           <Route path='/login' element={<LoginSignUp />} />
+          <Route path='/account' element={<UserAccount />} />
           <Route path='/quiz' element={<Quiz />}>
-            <Route path=':quizId' element={<Quiz />} />
+            <Route path=':quizTheme' element={<Quiz />} />
           </Route>
         </Routes>
         <Footer />

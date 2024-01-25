@@ -16,7 +16,7 @@ const TutorialsSearchView = () => {
       setSearchQuery(query);
   
       const filtered = all_tutorials.filter((tutorial) =>
-        tutorial.title.toLowerCase().includes(query)
+        tutorial.tutorial_theme.toLowerCase().includes(query)
       );
   
       setFilteredTutorials(filtered);

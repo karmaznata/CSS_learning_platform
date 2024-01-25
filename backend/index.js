@@ -85,7 +85,7 @@ app.post('/signup', async (req, res) => {
       const token = jwt.sign(data, 'secret_web_platform');
   
       // Respond with success and the token
-      res.json({ success: true, token });
+      res.json({ success: true, token , username: req.body.username});
     } catch (error) {
       // Handle any errors that occurred during the process
       console.error("Error during signup:", error);
@@ -110,7 +110,7 @@ app.post('/login', async(req, res)=>{
                 }
             }
             const token = jwt.sign(data, 'secret_web_platform');
-            res.json({success:true, token});
+            res.json({success:true, token, username: user.name});
 
         }else{
             res.json({success:false, errors:"The password or email is wrong"});
