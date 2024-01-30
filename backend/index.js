@@ -6,15 +6,18 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+require('dotenv').config();
 
 app.use(express.json());
 app.use(cors());
 
+//Removing the X-Powered-By header
+app.disable("x-powered-by");
+
 // Database connection with mongoDB
-mongoose.connect("mongodb+srv://nataliia_k:N123a456t789@cluster0.ir3vtce.mongodb.net/learning-web-platform");
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
 
 // API Creation
-
 app.get("/", (req, res)=>{
     res.send("Express app is running")
 })
@@ -53,7 +56,7 @@ const Users = mongoose.model('Users', {
 app.post('/signup', async (req, res) => {
     try {
       // Check if the user with the given email already exists
-      let check = await Users.findOne({ email: req.body.email });
+      let check = await Users.findOne({ email: req.body.email.toString() });
   
       if (check) {
         return res.status(400).json({
@@ -100,7 +103,7 @@ app.post('/signup', async (req, res) => {
 
 app.post('/login', async(req, res)=>{
 
-    let user = await Users.findOne({email:req.body.email});
+    let user = await Users.findOne({email:req.body.email.toString()});
     if(user){
         const passCompare = req.body.password === user.password;
         if(passCompare){

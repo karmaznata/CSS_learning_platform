@@ -25,10 +25,10 @@ const UserAccount = ({ handleLogout }) => {
             <div className="account-left-container">
                 <div className="user-account-options">
                     <hr/>
-                    <label onClick={()=>setAccountView("overview-profile-info")}>Profile</label>
-                    <label onClick={()=>setAccountView("overview-quizzes")}>Quizzes</label>
+                    <label onClick={()=>setAccountView("overview-profile-info")} onKeyDown={() => {}}>Profile</label>
+                    <label onClick={()=>setAccountView("overview-quizzes")} onKeyDown={() => {}}>Quizzes</label>
                     <hr/>
-                    <Link to='/login'><label onClick={handleLogout}>Log out</label></Link>
+                    <Link to='/login'><label onClick={handleLogout} onKeyDown={() => {}}>Log out</label></Link>
                 </div>
             </div>
            <div className="account-right-container">

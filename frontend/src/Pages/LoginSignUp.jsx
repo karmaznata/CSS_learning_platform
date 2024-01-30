@@ -12,7 +12,7 @@ const initialState = {
 };
 
 const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 };
 
@@ -151,12 +151,12 @@ const LoginSignUp = () => {
                         {state === 'Sign Up' ? (
                             <p>
                                 Already have an account?{' '}
-                                <span onClick={() => {setState('Login'), setFormData(initialState)}}>Login here</span>
+                                <span onClick={() => {setState('Login'); setFormData(initialState);}} onKeyDown={() => {}}>Login here</span>
                             </p>
                         ) : (
                             <p>
                                 Don't have an account?{' '}
-                                <span onClick={() => {setState('Sign Up'), setFormData(initialState)}}>Sign up</span>
+                                <span onClick={() => {setState('Sign Up'); setFormData(initialState);}} onKeyDown={() => {}}>Sign up</span>
                             </p>
                         )}
                     </div>
