@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,17 +12,33 @@ import Flexbox from './Pages/Tutorial/Flexbox';
 import UserAccount from './Pages/UserAccount'
 
 function App() {
+ 
+  // State to track user login status
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
+  // Callback function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('username');
+    setIsLoggedIn(false);
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('auth-token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
-    <div className='bg'>
+    <div>
       <BrowserRouter>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/tutorial' element={<All_Tutorials />} />
           <Route path='/tutorial/flexbox' element={<Flexbox theme="flexbox" />} />
           <Route path='/login' element={<LoginSignUp />} />
-          <Route path='/account' element={<UserAccount />} />
+          <Route path='/account' element={<UserAccount handleLogout={handleLogout} />} />
           <Route path='/quiz' element={<Quiz />}>
             <Route path=':quizTheme' element={<Quiz />} />
           </Route>

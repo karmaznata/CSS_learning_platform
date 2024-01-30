@@ -7,9 +7,9 @@ import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
 import Button from 'react-bootstrap/Button';
 import TutorialMenu from "../TutorialMenu/TutorialMenu.jsx";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn}) => {
+    
     const [menu, setMenu] = useState("homePage");
-
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     return (
@@ -37,7 +37,7 @@ const Navbar = () => {
                     <FaSun className="react-icon" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div>
                 <div className="nav-login">
-                    {localStorage.getItem('auth-token')
+                    {isLoggedIn
                     ? <Link to='/account'><Button variant="primary" onClick={() => {setMenu("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>
                     :<Link to='/login'><Button variant="primary" onClick={() => {setMenu("login")}}>Login</Button></Link>       
                 }

@@ -16,14 +16,7 @@
 .App-link {
   color: #61dafb;
 }
-/* .bg { */
-  /* height: 100vh; */
-  /* background-image: url("/src/Components/Assets/body_back.png"); */
-  /* Center and scale the image nicely */
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
+
 .nav-underline .nav-link.active, .nav-underline .show>.nav-link {
   font-weight: 500 !important;
 }

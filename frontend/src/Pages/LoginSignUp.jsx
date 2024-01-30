@@ -22,7 +22,7 @@ const validatePassword = (password) => {
 
 const LoginSignUp = () => {
 
-    const [state, setState] = useState("Sign Up");
+    const [state, setState] = useState("Login");
 
     const [formData, setFormData] = useState(initialState);
 
@@ -61,7 +61,6 @@ const LoginSignUp = () => {
             window.location.replace("/");
         } else {
             toast.error("The email or password is incorrect. Please try again.");
-            // setInputError("failedLogin");
         }
     }
 
