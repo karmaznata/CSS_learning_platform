@@ -4,12 +4,12 @@ import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import All_Tutorials from './Pages/All_Tutorials';
+import AllTutorials from './Pages/AllTutorials';
 import LoginSignUp from './Pages/LoginSignUp';
 import Quiz from './Pages/Quiz';
 import Footer from './Components/Footer/Footer';
 import Flexbox from './Pages/Tutorial/Flexbox';
-import UserAccount from './Pages/UserAccount'
+import UserAccount from './Pages/UserAccount';
 
 function App() {
  
@@ -35,7 +35,7 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/tutorial' element={<All_Tutorials />} />
+          <Route path='/tutorial' element={<AllTutorials />} />
           <Route path='/tutorial/flexbox' element={<Flexbox theme="flexbox" />} />
           <Route path='/login' element={<LoginSignUp />} />
           <Route path='/account' element={<UserAccount handleLogout={handleLogout} />} />

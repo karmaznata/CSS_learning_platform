@@ -18,6 +18,7 @@ const StartView = () => {
             typed.destroy();
         };
     }, []);
+
     return (
         <div className="start-view-div">
 
@@ -26,10 +27,9 @@ const StartView = () => {
                 <h1>Welcome to CSS world!</h1>
                 <p>Here you are going to learn the most common CSS layouts,<br />
                     and which of them you can use for your purposes.</p>
-                {/* <Button className="start-button" variant="secondary">Start</Button> */}
-
                 <a href="/tutorial" className="cta" >
-                    <span>Start to learn</span>
+                {/* onClick={()=>{changeActiveMenu("tutorial")}} onKeyDown={() => {}} */}
+                    <span >Start to learn</span>
                     <svg width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
                         <polyline points="8 1 12 5 8 9"></polyline>

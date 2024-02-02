@@ -3,7 +3,7 @@ import "./TutorialMenu.css";
 import { Link, useNavigate } from "react-router-dom";
 import { TutorialContext } from "../../Context/TutorialContext";
 
-const TutorialMenu = ({ setMenu }) => {
+const TutorialMenu = ({ handleMenuClick }) => {
   const [selectedTutorial, setSelectedTutorial] = useState('');
   const navigate = useNavigate();
   const { all_tutorials } = useContext(TutorialContext);
@@ -17,7 +17,7 @@ const TutorialMenu = ({ setMenu }) => {
               to={`/tutorial/${tutorial.path}`}
               className="nav-link-tutorial"
               onClick={() => {
-                setMenu('tutorial');
+                handleMenuClick('tutorial');
                 navigate(`/tutorial/${tutorial.path}`);
               }}
             >

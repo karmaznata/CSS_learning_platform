@@ -8,14 +8,14 @@ import TutorialContextProvider from './Context/TutorialContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <QuizContextProvider>
       <TutorialContextProvider>
         <App />
       </TutorialContextProvider>
 
     </QuizContextProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 
 );
 

@@ -58,6 +58,8 @@ const LoginSignUp = () => {
         if (responseData.success) {
             localStorage.setItem('auth-token', responseData.token);
             localStorage.setItem('username', responseData.username);
+            localStorage.setItem('email', responseData.email);
+            localStorage.setItem('activeMenu', "homePage");
             window.location.replace("/");
         } else {
             toast.error("The email or password is incorrect. Please try again.");

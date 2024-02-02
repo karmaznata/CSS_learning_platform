@@ -70,7 +70,7 @@ app.post('/signup', async (req, res) => {
       // Create a new user
       const user = new Users({
         name: req.body.username,
-        email: req.body.email, // Corrected typo: emil to email
+        email: req.body.email, 
         password: req.body.password,
         tutorials_score: tutorialsScore,
       });
@@ -88,7 +88,7 @@ app.post('/signup', async (req, res) => {
       const token = jwt.sign(data, 'secret_web_platform');
   
       // Respond with success and the token
-      res.json({ success: true, token , username: req.body.username});
+      res.json({ success: true, token , username: req.body.username, email: req.body.email});
     } catch (error) {
       // Handle any errors that occurred during the process
       console.error("Error during signup:", error);
@@ -113,7 +113,7 @@ app.post('/login', async(req, res)=>{
                 }
             }
             const token = jwt.sign(data, 'secret_web_platform');
-            res.json({success:true, token, username: user.name});
+            res.json({success:true, token, username: user.name, email: user.email});
 
         }else{
             res.json({success:false, errors:"The password or email is wrong"});

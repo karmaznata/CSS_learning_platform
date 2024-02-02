@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-import "./CSS/All_Tutorials.css"
+import "./CSS/AllTutorials.css"
 import TutorialsSearchView from "../Components/TutorialsSearchView/TutorialsSearchView";
-import { QuizContext } from "../Context/QuizContext";
 
-const All_Tutorials = () => {
-    // const {all_products} = useContext(QuizContext);
+const AllTutorials = () => {
     return (
         <div className="tutorial-page-container">
             <TutorialsSearchView />
@@ -12,4 +10,4 @@ const All_Tutorials = () => {
     );
 }
 
-export default All_Tutorials;
+export default AllTutorials;

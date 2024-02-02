@@ -1,6 +1,6 @@
 
 //answer_options: {a: "", b: "", c: "", d: ""},
-let all_quiz_tasks = [
+const all_quiz_tasks = [
     {
       id: 1,
       quiz_theme: "flexbox",

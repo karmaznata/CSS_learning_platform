@@ -1,5 +1,5 @@
 
-let all_tutorials = [
+const all_tutorials = [
     {
         id: 1,
         tutorial_theme: "Flexbox",
