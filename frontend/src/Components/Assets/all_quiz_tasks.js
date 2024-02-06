@@ -27,7 +27,24 @@ const all_quiz_tasks = [
       quiz_theme: "flexbox",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
-      right_answer: {1: 'column', 2: 'space-around', 3: 'flex-grow', 4:'flex-grow'},
+      right_answer: ['column', 'space-around'],
+      htmlCode: 
+`<div class="flexbox-panel">
+  <div class="flexbox-item">1</div>
+  <div class="flexbox-item">2</div>
+  <div class="flexbox-item">3</div>
+</div>`,
+      cssCode: 
+`.flexbox-panel {
+  display: flex;
+  flex-direction:  
+  flex-wrap: nowrap;
+  justify-content:  
+  align-items: center;
+}
+.flexbox-item {
+  flex: 0 0 auto;
+}`,
     },
     {
       id: 5,
@@ -35,6 +52,32 @@ const all_quiz_tasks = [
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
       right_answer: {1: 'flex-end', 2: 'gap', 3: 'flex-grow', 4: 'flex-grow', 5:'flex-grow'},
+      htmlCode: 
+`<form>
+  <label class="name" for="name-field">Name:<input id="name-field" /></label>
+  <label class="email" for="email-field">Email:<input id="email-field" type="email" /></label>
+  <button>Submit</button>
+</form>
+`,
+      cssCode: 
+`form {
+  display: flex;
+  align-items:  
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.name {
+        : 1;
+  flex-basis: 120px;
+}
+.email {
+        : 2;
+  flex-basis: 170px;
+}
+button {
+        : 3;
+  flex-basis: 70px;
+}`,
     },
     {
       id: 6,

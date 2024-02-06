@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './CSS/Quiz.css';
 import { QuizContext } from "../Context/QuizContext";
 import CodeEditor from "../Components/CodeEditor/CodeEditor"
+import CssCodeInput from "../Components/CssCodeInput/CssCodeInput";
 
 const Quiz = () => {
 
@@ -24,20 +25,22 @@ const Quiz = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 3));
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSrcDoc(`
+  const handleCodeContent = (html, css) => {
+    return `
           <html>
-            <body>${htmlCode}</body>
-            <style>${cssCode}</style>
+            <body>${html}</body>
+            <style>${css}</style>
           </html>
-        `)
-    }, 250)
-    return () => clearTimeout(timeout);
-  }, [htmlCode, cssCode])
+        `
+
+  };
 
   useEffect(() => {
     const filteredTasks = all_quiz_tasks.filter((task) => task.quiz_theme === quizTheme && task.answer_options !== undefined);
+    const filteredHtmlCode = all_quiz_tasks.filter((task) => task.quiz_theme === quizTheme && task.htmlCode !== undefined);
+    const filteredCssCode = all_quiz_tasks.filter((task) => task.quiz_theme === quizTheme && task.cssCode !== undefined);
+    setCssCode(filteredCssCode);
+    setHtmlCode(filteredHtmlCode);
     setFilteredQuizTasks(filteredTasks);
   }, [all_quiz_tasks, quizTheme]);
 
@@ -67,19 +70,18 @@ const Quiz = () => {
               <CodeEditor
                 language="xml"
                 displayName="HTML"
-                value={htmlCode}
+                value={htmlCode[0].htmlCode}
                 onChange={setHtmlCode}
+                readOnly={true}
               />
-              <CodeEditor
-                language="css"
+              <CssCodeInput 
+                cssCode={cssCode[0].cssCode} 
                 displayName="CSS"
-                value={cssCode}
-                onChange={setCssCode}
               />
             </div>
             <div className="pane">
               <iframe
-                srcDoc={srcDoc}
+                srcDoc={handleCodeContent(htmlCode[0].htmlCode, cssCode[0].cssCode)}
                 title="output"
                 sandbox="allow-scripts"
                 width="100%"
@@ -89,9 +91,29 @@ const Quiz = () => {
           </div>
         )}
         {currentPage === 3 && (
-          <div>
-            <h2>Chapter 3</h2>
-            <p>This is the content of Chapter 3.</p>
+          <div className="code-editor">
+            <div className="pane top-pane">
+              <CodeEditor
+                language="xml"
+                displayName="HTML"
+                value={htmlCode[1].htmlCode}
+                onChange={setHtmlCode}
+                readOnly={true}
+              />
+              <CssCodeInput 
+                cssCode={cssCode[1].cssCode} 
+                displayName="CSS"
+              />
+            </div>
+            <div className="pane">
+              <iframe
+                srcDoc={handleCodeContent(htmlCode[1].htmlCode, cssCode[1].cssCode)}
+                title="output"
+                sandbox="allow-scripts"
+                width="100%"
+                height="100%"
+              />
+            </div>
           </div>
         )}
       </div>

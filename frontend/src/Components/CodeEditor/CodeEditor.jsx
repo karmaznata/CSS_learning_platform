@@ -8,7 +8,7 @@ import 'codemirror/mode/css/css';
 
 export default function CodeEditor(props){
 
-  const{ language,  displayName, value, onChange } = props;
+  const {language, displayName, value, onChange, readOnly } = props;
 
   function handleChange(editor, data, value){
     onChange(value)
@@ -28,7 +28,8 @@ export default function CodeEditor(props){
           lint: true,
           mode: language,
           lineNumbers: true,
-          theme: 'material'
+          theme: 'material',
+          readOnly: readOnly,
         }}
       />
     </div>
