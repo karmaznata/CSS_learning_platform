@@ -3,15 +3,15 @@ import "./CssCodeInput.css";
 
 const MyComponent = (props) => {
 
-    const {displayName, cssCode} = props;
-    const [cssCodeStrings, setCssCodeStrings] = useState([]);
+    const {displayName, cssCode, setUserInputAnswers} = props;
+    const [cssCodeString, setCssCodeString] = useState([]);
+    const [userInput, setUserInput] = useState([]);
 
     useEffect(() => {
-
         const regexValue = /^\s*([^\s]+):\s\s\s*(\{.*\}\s*)?$/gm;
         const regexProperty = /\s:\s*/;
-
-        let cssCodeStrings = [];
+      
+        let cssCodeString = [];
         let lastIndex = 0;
         let match;
         
@@ -20,26 +20,34 @@ const MyComponent = (props) => {
                 regexValue.lastIndex++;
             }
             let substring = cssCode.substring(lastIndex, match.index + match[0].length);
-            cssCodeStrings.push(substring);
+            cssCodeString.push({ substring: substring, position: 'before' });
             lastIndex = regexValue.lastIndex;
         }
         if (lastIndex < cssCode.length) {
-            cssCodeStrings.push(cssCode.substring(lastIndex));
+            cssCodeString.push({ substring: cssCode.substring(lastIndex), position: 'before' });
         }
         const modifiedCssCodeStrings = [];
-        cssCodeStrings.forEach(string => {
-            if (regexProperty.test(string)) {
-                const parts = string.split(regexProperty);
+        cssCodeString.forEach((string, index) => {
+            if (regexProperty.test(string.substring)) {
+                const parts = string.substring.split(regexProperty);
                 parts.forEach((item, index) => {
-                    modifiedCssCodeStrings.push(index === 0 ? item : `            : ${item}`);
+                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `            : ${item}`, position: 'after' });
                 });
             } else {
                 modifiedCssCodeStrings.push(string);
             }
         });
-        setCssCodeStrings(modifiedCssCodeStrings);
-
+        setCssCodeString(modifiedCssCodeStrings);
     }, [cssCode]);
+  
+    useEffect(()=>{
+        setUserInputAnswers(userInput);
+    },[userInput]);
+
+
+    const changeHandler = (e, index) => {
+        setUserInput({ ...userInput, [index]: e.target.value });
+    };
 
     return (
         <div className="quiz-cssCode-container">
@@ -47,8 +55,20 @@ const MyComponent = (props) => {
                 {displayName}
             </div>
             <div className="cssCode-content">
-                {cssCodeStrings.map((string, index) => (
-                    <pre key={index}>{string}{index !== cssCodeStrings.length - 1 && <input type='text'></input>}</pre>
+                {cssCodeString.map((item, index) => (
+                    <pre className={`${item.position === "before" ? "before" : "after"}`} key={index}>
+                        {item.substring}
+                        {index !== cssCodeString.length - 1 &&
+                            <input 
+                                type="text"
+                                name={`userInput${index}`}
+                                id={`userInput${index}`}
+                                value={userInput[index] || ''}
+                                onChange={(e) => changeHandler(e, index)}
+                            />
+                        }
+                        {item.position === "before" && <>;</>}
+                    </pre>
                 ))}
             </div>
         </div>

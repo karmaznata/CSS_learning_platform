@@ -4,27 +4,45 @@ const all_quiz_tasks = [
     {
       id: 1,
       quiz_theme: "flexbox",
+      task_type: "multipleChoice",
       question: "What is the primary purpose of using Flexbox layout in CSS?",
-      answer_options: {a: "Controlling font styles", b: "Arranging items in a row or column with flexibility", c: "Adjusting background colors", d: " Defining keyframes for animations"},
-      right_answer: 0,
+      answer_options: {
+        "1": "Controlling font styles", 
+        "2": "Arranging items in a row or column with flexibility", 
+        "3": "Adjusting background colors", 
+        "4": "Defining keyframes for animations"
+      },
+      right_answer: 2,
     },
     {
       id: 2,
       quiz_theme: "flexbox",
+      task_type: "multipleChoice",
       question: "What is the default positioning behavior of children along the primary and cross axes in a Flexbox container?",
-      answer_options: {a: "Primary axis: Children are evenly distributed; Cross axis: Children are centered", b: "Primary axis: Children spread apart; Cross axis: Children are centered", c: "Primary axis: Children are bunched up at the start; Cross axis: Children stretch out to fill the entire container", d: "Primary axis: Children are positioned at the end; Cross axis: Children are evenly distributed"},
-      right_answer: 0,
+      answer_options: {
+        "1": "Primary axis: Children are evenly distributed; Cross axis: Children are centered", 
+        "2": "Primary axis: Children spread apart; Cross axis: Children are centered", 
+        "3": "Primary axis: Children are bunched up at the start; Cross axis: Children stretch out to fill the entire container", 
+        "4": "Primary axis: Children are positioned at the end; Cross axis: Children are evenly distributed"
+      },
+      right_answer: 1,
     },
     {
       id: 3,
       quiz_theme: "flexbox",
+      task_type: "multipleChoice",
       question: "Which property is used to change the alignment of a specific child along the cross axis in Flexbox?",
-      answer_options: {a: "justify-content", b: "align-items", c: "align-self", d: "flex-grow"},
-      right_answer: 0,
+      answer_options: {
+        "1": "justify-content", 
+        "2": "align-items",
+        "3": "align-self", 
+        "4": "flex-grow"},
+      right_answer: 3,
     },
     {
       id: 4,
       quiz_theme: "flexbox",
+      task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
       right_answer: ['column', 'space-around'],
@@ -49,9 +67,10 @@ const all_quiz_tasks = [
     {
       id: 5,
       quiz_theme: "flexbox",
+      task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
-      right_answer: {1: 'flex-end', 2: 'gap', 3: 'flex-grow', 4: 'flex-grow', 5:'flex-grow'},
+      right_answer: ['flex-end', 'gap', 'flex-grow', 'flex-grow', 'flex-grow'],
       htmlCode: 
 `<form>
   <label class="name" for="name-field">Name:<input id="name-field" /></label>
@@ -82,6 +101,7 @@ button {
     {
       id: 6,
       quiz_theme: "grid",
+      task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
       right_answer: {1: 'flex-end', 2: 'gap', 3: 'flex-grow', 4: 'flex-grow', 5:'flex-grow'},
@@ -89,6 +109,7 @@ button {
     {
       id: 7,
       quiz_theme: "subgrid",
+      task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,
       right_answer: {1: 'flex-end', 2: 'gap', 3: 'flex-grow', 4: 'flex-grow', 5:'flex-grow'},

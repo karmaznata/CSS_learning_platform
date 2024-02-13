@@ -38,3 +38,12 @@
 .code-editor{
     width: 100%;
 }
+.answer-option input{
+    position: static;
+}
+.answer-option.wrong{
+    border: 1px solid red;
+}
+.answer-option.correct{
+    border: 1px solid green;
+}

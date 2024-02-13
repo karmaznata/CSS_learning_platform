@@ -1,13 +1,18 @@
 pre{
     color: white;
-    margin-bottom: -24px;
-
+    margin-bottom: -24px;   
 }
-input{
+
+.cssCode-content input{
     width: 83px;
-    margin-left: -43px;
     z-index: 1;
     position: relative;
+}
+pre.after input{
+    margin-left: -43px;
+}
+pre.before input{
+    margin-left: -12px;
 }
 .quiz-cssCode-container{
 
