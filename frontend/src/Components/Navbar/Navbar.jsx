@@ -47,9 +47,9 @@ const Navbar = ({isLoggedIn}) => {
                 </div>
             </ul>
             <div className="nav-theme-login">
-                <div className="theme-toggle">
+                {/* <div className="theme-toggle">
                     <FaSun className="react-icon" /><ToggleSwitch /><FaMoon className="react-icon" />
-                </div>
+                </div> */}
                 <div className="nav-login">
                     {isLoggedIn
                     ? <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>

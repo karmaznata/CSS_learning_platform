@@ -18,7 +18,7 @@ function App() {
 
   // Callback function to handle logout
   const handleLogout = () => {
-    localStorage.removeItem('auth-token');
+        localStorage.removeItem('auth-token');
     localStorage.removeItem('username');
     setIsLoggedIn(false);
   };

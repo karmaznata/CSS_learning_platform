@@ -1,8 +1,51 @@
-.profile-info-container{
+.user-info-inputs{
+    display: flex;
+    margin: 20px 0px 20px 0px;
+    gap: 40px;
+}
+
+.user-info-inputs .input {
+    position: relative;
+    flex-basis: 90vh;
+}
+
+.user-info-inputs .input__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: calc(.5rem * 0.75) calc(.5rem * .5);
+    margin: calc(.5rem * 0.75 + 3px) calc(.5rem * .5);
+    background: pink;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: white;
+    transition: transform 120ms ease-in;
+    font-weight: bold;
+    line-height: 1.2;
+    border: none;
+}
+
+.user-info-inputs .input__field {
+    box-shadow: 1px 5px 5px 1px lightgray;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: calc(0.5rem * 1.5) 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.user-info-inputs .input__field:focus,
+.user-info-inputs .input__field:not(:placeholder-shown) + .input__label {
+    transform: translate(.25em, -60%) scale(.9);
+    color: #0b5ed7;
+}
+
+.profile-info-container {
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    width: 997px;
     height: 354px;
     padding: 30px;
 }

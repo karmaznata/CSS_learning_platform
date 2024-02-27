@@ -21,14 +21,14 @@ const UserAccount = ({ handleLogout }) => {
     }
 
     return ( 
-        <div className="user-account-continer">
+        <div className="user-account-container">
             <div className="account-left-container">
                 <div className="user-account-options">
                     <hr/>
-                    <label onClick={()=>setAccountView("overview-profile-info")} onKeyDown={() => {}}>Profile</label>
-                    <label onClick={()=>setAccountView("overview-quizzes")} onKeyDown={() => {}}>Quizzes</label>
+                    <label className={`click-label ${accountView==='overview-profile-info'?"active": ''}`} onClick={()=>setAccountView("overview-profile-info")} onKeyDown={() => {}}>Profile</label>
+                    <label className={`click-label ${accountView==='overview-quizzes'?"active": ''}`} onClick={()=>setAccountView("overview-quizzes")} onKeyDown={() => {}}>Quizzes</label>
                     <hr/>
-                    <Link to='/login'><label onClick={handleLogout} onKeyDown={() => {}}>Log out</label></Link>
+                    <Link to='/login'><label className="click-label"onClick={() => {handleLogout(); setAccountView("logout");}} onKeyDown={() => {}}>Log out</label></Link>
                 </div>
             </div>
            <div className="account-right-container">

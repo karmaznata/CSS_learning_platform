@@ -3,6 +3,8 @@ import "./TutorialsSearchView.css";
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { TutorialContext } from '../../Context/TutorialContext';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
 
 const TutorialsSearchView = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -26,23 +28,23 @@ const TutorialsSearchView = () => {
       <div className="search-tutorial">
         <div className="search-tutorial-panel">
           <div className="search-area-label">What do you want to explore?</div>
-          <div className="search-area">
-            <input
-              type="text"
+          <div className="search-box">
+            <button className="btn-search"> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <input type="text"
+              className="input-search"
               placeholder="Search..."
               value={searchQuery}
-              onChange={handleSearch}
-            />
+              onChange={handleSearch} />
           </div>
         </div>
-        <hr />
+        {/* <hr /> */}
         <div className="select-tutorial">
             {filteredTutorials.map((tutorial) => (
               <div className="tutorial-item" key={tutorial.id}>
                 <Link
                   to={tutorial.path}
                   className="tutorial-link"
-                  onClick={() => setMenu("tutorial")}
+                  onClick={() => localStorage.setItem('activeMenu', 'tutorial')}
                 >
                   {tutorial.tutorial_theme}
                 </Link>
