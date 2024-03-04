@@ -100,7 +100,7 @@ button {
     },
     {
       id: 6,
-      quiz_theme: "grid",
+            quiz_theme: "grid",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       answer_options: undefined,

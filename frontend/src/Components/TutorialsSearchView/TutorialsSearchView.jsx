@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { TutorialContext } from '../../Context/TutorialContext';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
+import {EventRegister} from 'react-native-event-listeners';
 
 const TutorialsSearchView = () => {
+  
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredTutorials, setFilteredTutorials] = useState([]);
     const {all_tutorials} = useContext(TutorialContext)
@@ -23,6 +25,10 @@ const TutorialsSearchView = () => {
   
       setFilteredTutorials(filtered);
     };
+
+    const selectTutorial= (tutorial)=>{
+      EventRegister.emit('selectedTutorialEvent', tutorial);
+    }
   
     return (
       <div className="search-tutorial">
@@ -42,9 +48,11 @@ const TutorialsSearchView = () => {
             {filteredTutorials.map((tutorial) => (
               <div className="tutorial-item" key={tutorial.id}>
                 <Link
-                  to={tutorial.path}
+                  to={`/tutorials/${tutorial.path}`}
                   className="tutorial-link"
-                  onClick={() => localStorage.setItem('activeMenu', 'tutorial')}
+                  onClick={() => {
+                    selectTutorial(`${tutorial.path}`);
+                  }}
                 >
                   {tutorial.tutorial_theme}
                 </Link>

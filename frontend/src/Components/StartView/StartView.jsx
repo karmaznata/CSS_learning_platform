@@ -1,6 +1,7 @@
 import React from "react";
 import "./StartView.css";
 import Typed from 'typed.js';
+import { Link } from "react-router-dom";
 
 const StartView = () => {
     // Create reference to store the DOM element containing the animation
@@ -27,14 +28,16 @@ const StartView = () => {
                 <h1>Welcome to CSS world!</h1>
                 <p>Here you are going to learn the most common CSS layouts,<br />
                     and which of them you can use for your purposes.</p>
-                <a href="/tutorial" className="cta" >
-                {/* onClick={()=>{changeActiveMenu("tutorial")}} onKeyDown={() => {}} */}
+                <Link 
+                    to='/tutorials' 
+                    className="cta" 
+                    onClick={()=> localStorage.setItem('activeMenu', 'tutorials')} onKeyDown={() => {}} >
                     <span >Start to learn</span>
                     <svg width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
                         <polyline points="8 1 12 5 8 9"></polyline>
                     </svg>
-                </a>
+                </Link>
             </div>
             <div className="start-view-right">
                 <div className="typing-text" ref={el}></div>

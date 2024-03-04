@@ -5,20 +5,22 @@ import "./Navbar.css";
 import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
 import Button from 'react-bootstrap/Button';
-import TutorialMenu from "../TutorialMenu/TutorialMenu.jsx";
+import TutorialsMenu from "../TutorialsMenu/TutorialsMenu.jsx";
 
-const Navbar = ({isLoggedIn}) => {
-    
+const Navbar = (prop) => {
+
+    const {isLoggedIn , activeMenu} = prop;
+
     const [menu, setMenu] = useState("homePage");
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     // Load active menu tab from localStorage on component mount
     useEffect(() => {
-        const storedMenu = localStorage.getItem('activeMenu');
-        if (storedMenu) {
-        setMenu(storedMenu);
+        const menu = localStorage.getItem('activeMenu');
+        if (menu) {
+        setMenu(menu);
         }
-    }, []);
+    }, [menu]);
 
     // Update active menu tab in state and localStorage
     const handleMenuClick = (menuName) => {
@@ -40,10 +42,10 @@ const Navbar = ({isLoggedIn}) => {
                     onMouseLeave={() => setDropdownVisible(false)}
                     role="button"
                 >
-                    <li className="nav-item" onClick={() => {handleMenuClick("tutorial") }} >
-                        <Link to='/tutorial' className={`nav-link ${menu === "tutorial" ? "active" : ""}`} >Tutorials</Link>
+                    <li className="nav-item" onClick={() => {handleMenuClick("tutorials") }} >
+                        <Link to='/tutorials' className={`nav-link ${menu === "tutorials" ? "active" : ""}`} >Tutorials</Link>
                     </li>
-                    {isDropdownVisible && <TutorialMenu handleMenuClick={handleMenuClick}/>}
+                    {isDropdownVisible && <TutorialsMenu handleMenuClick={handleMenuClick}/>}
                 </div>
             </ul>
             <div className="nav-theme-login">

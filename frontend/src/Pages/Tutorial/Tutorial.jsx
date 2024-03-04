@@ -1,25 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import Flexbox from "./Flexbox";
+import Flexbox from "./Flexbox/Flexbox";
+import Grid from "./Grid/Grid";
+import Subgrid from "./Subgrid/Subgrid";
+import MultiColumn from "./MultiColumn/MultiColumn";
+import ContainerQueries from "./ContainerQueries/ContainerQueries";
 
-const Tutorial = ({ setSelectedTutorial }) => {
-
-    // const [selectedTutorial, setSelectedTutorial] = useState('');
-
-    const { tutorialId } = useParams();
-
+const Tutorial = ({selectedTutorial}) => {
 
     let selectedComponent;
 
-    switch (setSelectedTutorial) {
+    switch (selectedTutorial) {
         case "flexbox":
-            selectedComponent = <Flexbox />;
+            selectedComponent = <Flexbox quizTheme={selectedTutorial} />;
             break;
-        case "flexboxTU":
-            selectedComponent = <Flexbox />;
+        case "grid":
+            selectedComponent = <Grid quizTheme={selectedTutorial} />;
+            break;
+        case "subgrid":
+            selectedComponent = <Subgrid quizTheme={selectedTutorial} />;
+            break;
+        case "multi-column":
+            selectedComponent = <MultiColumn quizTheme={selectedTutorial} />;
+            break;
+        case "container-queries":
+            selectedComponent = <ContainerQueries quizTheme={selectedTutorial} />;
             break;
         default:
-            // Handle the default case, or set to null if you don't want to render anything
             selectedComponent = null;
     }
 

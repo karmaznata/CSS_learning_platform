@@ -18,7 +18,7 @@ const all_tutorials = [
     {
         id: 4,
         tutorial_theme: "Multi-column Layout",
-        path: "multi-column-layout",
+        path: "multi-column",
     },
     {
         id: 5,

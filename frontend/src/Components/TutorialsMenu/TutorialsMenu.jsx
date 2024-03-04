@@ -1,12 +1,21 @@
 import React, { useContext, useState } from "react";
-import "./TutorialMenu.css";
-import { Link, useNavigate } from "react-router-dom";
+import "./TutorialsMenu.css";
+import { Link } from "react-router-dom";
 import { TutorialContext } from "../../Context/TutorialContext";
+import {EventRegister} from 'react-native-event-listeners';
 
-const TutorialMenu = ({ handleMenuClick }) => {
-  const [selectedTutorial, setSelectedTutorial] = useState('');
-  const navigate = useNavigate();
+const TutorialsMenu = ({ handleMenuClick }) => {
+
   const { all_tutorials } = useContext(TutorialContext);
+  // const [selectedTutorial, setSelectedTutorial] = useState('');
+  // const handleSelectedTutorial = (selectedTutorial) => {
+  //   localStorage.setItem('tutorial', selectedTutorial);
+  // };
+        
+
+  const selectTutorial= (tutorial)=>{
+    EventRegister.emit('selectedTutorialEvent', tutorial);
+  }
 
   return (
     <div className="tutorial-dropdown-menu">
@@ -14,11 +23,11 @@ const TutorialMenu = ({ handleMenuClick }) => {
         {all_tutorials.map((tutorial) => (
           <li className="nav-item" key={tutorial.id}>
             <Link
-              to={`/tutorial/${tutorial.path}`}
+              to={`/tutorials/${tutorial.path}`}
               className="nav-link-tutorial"
               onClick={() => {
+                selectTutorial(`${tutorial.path}`);
                 handleMenuClick('tutorial');
-                navigate(`/tutorial/${tutorial.path}`);
               }}
             >
               {tutorial.tutorial_theme}
@@ -30,4 +39,4 @@ const TutorialMenu = ({ handleMenuClick }) => {
   );
 };
 
-export default TutorialMenu;
+export default TutorialsMenu;
