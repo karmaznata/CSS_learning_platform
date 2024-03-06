@@ -1,0 +1,58 @@
+.intro-header-background{
+    border-radius: 50px;
+    background-image: url(../../../Components/Assets/flexbox-intro.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+.paragraph-bigger{
+    color: black;
+    margin: 15px;
+}
+.browser-supporting-container-1{
+    height: 190px;
+    width: 400px;
+    background-image: url(../../../Components/Assets/browser-support-baner.png);
+    background-size: cover;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit; */
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.tutorial-content{
+    display: grid;
+    justify-content: center;
+    background: white;
+    padding: 22px 0px;
+}
+.tutorial-definition-wrap{
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 50px 0px;
+    text-align: center;
+    width: 1300px;
+}
+.heading-tutorial-small{
+    margin-right: 240px;
+    margin-left: 20px;
+}
+.baseline-icon{
+    position: absolute;
+    width: 70px;
+    transform: translate(13px, 58px);
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+.browser-supporting-container-1:hover {
+    & .baseline-icon{
+        filter: brightness(200%) contrast(200%) saturate(300%);
+        transform: translate(13px, 58px) scale(1.14); 
+        width: 80px; 
+    }
+
+}

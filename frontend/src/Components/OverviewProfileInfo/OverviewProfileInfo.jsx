@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 const OverviewProfileInfo = () => {
     return ( 
         <div className="profile-info-container">
-            <div className="profile-info-header">
+            <div className="profile-info-header fs-4">
                 <label>Profile Info</label>
                 <hr/>
             </div>

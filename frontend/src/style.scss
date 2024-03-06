@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background: radial-gradient(circle, rgba(77,77,235,1) 31%, rgba(3,0,99,1) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+:root{
+  --primary-blue:#006ec7ff;
+  --light-blue-1: #e6eaedff;
+  --secondary-blue:#99c5e9ff;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1, p, h2 {
+  color: white !important;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+} 
+li, .label{
+  color: white;
+} 
+
+@media screen and (max-width: 991px){
+  .goals-list-wrapper{
+    max-width: 728px;
+  }
+  
+}
+@media screen and (max-width: 767px){
+  .goals-list-wrapper{
+    max-width: none;
+  }
+  
+}
+h2{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 50px;  
+}
+
+.section{
+  border-radius: 40px;
+  background-color: var(--primary-blue);
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 20px;
+}
+.container{
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.heading-tutorial{
+  color: #000;
+  text-transform: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.heading-tutorial-small{
+  color:#03f;
+  text-transform: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.intro-header{
+  margin-top: 25px;
+  height: 620px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  display: flex;
+}
+.intro-content{
+  border-radius: 28px;
+  background: rgb(255 255 255 / 70%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 70%;
+  max-width: 1140px;
+  text-align: center;
+  position: static;
+}
+.browser-supporting-container{
+  position: absolute;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+  transform: translate(0vb, -2vb);
+}
+
+.label{
+  color:#fff;
+}

@@ -158,9 +158,9 @@ const Quiz = () => {
         {currentPage === 1 && quizTasks.map((task, taskIndex) => (
           task.task_type === "multipleChoice" && (
             <div key={task.id}>
-              <div className="quiz-item">
+              <div className="quiz-item fs-5">
                 <div>{taskIndex + 1}. {task.question}</div>
-                <div className={`answer-options-container-${taskIndex}`}>
+                <div className={`answer-options-container-${taskIndex} answers-container`}>
                   {Object.entries(task.answer_options).map(([key, value], index) => (
                     <div className="answer-option" id={`answer-option-${taskIndex}-${index}`} key={key}>
                       <input

@@ -5,10 +5,7 @@
     height: 354px;
     padding: 30px;
 }
-.profile-info-header label,
-.profile-quizzes-header label{
-    font-size: 24px;
-}
+
 .profile-info-header hr,
 .profile-quizzes-header hr{
     margin-bottom: 2rem;

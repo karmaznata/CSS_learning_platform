@@ -14,6 +14,7 @@ const TutorialsMenu = ({ handleMenuClick }) => {
         
 
   const selectTutorial= (tutorial)=>{
+    localStorage.setItem('tutorial', tutorial);
     EventRegister.emit('selectedTutorialEvent', tutorial);
   }
 

@@ -39,7 +39,7 @@
 .user-info-inputs .input__field:focus,
 .user-info-inputs .input__field:not(:placeholder-shown) + .input__label {
     transform: translate(.25em, -60%) scale(.9);
-    color: #0b5ed7;
+    color:var(--primary-blue);
 }
 
 .profile-info-container {

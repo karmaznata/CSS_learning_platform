@@ -1,15 +1,15 @@
-ul {
+.tutorial-dropdown-menu ul {
     list-style: none;
     padding: unset !important;
     margin: unset;
 }
 
-li {
+.tutorial-dropdown-menu li {
     display: flex;
     padding: 14px;
     transition: all linear 0.3s;
 }
-li a{
+.tutorial-dropdown-menu li a{
     text-decoration-line: none;
 }
 .nav-menu-dropdown li:hover {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -37,6 +36,7 @@ function App() {
   }, []); 
 
   useEffect(() => {
+    setSelectedTutorial(localStorage.getItem('tutorial'));
     const eventListener = EventRegister.addEventListener(
         'selectedTutorialEvent',
         data => {

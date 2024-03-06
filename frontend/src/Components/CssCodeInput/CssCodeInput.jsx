@@ -8,6 +8,7 @@ const MyComponent = (props) => {
     const [userInput, setUserInput] = useState([]);
 
     useEffect(() => {
+        // const regexValue = /^\s*([^:\s]+):\s\s\s*([^]*?)(?=\s*[^\s:]+:|\s*$)/gm;
         const regexValue = /^\s*([^\s]+):\s\s\s*(\{.*\}\s*)?$/gm;
         const regexProperty = /\s:\s*/;
       

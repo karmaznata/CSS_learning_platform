@@ -33,7 +33,7 @@ const Navbar = (prop) => {
             <div className="nav-logo">
                 <img src={adessoLogo} alt="company logo" />
             </div>
-            <ul className="nav-menu nav nav-underline">
+            <ul className="nav-menu nav nav-underline fs-6">
                 <li className="nav-item" onClick={() => {handleMenuClick("homePage") }} >
                     <Link to='/' className={`nav-link ${menu === "homePage" ? "active" : ""}`}>Home Page</Link>
                 </li>
@@ -50,7 +50,7 @@ const Navbar = (prop) => {
             </ul>
             <div className="nav-theme-login">
                 {/* <div className="theme-toggle">
-                    <FaSun className="react-icon" /><ToggleSwitch /><FaMoon className="react-icon" />
+                    <FaSun className="react-icon fs-5" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div> */}
                 <div className="nav-login">
                     {isLoggedIn

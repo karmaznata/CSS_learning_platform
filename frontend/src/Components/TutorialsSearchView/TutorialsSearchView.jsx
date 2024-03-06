@@ -27,13 +27,14 @@ const TutorialsSearchView = () => {
     };
 
     const selectTutorial= (tutorial)=>{
+      localStorage.setItem('tutorial', tutorial);
       EventRegister.emit('selectedTutorialEvent', tutorial);
     }
   
     return (
       <div className="search-tutorial">
         <div className="search-tutorial-panel">
-          <div className="search-area-label">What do you want to explore?</div>
+          <div className="search-area label fs-1">What do you want to explore?</div>
           <div className="search-box">
             <button className="btn-search"> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
             <input type="text"
