@@ -11,7 +11,7 @@ export default function CodeEditor(props){
   const {language, displayName, value, onChange, readOnly } = props;
 
   function handleChange(editor, data, value){
-    onChange(value)
+    onChange(value);
   }
 
   return (
