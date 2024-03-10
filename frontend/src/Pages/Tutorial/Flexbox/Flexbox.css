@@ -83,22 +83,26 @@
     margin: 20px;
     z-index: 1;
     padding: 5px;
+    display: flex;
 }
 .example-container .item{
     border-radius: 7px;
     box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
     border: 0.5px solid black;
-    padding: 10px;
+    padding: 18px;
     background-color: var(--warm-gray);
     margin: 1px;
 }
 .vl {
-    position: relative;
-    height: 288px;
+
+    height: 477px;
     width: 0;
-    transform: translate(262px, -310px);
+    /* transform: translate(262px, -310px); */
+    transform: translate(262px, -402px) rotate(90deg);
+    /* transform: translate(0, -50%) rotate(-90deg); */
     position: relative;
     z-index: 2;
+    transition: transform 0.5s ease; 
   }
   
   .vl::before {
@@ -117,17 +121,71 @@
     color: white    ;   
     top: 75%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
+    transform: translate(-60%, -93px) rotate(-90deg);
     white-space: nowrap;
   }
 .example-component{
     height: 315px;
 }
-.change-property-radio{
+.change-radio-container{
     color: white;
     display: flex;
     gap: 20px;
 }
-.interaction-items-container{
-    margin-left: 25px;
+.radio-interaction-container{
+    margin-left: 13px;
+}
+.direction-column, .direction-column-reverse {
+    height: 288px;
+    transform: translate(262px, -310px) rotate(0deg);
+  }
+  .editor-container{
+    padding: 0.5rem;
+    width: 570px;
+    height: 198px;
+    border-radius: 20px;
+    background: var(--dark-blue-1);
+  }
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: translate(-4px, -14px) rotate(223deg);
+  }
+  .direction-row-reverse>i{
+    transform: translate(-4px, 461px) rotate(43deg);
+  }
+  .direction-column>i{
+    transform: translate(-4px, 268px) rotate(45deg);
+  }
+  .code-editor-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+  }
+  .dropdown-interaction-component{
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0px 20px;
+  }
+  .interactive-component-container.bigger{
+    height: 425px;
+    width: 630px;
+}
+.usage-example-container.smaller{
+    width: 532px;
+}
+.usage-example-container.center{
+    position: relative;
+    left: 335px;
+}
+.form-range{
+    width: 30%;
 }
