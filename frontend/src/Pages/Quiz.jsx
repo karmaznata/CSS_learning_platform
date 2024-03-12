@@ -187,7 +187,6 @@ const Quiz = () => {
                 language="xml"
                 displayName="HTML"
                 value={htmlCode[0].htmlCode}
-                onChange={setHtmlCode}
                 readOnly={true}
               />
               <CssCodeInput
@@ -214,7 +213,6 @@ const Quiz = () => {
                 language="xml"
                 displayName="HTML"
                 value={htmlCode[1].htmlCode}
-                onChange={setHtmlCode}
                 readOnly={true}
               />
               <CssCodeInput
