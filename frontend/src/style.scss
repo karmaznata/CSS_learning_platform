@@ -59,13 +59,36 @@ p.black-text{
   margin: 20px;
   padding: 20px;
   border-radius: 20px;
+  background: var(--light-blue-1);
+}
+.usage-example-container.vertical{
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: var(--light-blue-1);
   gap:5px;
 }
+.usage-example-container.horizontal{
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+.code-editor-container{
+  display: flex;
+  gap: 5px;
+}
 
+.range-interaction-component {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0px 20px;
+}
+
+.code-editor-container.vertical{
+  flex-direction: column;
+}
 .container-goals{
   display: flex;
   align-items: center;
@@ -89,6 +112,28 @@ p.black-text{
   margin-top: 10px;
   margin-bottom: 15px;
 }
+
+.usage-example-container.center {
+  position: relative;
+  left: 130px;
+  width: 60rem;
+}
+.note-container{
+  background-color: var(--secondary-blue);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0px 25px;
+}
+.note-container>p{
+  margin-top: 5px;
+  color: white;
+  text-shadow: none;
+}
+.usage-example-container.bigger .interactive-component-container {
+  width: 100%;
+  height: 100%;
+}
+
 .intro-header{
   margin-top: 25px;
   height: 620px;
@@ -136,7 +181,7 @@ p.subheading{
 h5{
   margin: 20px !important;
 }
-.blau-text{
+.blue-text{
   color:#03f !important;
 }
 .tutorial-content {
