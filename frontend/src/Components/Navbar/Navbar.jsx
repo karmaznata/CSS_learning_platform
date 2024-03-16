@@ -53,10 +53,12 @@ const Navbar = (prop) => {
                     <FaSun className="react-icon fs-5" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div> */}
                 <div className="nav-login">
-                    {isLoggedIn
-                    ? <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>
-                    :<Link to='/login'><Button variant="primary" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
-                }
+                    {/* {isLoggedIn
+                    ?  */}
+                    <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>
+                    // :
+                    <Link to='/login'><Button variant="primary" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
+                {/* } */}
                 </div>
             </div>
         </div>

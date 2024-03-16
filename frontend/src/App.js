@@ -19,11 +19,11 @@ function App() {
   const [selectedTutorial, setSelectedTutorial] = useState('');
   
   // Callback function to handle logout
-  const handleLogout = () => {
-    localStorage.removeItem('auth-token');
-    localStorage.removeItem('username');
-    setIsLoggedIn(false);
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('auth-token');
+  //   localStorage.removeItem('username');
+  //   setIsLoggedIn(false);
+  // };
 
   useEffect(() => {
     if (localStorage.getItem('auth-token')) {

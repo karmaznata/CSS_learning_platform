@@ -5,8 +5,6 @@ import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/Tutor
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import exampleTwoGrid from "../../../Components/Assets/example-2-grid.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import InteractiveGridArea from "../../../Components/InteractiveGridArea/InteractiveGridArea";
 
 const Grid = ({ quizTheme }) => {
     const [gridLevel, setGridLevel] = useState('');

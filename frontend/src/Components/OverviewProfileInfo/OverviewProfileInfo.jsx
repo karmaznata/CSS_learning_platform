@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./OverviewProfileInfo.css";
 import Button from 'react-bootstrap/Button';
-const OverviewProfileInfo = () => {
+
+const OverviewProfileInfo = (props) => {
+
     return ( 
         <div className="profile-info-container">
             <div className="profile-info-header fs-4">
@@ -10,11 +12,11 @@ const OverviewProfileInfo = () => {
             </div>
             <div className="user-info-inputs">
                 <label className="input">
-                    <input className="input__field" type="text" placeholder=" " value={localStorage.getItem('username')} />
+                    <input className="input__field" type="text" placeholder=" " value={props.user.username} />
                     <span className="input__label">Username</span>
                 </label>
                 <label className="input">
-                    <input className="input__field" type="text" placeholder=" " value={localStorage.getItem('email')} />
+                    <input className="input__field" type="text" placeholder=" " value={props.user.email} />
                     <span className="input__label">Email</span>
                 </label>
             </div>

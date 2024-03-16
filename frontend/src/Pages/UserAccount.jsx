@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CSS/UserAccount.css";
-import {Link} from "react-router-dom";
 import OverviewProfileInfo from "../Components/OverviewProfileInfo/OverviewProfileInfo";
 import OverviewQuizzes from "../Components/OverviewQuizzes/OverviewQuizzes";
+import axios from 'axios';
 
-const UserAccount = ({ handleLogout }) => {
+const UserAccount = () => {
 
     const [accountView, setAccountView] = useState('overview-profile-info');
+    const [user, setUser] = useState('');
     let accountComponent;
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('http://localhost:4000/user');
+          setUser(response.data.user);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    useEffect(() => {
+      console.log("Hallo", user);
+    }, [user]);
 
     switch (accountView) {
       case "overview-profile-info":
-        accountComponent = <OverviewProfileInfo />;
+        accountComponent = <OverviewProfileInfo user={user}/>;
         break;
       case "overview-quizzes":
         accountComponent = <OverviewQuizzes />;
@@ -20,15 +39,25 @@ const UserAccount = ({ handleLogout }) => {
         accountComponent = null;
     }
 
+    const handleLogout = async () => {
+      try {
+        const response = await axios.post('http://localhost:4000/logout', null, { withCredentials: true });
+        console.log(response.data);
+        setUserData(null);
+      } catch (error) {
+        console.error('Logout failed:', error);
+      }
+    };
+
     return ( 
-        <div className="user-account-container">
+          <div className="user-account-container">
             <div className="account-left-container">
                 <div className="user-account-options">
                     <hr/>
                     <label className={`click-label ${accountView==='overview-profile-info'?"active": ''}`} onClick={()=>setAccountView("overview-profile-info")} onKeyDown={() => {}}>Profile</label>
                     <label className={`click-label ${accountView==='overview-quizzes'?"active": ''}`} onClick={()=>setAccountView("overview-quizzes")} onKeyDown={() => {}}>Quizzes</label>
                     <hr/>
-                    <Link to='/login'><label className="click-label"onClick={() => {handleLogout(); setAccountView("logout");}} onKeyDown={() => {}}>Log out</label></Link>
+                    <label className="click-label"onClick={() => {handleLogout(); setAccountView("logout");}} onKeyDown={() => {}}>Log out</label>
                 </div>
             </div>
            <div className="account-right-container">
@@ -37,7 +66,8 @@ const UserAccount = ({ handleLogout }) => {
                 </div>
            </div>
         </div> 
-    );
+  
+  );
 }
  
 export default UserAccount;

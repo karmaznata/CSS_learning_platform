@@ -395,7 +395,6 @@ const Flexbox = ({ quizTheme }) => {
                                 By default, all flex items have a <i className="important-point">flex-shrink</i> value of 1, meaning they can shrink equally to fit the container if needed. But if we want certain items to shrink more or less than others, we can adjust their <i className="important-point">flex-shrink</i> values accordingly. Experiment with the example below to get the idea!</p>
                         </div>
                         <div className="usage-example-container vertical">
-
                             <div id="example-8" className="code-editor-container vertical">
                                 <div className="code-editor narrower">
                                     <CodeEditor
@@ -414,7 +413,6 @@ const Flexbox = ({ quizTheme }) => {
                                     />
                                 </div>
                             </div>
-
                             <div className="interactive-component-container bigger">
                                 <div className="example-component">
                                     <div id="example-8" className="example-resizable-container">
@@ -442,7 +440,6 @@ const Flexbox = ({ quizTheme }) => {
                             <h5 className="black-text">Specification: flex-flow: {`<flex-direction>`} {`<flex-wrap>`}; </h5><p className="fs-5 black-text property-description">Example: flex-flow: row wrap;</p>
                             <h5 className="black-text">Specification: flex: {`<flex-grow>`} {`<flex-shrink>`} {`<flex-basis>`}; </h5><p className="fs-5 black-text property-description">Example: flex: 1 1 auto;</p>
                         </div>
-
                     </div>
                 </div>
                 <StartQuizContainer quizTheme={quizTheme} />
