@@ -58,7 +58,7 @@ function App() {
           <Route path='/tutorials' element={<AllTutorials />} />
           <Route path={`/tutorials/:tutorialTheme`} element={<Tutorial selectedTutorial={selectedTutorial}/>} />
           <Route path='/login' element={<LoginSignUp />} />
-          <Route path='/account' element={<UserAccount handleLogout={handleLogout} />} />
+          <Route path='/account' element={<UserAccount/>} />
           <Route path='/quiz' element={<Quiz />}>
             <Route path=':quizTheme' element={<Quiz />} />
           </Route>
@@ -66,7 +66,6 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-
   );
 }
 

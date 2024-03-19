@@ -130,7 +130,7 @@ const Grid = ({ quizTheme }) => {
                         <div className="learning-material-text" style={{ display: 'flex' }}>
                             <div className="property-container">
                                 <h5 className="black-text">grid-template-columns:</h5>
-                                <p className="fs-5 black-text property-description">is used to to specify number of columns and set the size of columns in a grid container.</p>
+                                <p className="fs-5 black-text property-description">is used to specify number of columns and set the size of columns in a grid container.</p>
                             </div>
                             <div className="property-container">
                                 <h5 className="black-text">grid-template-rows:</h5>
@@ -200,7 +200,7 @@ const Grid = ({ quizTheme }) => {
                         <div className="learning-material-text">
                             <h5 className="black-text">Responsive Square Grid with auto-fit and minmax() :</h5>
                             <p className="fs-5 black-text property-description"> Combining  <i className="important-point">auto-fit</i> with <i className="important-point">minmax()</i>  allows the grid to automatically adjust the number of columns based on available space, ensuring that each column has a set minimum width and expands to equally fill any additional, predefined space.
-                                This is especially useful for creating responsive layouts where the number of columns dynamically changes based on the size of the viewport size. Check out the example below! You can drag a yellow corner to expand the size of the container.</p>
+                                This is especially useful for creating responsive layouts where the number of columns dynamically changes based on the size of the viewport size. Check out the example below! You can drag a grin corner to expand the size of the container.</p>
                         </div>
                         <div className="usage-example-container vertical">
                             <div id="example-8" className="code-editor-container vertical">
@@ -287,8 +287,8 @@ const Grid = ({ quizTheme }) => {
                                     />
                                 </div>
                             </div>
-                            <div className="grid-area-iframe">
-                                <div className="grid-area-header">Output</div>
+                            <div className="output-area-iframe">
+                                <div className="output-area-header">Output</div>
                                 <iframe
                                     srcDoc={scrDocExample5}
                                     title="output"
@@ -341,8 +341,8 @@ const Grid = ({ quizTheme }) => {
                                     />
                                 </div>
                             </div>
-                            <div className="grid-area-iframe">
-                                <div className="grid-area-header">Output</div>
+                            <div className="output-area-iframe">
+                                <div className="output-area-header">Output</div>
                                 <iframe
                                     srcDoc={scrDocExample6}
                                     title="output"

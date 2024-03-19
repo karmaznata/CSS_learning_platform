@@ -1,0 +1,7 @@
+#example-container-queries-2 .editor-container {
+    height: 50rem;
+    width: 600px;
+}
+.output-area-iframe.big-size{
+    height: 50rem;
+}
