@@ -6,7 +6,8 @@ import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import exampleTwoGrid from "../../../Components/Assets/example-2-grid.png"
 
-const Grid = ({ quizTheme }) => {
+const Grid = ({ selectedTutorial }) => {
+    
     const [gridLevel, setGridLevel] = useState('');
     const [gridTemplateColumns, setGridTemplateColumns] = useState('repeat(3, 1fr)');
     const [gridTemplateRows, setGridTemplateRows] = useState('repeat(2, 1fr)');
@@ -64,7 +65,7 @@ const Grid = ({ quizTheme }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={'Grid'}
+                tutorialName={selectedTutorial}
                 tutorialIntroText={'This tutorial introduces Grid method for positioning elements on a page , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
                 tutorialDescription={'Grid is a two-dimensional layout method for positioning elements in grid.'}
                 browserSupport={'widely'}
@@ -466,7 +467,7 @@ const Grid = ({ quizTheme }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={quizTheme} />
+                <StartQuizContainer quizTheme={selectedTutorial} />
             </div>
         </div>
     );

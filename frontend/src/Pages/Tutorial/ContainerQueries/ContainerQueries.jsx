@@ -7,7 +7,7 @@ import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import containerQuerieslBanner from '../../../Components/Assets/container-queries-intro.png';
 
-const ContainerQueries = ({ quizTheme }) => {
+const ContainerQueries = ({ selectedTutorial }) => {
 
     const htmlCodeExample1 = `<div class="card-container resizable">\n  <div class="card">\n    <div class="card-item">Card Title</div>\n    <div class="card-item">Card content</div>\n     <div class="card-item">Card Footer</div>\n  </div>\n</div>`;
     const [cssCodeExample1, setCssCodeExample1] = useState(`.card-container {\n  background: gray;\n  container-type: inline-size;\n}\n.card-item{\n  height: 45px;\n  width: 150px;\n  width: 23rem;\n  background: black;\n}\n.card {\n  color: white; \n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}
@@ -41,7 +41,7 @@ const ContainerQueries = ({ quizTheme }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={'Container Queries'}
+                tutorialName={selectedTutorial}
                 tutorialIntroText={'In this tutorial we are going to consider container queries layout , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
                 tutorialDescription={`Container Queries are a highly anticipated feature in CSS that allow developers to apply styles based on the size of a container rather than the viewport.`}
                 browserSupport={'low'}
@@ -133,7 +133,7 @@ const ContainerQueries = ({ quizTheme }) => {
                         <p className="fs-5 black-text subheading">Today, this method is gaining popularity and more and more new browser versions are starting to support this technique. Nevertheless, don't forget to check the support for the browser you need.</p>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={quizTheme} />
+                <StartQuizContainer quizTheme={selectedTutorial} />
             </div>
         </div>
     );

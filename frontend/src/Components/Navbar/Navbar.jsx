@@ -9,23 +9,22 @@ import TutorialsMenu from "../TutorialsMenu/TutorialsMenu.jsx";
 
 const Navbar = (prop) => {
 
-    const {isLoggedIn , activeMenu} = prop;
+    const {isLoggedIn, username} = prop;
 
-    const [menu, setMenu] = useState("homePage");
+    const [menu, setMenu] = useState("");
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     // Load active menu tab from localStorage on component mount
     useEffect(() => {
         const menu = localStorage.getItem('activeMenu');
         if (menu) {
-        setMenu(menu);
+            setMenu(menu);
         }
     }, [menu]);
 
     // Update active menu tab in state and localStorage
     const handleMenuClick = (menuName) => {
-        setMenu(menuName);
-        localStorage.setItem('activeMenu', menuName);
+        localStorage.setItem('activeMenu', menuName);   
     };
 
     return (
@@ -35,7 +34,7 @@ const Navbar = (prop) => {
             </div>
             <ul className="nav-menu nav nav-underline fs-6">
                 <li className="nav-item" onClick={() => {handleMenuClick("homePage") }} >
-                    <Link to='/' className={`nav-link ${menu === "homePage" ? "active" : ""}`}>Home Page</Link>
+                    <Link to='/' className={`nav-link ${localStorage.getItem('activeMenu') === "homePage" ? "active" : ""}`}>Home Page</Link>
                 </li>
                 <div className="tutorial-menu-dropdown"
                     onMouseEnter={() => setDropdownVisible(true)}
@@ -43,9 +42,9 @@ const Navbar = (prop) => {
                     role="button"
                 >
                     <li className="nav-item" onClick={() => {handleMenuClick("tutorials") }} >
-                        <Link to='/tutorials' className={`nav-link ${menu === "tutorials" ? "active" : ""}`} >Tutorials</Link>
+                        <Link to='/tutorials' className={`nav-link ${localStorage.getItem('activeMenu') === "tutorials" ? "active" : ""}`} >Tutorials</Link>
                     </li>
-                    {isDropdownVisible && <TutorialsMenu handleMenuClick={handleMenuClick}/>}
+                    {/* {isDropdownVisible && <TutorialsMenu handleMenuClick={handleMenuClick}/>} */}
                 </div>
             </ul>
             <div className="nav-theme-login">
@@ -53,12 +52,11 @@ const Navbar = (prop) => {
                     <FaSun className="react-icon fs-5" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div> */}
                 <div className="nav-login">
-                    {/* {isLoggedIn
-                    ?  */}
-                    <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi,{localStorage.getItem('username')}</Button></Link>
-                    // :
-                    <Link to='/login'><Button variant="primary" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
-                {/* } */}
+                    {isLoggedIn ? 
+                        <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi, {username}</Button></Link>
+                        :
+                        <Link to='/login'><Button variant="primary" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
+                    }
                 </div>
             </div>
         </div>

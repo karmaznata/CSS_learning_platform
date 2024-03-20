@@ -38,11 +38,11 @@ const TutorialPageTemplate = (props) => {
                 break;
             case 'Grid' : setTutorialBanner(gridBanner)
                 break;
-            case 'Subgrid' : setTutorialBanner(subgridBanner)
+            case 'CSS Grid Subgrid' : setTutorialBanner(subgridBanner)
                 break;
-            case 'Multicol' : setTutorialBanner(multicolBanner)
+            case 'Multi-column Layout' : setTutorialBanner(multicolBanner)
                 break;
-            case 'Container Queries' : setTutorialBanner(containerQuerieslBanner    )
+            case 'Container Queries' : setTutorialBanner(containerQuerieslBanner)
                 break;
             default:
                 break;

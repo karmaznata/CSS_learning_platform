@@ -6,7 +6,7 @@ import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/Tutor
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 
-const MultiColumn = ({ quizTheme }) => {
+const MultiColumn = ({ selectedTutorial }) => {
 
     const [columnSpan, setColumnSpan] = useState('none');
     const [columnFill, setColumnFill] = useState('auto');
@@ -76,7 +76,7 @@ const MultiColumn = ({ quizTheme }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={'Multicol'}
+                tutorialName={selectedTutorial}
                 tutorialIntroText={'This tutorial introduces Multi-column layout , an approach of arranging a chunk of content, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
                 tutorialDescription={`Multi-column layout is a CSS feature that allows content to flow into multiple columns within a container, facilitating better organization and readability of text-heavy content on a webpage.`}
                 browserSupport={'widely'}
@@ -340,7 +340,7 @@ const MultiColumn = ({ quizTheme }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={quizTheme} />
+                <StartQuizContainer quizTheme={selectedTutorial} />
             </div>
 
         </div>

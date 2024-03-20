@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import {EventRegister} from 'react-native-event-listeners';
 
 const initialState = {
     username: '',
@@ -26,6 +26,7 @@ const LoginSignUp = () => {
 
     const [state, setState] = useState("Login");
     axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState(initialState);
 
@@ -34,7 +35,7 @@ const LoginSignUp = () => {
         email: false,
         password: false,
     });
-    const navigate = useNavigate();
+
     const changeHandler = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -65,7 +66,7 @@ const LoginSignUp = () => {
                 } else {
                     toast.success("The user with this email already exist. Try another email.");
                 }
-            }else{
+            } else {
                 setInputErrors({
                     username: !isUsernameValid,
                     email: !isEmailValid,
@@ -78,15 +79,22 @@ const LoginSignUp = () => {
         }
     };
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         axios.post('http://localhost:4000/login', formData)
             .then(res => {
                 console.log(res);
-                if (res.data.success) {
-                    navigate('/')
+                if (res.data.success){
+                    navigate('/');
+                    localStorage.setItem("login", true);
+                    EventRegister.emit('userIsLoggedInEvent', true);
+                } 
+                else{
+                    toast.error('Wrong email or password. Please try again.');
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     const signup = async () => {

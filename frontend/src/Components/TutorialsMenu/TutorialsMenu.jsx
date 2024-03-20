@@ -27,7 +27,7 @@ const TutorialsMenu = ({ handleMenuClick }) => {
               to={`/tutorials/${tutorial.path}`}
               className="nav-link-tutorial"
               onClick={() => {
-                selectTutorial(`${tutorial.path}`);
+                selectTutorial(`${tutorial.tutorial_theme}`);
                 handleMenuClick('tutorial');
               }}
             >

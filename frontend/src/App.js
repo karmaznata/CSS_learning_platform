@@ -10,58 +10,80 @@ import Footer from './Components/Footer/Footer';
 import UserAccount from './Pages/UserAccount';
 import Tutorial from './Pages/Tutorial/Tutorial';
 import { EventRegister } from 'react-native-event-listeners';
+import axios from 'axios';
+import Protected from './Pages/Protected';
 
 function App() {
- 
+
   // State to track user login status
-  const [isLoggedIn, setIsLoggedIn] = useState();
-  const [activeMenu, setActiveMenu] = useState('');
-  const [selectedTutorial, setSelectedTutorial] = useState('');
-  
-  // Callback function to handle logout
-  // const handleLogout = () => {
-  //   localStorage.removeItem('auth-token');
-  //   localStorage.removeItem('username');
-  //   setIsLoggedIn(false);
-  // };
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("login"));
+  const [selectedTutorial, setSelectedTutorial] = useState(localStorage.getItem('tutorial'));
+  const [user, setUser] = useState('');
+
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    if (localStorage.getItem('auth-token')) {
-      setIsLoggedIn(true);
-    }
+    const eventListener = EventRegister.addEventListener(
+      'userIsLoggedInEvent',
+      data => {
+        setIsLoggedIn(data);
+      },
+    );
+    return () => {
+      EventRegister.removeEventListener('userIsLoggedInEvent', eventListener);
+    };
   }, []);
 
   useEffect(() => {
-    setActiveMenu(localStorage.getItem('activeMenu'))
-  }, []); 
+    if (isLoggedIn) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('http://localhost:4000/user');
+          setUser(response.data.user);
+          console.log("user", user)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }
+
+  }, [isLoggedIn]);
 
   useEffect(() => {
-    setSelectedTutorial(localStorage.getItem('tutorial'));
     const eventListener = EventRegister.addEventListener(
-        'selectedTutorialEvent',
-        data => {
-            setSelectedTutorial(data);
-            console.log(data);
-        },
+      'selectedTutorialEvent',
+      data => {
+        setSelectedTutorial(data);
+      },
     );
     return () => {
-        EventRegister.removeEventListener('selectedTutorialEvent', eventListener);
+      EventRegister.removeEventListener('selectedTutorialEvent', eventListener);
     };
   }, []);
 
   return (
     <div>
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} activeMenu={activeMenu}/>
+        <Navbar isLoggedIn={isLoggedIn} username={user.username} />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/tutorials' element={<AllTutorials />} />
-          <Route path={`/tutorials/:tutorialTheme`} element={<Tutorial selectedTutorial={selectedTutorial}/>} />
+          <Route path={`/tutorials/:tutorialTheme`} element={<Tutorial selectedTutorial={selectedTutorial} />} />
           <Route path='/login' element={<LoginSignUp />} />
-          <Route path='/account' element={<UserAccount/>} />
-          <Route path='/quiz' element={<Quiz />}>
-            <Route path=':quizTheme' element={<Quiz />} />
-          </Route>
+          <Route path='/account'
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <UserAccount />
+              </Protected>
+            }
+          />
+          <Route path='/quiz/:quizTheme'
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Quiz />
+              </Protected>}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

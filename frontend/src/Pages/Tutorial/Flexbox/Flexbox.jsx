@@ -5,7 +5,7 @@ import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import ToggleSwitch from '../../../Components/toggleSwitch/toggleSwitch.js';
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate.jsx";
 
-const Flexbox = ({ quizTheme }) => {
+const Flexbox = ({ selectedTutorial }) => {
     const [flexDirection, setFlexDirection] = useState('row');
     const [flexWrap, setFlexWrap] = useState('');
     const [justifyContent, setJustifyContent] = useState('start');
@@ -61,9 +61,9 @@ const Flexbox = ({ quizTheme }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={'Flexbox'}
+                tutorialName={selectedTutorial}
                 tutorialIntroText={'This tutorial introduces Flexbox, a technology for positioning elements on a page, its main features, and CSS  syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={<>Flexbox is a one-dimensional layout method for positioning elements in rows <i className="important-point">OR</i> columns.</>}
+                tutorialDescription={<>Flexbox is a one-dimensional layout method for positioning elements in rows <i className="fw-bold">OR</i> columns.</>}
                 browserSupport={'widely'}
                 browserSupportLink={`https://caniuse.com/?search=flexbox`}
                 usageGoalsHeading={`Flexbox solves the following tasks:`}
@@ -442,7 +442,7 @@ const Flexbox = ({ quizTheme }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={quizTheme} />
+                <StartQuizContainer quizTheme={selectedTutorial} />
             </div>
         </div>
     );

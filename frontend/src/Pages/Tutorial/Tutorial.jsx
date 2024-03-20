@@ -11,20 +11,20 @@ const Tutorial = ({selectedTutorial}) => {
     let selectedComponent;
 
     switch (selectedTutorial) {
-        case "flexbox":
-            selectedComponent = <Flexbox quizTheme={selectedTutorial} />;
+        case "Flexbox":
+            selectedComponent = <Flexbox selectedTutorial={selectedTutorial} />;
             break;
-        case "grid":
-            selectedComponent = <Grid quizTheme={selectedTutorial} />;
+        case "Grid":
+            selectedComponent = <Grid selectedTutorial={selectedTutorial} />;
             break;
-        case "subgrid":
-            selectedComponent = <Subgrid quizTheme={selectedTutorial} />;
+        case "CSS Grid Subgrid":
+            selectedComponent = <Subgrid selectedTutorial={selectedTutorial} />;
             break;
-        case "multi-column":
-            selectedComponent = <MultiColumn quizTheme={selectedTutorial} />;
+        case "Multi-column Layout":
+            selectedComponent = <MultiColumn selectedTutorial={selectedTutorial} />;
             break;
-        case "container-queries":
-            selectedComponent = <ContainerQueries quizTheme={selectedTutorial} />;
+        case "Container Queries":
+            selectedComponent = <ContainerQueries selectedTutorial={selectedTutorial} />;
             break;
         default:
             selectedComponent = null;

@@ -9,7 +9,7 @@ import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import enableGridImage from "../../../Components/Assets/enable-grid-image.png";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 
-const Subgrid = ({ quizTheme }) => {
+const Subgrid = ({ selectedTutorial }) => {
 
     const [htmlCodeExample1, setHtmlCodeExample1] = useState(`<div class="grid">\n  <div class="nested-grid">\n    <div class="item"></div>\n  </div>\n</div>`);
     const [cssCodeExample1, setCssCodeExample1] = useState(`.grid {\n  border-radius: 7px;\n  border: 0.5px solid black;\n  background-color: #cfcbc8ff;\n  height: 300px;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  grid-template-rows: repeat(3, 1fr);\n } 
@@ -36,7 +36,7 @@ const Subgrid = ({ quizTheme }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={'Subgrid'}
+                tutorialName={selectedTutorial}
                 tutorialIntroText={'This tutorial introduces Subgrid, a technology for positioning elements on a page inside another grid, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
                 tutorialDescription={`Subgrid is a two-dimensional layout method for positioning elements inside of another already created  grid.`}
                 browserSupport={'supported'}
@@ -171,7 +171,7 @@ const Subgrid = ({ quizTheme }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={quizTheme} />
+                <StartQuizContainer quizTheme={selectedTutorial} />
             </div>
         </div>
 

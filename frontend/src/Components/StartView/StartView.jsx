@@ -9,7 +9,7 @@ const StartView = () => {
 
     React.useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ['p {<br/> &emsp;color: red;<br/>  &emsp;width: 500px;<br/>  &emsp;border: 1px solid black;<br/>}'],
+            strings: ['.container {<br/> &emsp;color: red;<br/>  &emsp;width: 500px;<br/>  &emsp;border: 1px solid black;<br/>}'],
             typeSpeed: 50,
             contentType: 'html',
         });

@@ -75,24 +75,24 @@ app.post('/login', async (req, res) => {
       req.session.user = user;
       res.json({ success: true });
     } else {
-      res.status(401).json({ success: false, error: 'Invalid email or password' });
+      res.json({ success: false, error: 'Invalid email or password' });
     }
   } catch (error) {
-    console.error('Error during login:', error);
     res.status(500).json({ success: false, error: 'Internal server error during login' });
   }
 });
 
 app.post('/logout', (req, res) => {
   req.session.destroy();
+  res.cookie('connect.sid', '', { expires: new Date(0) });
   res.json({ success: true });
 });
 
 app.get('/quiz/:quizTheme', (req, res) => {
   if (req.session.user) {
-    res.send('Quiz page');
+    res.json({ success: true });
   } else {
-    res.status(401).json({ error: 'Unauthorized' });
+    res.json({ success: false });
   }
 });
 

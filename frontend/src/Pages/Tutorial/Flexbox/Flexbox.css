@@ -85,7 +85,7 @@
 .direction-column,
 .direction-column-reverse {
   height: 288px;
-  transform: translate(262px, -310px) rotate(0deg);
+  transform: translate(262px, -300px) rotate(0deg);
 }
 
 .editor-container {

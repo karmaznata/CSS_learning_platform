@@ -3,11 +3,15 @@ import "./CSS/UserAccount.css";
 import OverviewProfileInfo from "../Components/OverviewProfileInfo/OverviewProfileInfo";
 import OverviewQuizzes from "../Components/OverviewQuizzes/OverviewQuizzes";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import {EventRegister} from 'react-native-event-listeners';
 
 const UserAccount = () => {
 
     const [accountView, setAccountView] = useState('overview-profile-info');
     const [user, setUser] = useState('');
+    const navigate = useNavigate();
+
     let accountComponent;
     axios.defaults.withCredentials = true;
 
@@ -24,10 +28,6 @@ const UserAccount = () => {
       fetchData();
     }, []);
   
-    useEffect(() => {
-      console.log("Hallo", user);
-    }, [user]);
-
     switch (accountView) {
       case "overview-profile-info":
         accountComponent = <OverviewProfileInfo user={user}/>;
@@ -43,7 +43,14 @@ const UserAccount = () => {
       try {
         const response = await axios.post('http://localhost:4000/logout', null, { withCredentials: true });
         console.log(response.data);
-        setUserData(null);
+        
+        if(response.data.success){
+          setUser(null);
+          localStorage.removeItem("login");
+          EventRegister.emit('userIsLoggedInEvent', false);
+          navigate('/')
+        }
+
       } catch (error) {
         console.error('Logout failed:', error);
       }
