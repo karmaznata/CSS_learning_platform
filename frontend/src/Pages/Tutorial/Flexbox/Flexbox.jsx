@@ -5,7 +5,8 @@ import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import ToggleSwitch from '../../../Components/toggleSwitch/toggleSwitch.js';
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate.jsx";
 
-const Flexbox = ({ selectedTutorial }) => {
+const Flexbox = ({tutorial}) => {
+    
     const [flexDirection, setFlexDirection] = useState('row');
     const [flexWrap, setFlexWrap] = useState('');
     const [justifyContent, setJustifyContent] = useState('start');
@@ -61,13 +62,13 @@ const Flexbox = ({ selectedTutorial }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={selectedTutorial}
-                tutorialIntroText={'This tutorial introduces Flexbox, a technology for positioning elements on a page, its main features, and CSS  syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={<>Flexbox is a one-dimensional layout method for positioning elements in rows <i className="fw-bold">OR</i> columns.</>}
-                browserSupport={'widely'}
-                browserSupportLink={`https://caniuse.com/?search=flexbox`}
-                usageGoalsHeading={`Flexbox solves the following tasks:`}
-                usageGoals={[`Create layouts that place elements along a given axis.`, `Aligns the container's contents within the parent component.`, `Make all child elements of a container occupy the same amount of available width/height, regardless of what width/height is available.`]}
+                tutorialName={tutorial.tutorial_theme}
+                tutorialIntroText={tutorial.tutorial_intro_text}
+                tutorialDescription={tutorial.tutorial_theme}
+                browserSupport={tutorial.tutorial_theme}
+                browserSupportLink={tutorial.tutorial_theme}
+                usageGoalsHeading={tutorial.tutorial_theme}
+                usageGoals={tutorial.tutorial_theme}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -442,7 +443,7 @@ const Flexbox = ({ selectedTutorial }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={selectedTutorial} />
+                <StartQuizContainer quizTheme={tutorial.tutorial_theme} />
             </div>
         </div>
     );

@@ -10,8 +10,12 @@ const all_tutorials = [
         tutorial_theme: "Flexbox",
         path: "flexbox",
         tutorial_banner: flexboxBanner,
+        tutorial_intro_text: "This tutorial introduces Flexbox, a technology for positioning elements on a page, its main features, and CSS  syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.",
         description: "Flexbox is a one-dimensional layout method for positioning elements in rows or columns.",
-        methodBrowserSupport: "widely"
+        method_browser_support: "widely",
+        browser_support_link: "https://caniuse.com/?search=flexbox",
+        usage_goals_heading: 'Flexbox solves the following tasks:',
+        usage_goals: [`Create layouts that place elements along a given axis.`, `Aligns the container's contents within the parent component.`, `Make all child elements of a container occupy the same amount of available width/height, regardless of what width/height is available.`]
     },
     {
         id: 39002,
