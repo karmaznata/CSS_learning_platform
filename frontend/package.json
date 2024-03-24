@@ -10,6 +10,10 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.67",
+    "@types/react-dom": "^18.2.22",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "codemirror": "^5.65.16",
@@ -25,6 +29,7 @@
     "react-toastify": "^10.0.4",
     "sass": "^1.71.1",
     "typed.js": "^2.1.0",
+    "typescript": "^5.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -85,8 +85,8 @@ const LoginSignUp = () => {
                 console.log(res);
                 if (res.data.success){
                     navigate('/');
-                    localStorage.setItem("login", true);
-                    EventRegister.emit('userIsLoggedInEvent', true);
+                    localStorage.setItem("login", "true");
+                    EventRegister.emit('userIsLoggedInEvent', "true");
                 } 
                 else{
                     toast.error('Wrong email or password. Please try again.');

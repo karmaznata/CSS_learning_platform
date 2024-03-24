@@ -2,10 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Flexbox.css";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
-import ToggleSwitch from '../../../Components/toggleSwitch/toggleSwitch.js';
-import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate.jsx";
+import ToggleSwitch from '../../../Components/toggleSwitch/toggleSwitch.tsx';
+import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
+import { TutorialModel } from "../../../Models/TutorialModel.js";
 
-const Flexbox = ({tutorial}) => {
+interface FlexboxProps {
+    tutorial: TutorialModel;
+}
+
+const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
     
     const [flexDirection, setFlexDirection] = useState('row');
     const [flexWrap, setFlexWrap] = useState('');
@@ -13,7 +18,7 @@ const Flexbox = ({tutorial}) => {
     const [alignItems, setAlignItems] = useState('normal');
     const [alignContent, setAlignContent] = useState('normal');
     const [alignSelf, setAlignSelf] = useState('normal');
-    const [addFlexgrow, setAddFlexgrow] = useState();
+    const [addFlexgrow, setAddFlexgrow] = useState(false);
 
     const [flexgrow1, setFlexgrow1] = useState(1);
     const [flexgrow2, setFlexgrow2] = useState(0);
@@ -26,7 +31,7 @@ const Flexbox = ({tutorial}) => {
     const [flexshrink1, setFlexshrink1] = useState(1);
     const [flexshrink2, setFlexshrink2] = useState(1);
 
-    const handleActions = [
+    const handleActions: [string, any, boolean?][] = [
         ['handleRadioChangeDirection', setFlexDirection],
         ['handleRadioChangeWrap', setFlexWrap],
         ['handleJustifyContent', setJustifyContent],
@@ -45,7 +50,7 @@ const Flexbox = ({tutorial}) => {
 
     useEffect(() => {
         setAddFlexgrow(addFlexgrow);
-    }, []);
+    }, [addFlexgrow]);
 
     const handleOnChange = (key, e) => {
         const [matchingKey, handleMethod, parseInt] = handleActions.find(([k]) => k === key);
@@ -64,11 +69,11 @@ const Flexbox = ({tutorial}) => {
             <TutorialPageTemplate
                 tutorialName={tutorial.tutorial_theme}
                 tutorialIntroText={tutorial.tutorial_intro_text}
-                tutorialDescription={tutorial.tutorial_theme}
-                browserSupport={tutorial.tutorial_theme}
-                browserSupportLink={tutorial.tutorial_theme}
-                usageGoalsHeading={tutorial.tutorial_theme}
-                usageGoals={tutorial.tutorial_theme}
+                tutorialDescription={tutorial.description}
+                browserSupport={tutorial.method_browser_support}
+                browserSupportLink={tutorial.browser_support_link}
+                usageGoalsHeading={tutorial.usage_goals_heading}
+                usageGoals={tutorial.usage_goals}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -99,7 +104,7 @@ const Flexbox = ({tutorial}) => {
                             </div>
                             <div className="interactive-component-container">
                                 <div className="example-component">
-                                    <div className="example-container" style={{ flexDirection: flexDirection }}>
+                                    <div className="example-container" style={{ flexDirection: flexDirection } as any}>
                                         <div className="item">1</div>
                                         <div className="item">2</div>
                                         <div className="item">3</div>
@@ -156,7 +161,7 @@ const Flexbox = ({tutorial}) => {
                             </div>
                             <div className="interactive-component-container">
                                 <div className="example-component">
-                                    <div className="example-container" style={{ flexWrap: flexWrap }}>
+                                    <div className="example-container" style={{ flexWrap: flexWrap }as any}>
                                         <div className="item item-1">One</div>
                                         <div className="item item-2">Two</div>
                                         <div className="item item-3">Three</div>

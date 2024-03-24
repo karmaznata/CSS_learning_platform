@@ -6,15 +6,10 @@ import { TutorialContext } from '../../Context/TutorialContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { EventRegister } from 'react-native-event-listeners';
-import flexboxBanner from '../Assets/flexbox-intro.png';
-import gridBanner from '../Assets/grid-intro.png';
-import subgridBanner from '../Assets/subgrid-intro.png';
-import multicolBanner from '../Assets/multicol-intro.png';
-import containerQuerieslBanner from '../Assets/container-queries-intro.png';
 
 const TutorialsSearchView = () => {
 
-  const { all_tutorials } = useContext(TutorialContext);
+  const  all_tutorials = useContext(TutorialContext);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredTutorials, setFilteredTutorials] = useState(all_tutorials);
@@ -25,8 +20,9 @@ const TutorialsSearchView = () => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
 
-    const filtered = all_tutorials.filter((tutorial) =>
+    const filtered = all_tutorials.filter((tutorial) =>{
       tutorial.tutorial_theme.toLowerCase().includes(query)
+    }
     );
 
     setFilteredTutorials(filtered);
@@ -55,7 +51,7 @@ const TutorialsSearchView = () => {
       {/* <hr /> */}
       <div className="select-tutorial">
         {filteredTutorials.map((tutorial) => (
-          <div className="tutorial-item" key={tutorial.id}>
+          <div className="tutorial-item" key={tutorial.tutorial_id}>
             <div className="tutorial-banner-container">
               <Link
                 to={`/tutorials/${tutorial.path}`}

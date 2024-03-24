@@ -20,6 +20,7 @@
 label.click-label{
     cursor: pointer;
     margin-left: 10px;
+    transition: transform 0.3s ease;
 }
 label.click-label.active{
     color: rgb(81 123 236) ;;
@@ -27,5 +28,6 @@ label.click-label.active{
 
 }
 label.click-label:hover {
-    font-size: 17px;
+    transform: scale(1.05);
+    /* font-size: 17px; */
 }

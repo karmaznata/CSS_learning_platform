@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import Button from "react-bootstrap/Button";
 import "./Grid.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
@@ -24,7 +24,7 @@ const Grid = ({ selectedTutorial }) => {
     const [htmlCodeExample2, setHtmlCodeExample2] = useState(`<div class="grid-container">\n  <div class="item item1">1</div>\n  <div class="item item2">2</div>\n  <div class="item item3">3</div>\n  <div class="item item4">4</div>\n</div>`);
     const [cssCodeExample2, setCssCodeExample2] = useState(`.grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: repeat(2, 0.5fr);\n  gap: 10px;\n}\n\n.item {\n  background-color: lightblue;\n  border: 1px solid darkblue;\n  padding: 10px;\n  text-align: center;\n}\n\n.item1 {\n  grid-column: 1 / 3; \n  grid-row: 1;\n}\n\n.item2 {\n  grid-column: 2; \n  grid-row: 2; \n}\n\n.item3 {\n  grid-column: 3; \n  grid-row: 1 / 3; \n}\n\n.item4 {\n  grid-column: 1; \n  grid-row: 2; \n}`);
 
-    const handleActions = [
+    const handleActions: [string, any, boolean?][] =  [
         ['handleRadioChangeLevel', setGridLevel],
         ['handleGridTemplColumns', setGridTemplateColumns],
         ['handleGridTemplRows', setGridTemplateRows],

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import "./MultiColumn.css";
@@ -63,14 +63,14 @@ const MultiColumn = ({ selectedTutorial }) => {
     </html>
     `;
 
-    const handleActions = [
+    const handleActions: [string, any][] = [
         ['handleRadioColumnSpan', setColumnSpan],
         ['handleRadioColumnFill', setColumnFill],
     ];
 
     const handleOnChange = (key, e) => {
         const [matchingKey, handleMethod] = handleActions.find(([k]) => k === key);
-        if (matchingKey) handleMethod(e.target.value);
+        if (matchingKey) {handleMethod(e.target.value);}
     };
 
     return (

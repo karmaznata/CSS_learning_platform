@@ -15,10 +15,10 @@ import Protected from './Pages/Protected';
 
 function App() {
 
-  // State to track user login status
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("login"));
   const [selectedTutorial, setSelectedTutorial] = useState(localStorage.getItem('tutorial'));
   const [user, setUser] = useState('');
+  const [accountView, setAccountView] = useState('overview-profile-info');
 
   axios.defaults.withCredentials = true;
 
@@ -40,7 +40,6 @@ function App() {
         try {
           const response = await axios.get('http://localhost:4000/user');
           setUser(response.data.user);
-          console.log("user", user)
         } catch (error) {
           console.log(error);
         }
@@ -61,6 +60,16 @@ function App() {
       EventRegister.removeEventListener('selectedTutorialEvent', eventListener);
     };
   }, []);
+  
+  useEffect(() => {
+    const eventListener = EventRegister.addEventListener(
+       'accoutViewEvent',
+         data => setAccountView(data)
+     );
+     return () => {
+       EventRegister.removeEventListener('accoutViewEvent', eventListener);
+     };
+   }, []);
 
   return (
     <div>
@@ -74,14 +83,14 @@ function App() {
           <Route path='/account'
             element={
               <Protected isLoggedIn={isLoggedIn}>
-                <UserAccount />
+                <UserAccount accountView={accountView} />
               </Protected>
             }
           />
           <Route path='/quiz/:quizTheme'
             element={
               <Protected isLoggedIn={isLoggedIn}>
-                <Quiz />
+                <Quiz user={user} />
               </Protected>}
           />
         </Routes>

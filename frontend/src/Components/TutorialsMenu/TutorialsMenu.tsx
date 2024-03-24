@@ -6,7 +6,7 @@ import {EventRegister} from 'react-native-event-listeners';
 
 const TutorialsMenu = ({ handleMenuClick }) => {
 
-  const { all_tutorials } = useContext(TutorialContext);
+  const  all_tutorials  = useContext(TutorialContext);
   // const [selectedTutorial, setSelectedTutorial] = useState('');
   // const handleSelectedTutorial = (selectedTutorial) => {
   //   localStorage.setItem('tutorial', selectedTutorial);
@@ -22,7 +22,7 @@ const TutorialsMenu = ({ handleMenuClick }) => {
     <div className="tutorial-dropdown-menu">
       <ul className="nav-menu-dropdown">
         {all_tutorials.map((tutorial) => (
-          <li className="nav-item" key={tutorial.id}>
+          <li className="nav-item" key={tutorial.tutorial_id}>
             <Link
               to={`/tutorials/${tutorial.path}`}
               className="nav-link-tutorial"

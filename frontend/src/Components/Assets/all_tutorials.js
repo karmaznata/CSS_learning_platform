@@ -6,7 +6,7 @@ import containerQuerieslBanner from '../Assets/container-queries-intro.png';
 
 const all_tutorials = [
     {
-        id: 72801,
+        tutorial_id: 72801,
         tutorial_theme: "Flexbox",
         path: "flexbox",
         tutorial_banner: flexboxBanner,
@@ -18,7 +18,7 @@ const all_tutorials = [
         usage_goals: [`Create layouts that place elements along a given axis.`, `Aligns the container's contents within the parent component.`, `Make all child elements of a container occupy the same amount of available width/height, regardless of what width/height is available.`]
     },
     {
-        id: 39002,
+        tutorial_id: 39002,
         tutorial_theme: "Grid",
         path: "grid",
         tutorial_banner: gridBanner,
@@ -26,7 +26,7 @@ const all_tutorials = [
         methodBrowserSupport: "widely"
     },
     {
-        id: 72003,
+        tutorial_id: 72003,
         tutorial_theme: "CSS Grid Subgrid",
         path: "subgrid",
         tutorial_banner: subgridBanner,
@@ -34,7 +34,7 @@ const all_tutorials = [
         methodBrowserSupport: "supported"
     },
     {
-        id: 84104,
+        tutorial_id: 84104,
         tutorial_theme: "Multi-column Layout",
         path: "multi-column",
         tutorial_banner: multicolBanner,
@@ -42,7 +42,7 @@ const all_tutorials = [
         methodBrowserSupport: "widely"
     },
     {
-        id: 93105,
+        tutorial_id: 93105,
         tutorial_theme: "Container Queries",
         path: "container-queries",
         tutorial_banner: containerQuerieslBanner,
