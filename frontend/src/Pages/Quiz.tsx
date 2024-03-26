@@ -14,6 +14,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { EventRegister } from "react-native-event-listeners";
 import { User } from "../Models/User";
+import InteractiveQuizTask from "./InteractiveQuizTask";
+import quizTask4 from "../Components/Assets/quizTask-Flexbox-4.png";
 
 interface UserProps {
   user: User;
@@ -34,6 +36,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   const [allQuizTasks, setAllQuizTasks] = useState<QuizTask[]>([]);
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
   const [userScore, setUserScore] = useState<UserScore>();
+  const [applyCss, setApplyCss] = useState<string>('');
   // const [userSelection, setUserSelection] = useState([]);
   // const [mistakes, setMistakes] = useState([]);
   // const [checkResult, setCheckResult] = useState();
@@ -61,13 +64,22 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
     const filteredCssCode = allQuizTasks.filter((task) => task.quiz_theme === quizTheme && task.cssCode !== undefined);
     setCssCode(filteredCssCode);
     setHtmlCode(filteredHtmlCode);
-    setQuizTasks(filteredTasks);
+    setQuizTasks(filteredTasks.sort((a, b) => a.task_id - b.task_id));
+    // const initialCss =
+    // setApplyCss(filteredTasks.filter((task)=> task.cssCode));
+
   }, [allQuizTasks, quizTheme]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage < 3 ? prevPage + 1 : 1));
     setResultChecked(false);
   };
+
+  useEffect(() => {
+    const radioSelection = Object.values(selectedRadioValue);
+    const missedAnswer = radioSelection.length == 3 && radioSelection.some(answer => answer !== null);
+    setAnswerAllQuestions(missedAnswer);
+  }, [selectedRadioValue]);
 
   useEffect(() => {
     const radioSelection = Object.values(selectedRadioValue);
@@ -204,7 +216,6 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
     // }
   }
 
-
   return (
     <div className="quiz-page">
       <div className="quiz-content">
@@ -233,34 +244,51 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
           )
         ))
         }
-        {currentPage === 2 && !quizFinished && (
-          <div className="code-editor">
-            <div className="pane top-pane">
-              <CodeEditor
-                language="xml"
-                displayName="HTML"
-                value={htmlCode[0].htmlCode}
-                readOnly={true}
-              />
-              <CssCodeInput
-                cssCode={cssCode[0].cssCode}
-                displayName="CSS"
-                setUserInputAnswers={setUserInputAnswers}
-              />
+        {currentPage === 2 && !quizFinished && quizTasks.map((task, taskIndex) => (
+          task.task_type === "enterValue" && taskIndex == 3 && (
+            <div className="quiz-task-code-editor">
+              <div className="code-editor">
+                <CodeEditor
+                  language="xml"
+                  displayName="HTML"
+                  value={task.htmlCode}
+                  readOnly={true}
+                />
+              </div>
+              <div className="quiz-interactive-task-question">
+                <div className="quiz-interactive-task-question-header fs-5">4. {task.question}</div>
+                <img src={quizTask4} alt="quiz-task-4 flexbox" className="quiz-task-4-img flexbox" />
+              </div>
+              <div className="code-editor">
+                <CssCodeInput
+                  cssCode={task.cssCode}
+                  displayName="CSS"
+                  setUserInputAnswers={setUserInputAnswers}
+                  setApplyCss={setApplyCss}
+                />
+              </div>
+              <div className="output-area-iframe">
+                <div className="output-area-header">Output</div>
+                <iframe
+                  id="iframe-flexbox-question4"
+                  srcDoc={handleCodeContent(task.htmlCode, applyCss)}
+                  title="output"
+                  sandbox="allow-scripts"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
             </div>
-            <div className="pane">
-              <iframe
-                srcDoc={handleCodeContent(htmlCode[0].htmlCode, cssCode[0].cssCode)}
-                title="output"
-                sandbox="allow-scripts"
-                width="100%"
-                height="100%"
-              />
-            </div>
-          </div>
-        )}
+          )
+          // <InteractiveQuizTask 
+          //   htmlCode={htmlCode[0].htmlCode}
+          //   cssCode={cssCode[0].cssCode}
+          //   setUserInputAnswers={setUserInputAnswers}
+          //   quizTasks={quizTasks}
+          // />
+        ))}
         {currentPage === 3 && !quizFinished && (
-          <div className="code-editor">
+          <div className="quiz-task-code-editor">
             <div className="pane top-pane">
               <CodeEditor
                 language="xml"
@@ -274,7 +302,8 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
                 setUserInputAnswers={setUserInputAnswers}
               />
             </div>
-            <div className="pane">
+            <div className="output-area-iframe small-size">
+              <div className="output-area-header">Output</div>
               <iframe
                 srcDoc={handleCodeContent(htmlCode[1].htmlCode, cssCode[1].cssCode)}
                 title="output"

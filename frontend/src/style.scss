@@ -233,7 +233,7 @@ h5 {
   background: var(--dark-blue-1);
 }
 
-.output-area-header {
+.output-area-header, .quiz-interactive-task-question-header{
   height: 2.5rem;
   padding: 6px;
   padding-left: 16px;
@@ -248,4 +248,11 @@ h5 {
   height: 36rem;
   border: 7px solid var(--dark-blue-1);
   border-radius: 19px;
+  background: white;
+}
+.task-editor-container{
+  padding: 0.5rem;
+  border-radius: 20px;
+  background: var(--dark-blue-1);
+  height: 100%;
 }

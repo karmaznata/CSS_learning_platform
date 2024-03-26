@@ -3,7 +3,7 @@
 function all_quiz_tasks() {
   return [
     {
-      task_id: 728017701,
+      task_id: 7280101,
       quiz_theme: "Flexbox",
       task_type: "multipleChoice",
       question: "What is the primary purpose of using Flexbox layout in CSS?",
@@ -16,7 +16,7 @@ function all_quiz_tasks() {
       right_answer: 2,
     },
     {
-      task_id: 728017702,
+      task_id: 7280102,
       quiz_theme: "Flexbox",
       task_type: "multipleChoice",
       question: "What is the default positioning behavior of children along the primary and cross axes in a Flexbox container?",
@@ -29,7 +29,7 @@ function all_quiz_tasks() {
       right_answer: 1,
     },
     {
-      task_id: 728017703,
+      task_id: 7280103,
       quiz_theme: "Flexbox",
       task_type: "multipleChoice",
       question: "Which property is used to change the alignment of a specific child along the cross axis in Flexbox?",
@@ -42,16 +42,16 @@ function all_quiz_tasks() {
       right_answer: 3,
     },
     {
-      task_id: 728016904,
+      task_id: 7280104,
       quiz_theme: "Flexbox",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: ['column', 'space-around'],
       htmlCode: `<div class="flexbox-panel">\n  <div class="flexbox-item">1</div>\n  <div class="flexbox-item">2</div>\n  <div class="flexbox-item">3</div>\n</div>`,
-      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  \n   flex-wrap: nowrap;\n  justify-content:  \n  align-items: center;\n}.flexbox-item {\n  flex: 0 0 auto;\n}`,
+      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  \n  flex-wrap: nowrap;\n  justify-content:  \n  align-items: center;\n}.flexbox-item {\n  flex: 0 0 auto;\n}`,
     },
     {
-      task_id: 728016905,
+      task_id: 7280105,
       quiz_theme: "Flexbox",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",

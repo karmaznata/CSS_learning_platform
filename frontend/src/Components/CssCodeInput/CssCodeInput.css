@@ -4,7 +4,7 @@ pre{
 }
 
 .cssCode-content input{
-    width: 83px;
+    width: 10rem;
     z-index: 1;
     position: relative;
 }
@@ -14,7 +14,7 @@ pre.after input{
 pre.before input{
     margin-left: -12px;
 }
-.quiz-cssCode-container{
+/* .quiz-cssCode-container{
 
     flex-grow: 1;
     flex-basis: 0;
@@ -22,13 +22,13 @@ pre.before input{
     flex-direction: column;
     padding: 0.5rem;
     background-color: hsl(225, 6%, 25%);
-}
+} */
 .cssCode-content{
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-    height: 100%;
     position: sticky;
     overflow-y: auto;
     padding: 1rem;
     background-color: #263238;
+    height: 82%;
 }
