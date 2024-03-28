@@ -7,12 +7,20 @@ pre{
     width: 10rem;
     z-index: 1;
     position: relative;
+    padding-right: 20px;
 }
-pre.after input{
-    margin-left: -43px;
-}
+/* pre.after input{
+    margin-left: -6.2rem;
+} */
 pre.before input{
-    margin-left: -12px;
+    margin-left: -22px;
+    /*-22*/
+}
+
+pre input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    outline: none;
 }
 /* .quiz-cssCode-container{
 

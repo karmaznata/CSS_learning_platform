@@ -36,7 +36,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   const [allQuizTasks, setAllQuizTasks] = useState<QuizTask[]>([]);
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
   const [userScore, setUserScore] = useState<UserScore>();
-  const [applyCss, setApplyCss] = useState<string>('');
+
   // const [userSelection, setUserSelection] = useState([]);
   // const [mistakes, setMistakes] = useState([]);
   // const [checkResult, setCheckResult] = useState();
@@ -111,27 +111,38 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
       case 2:
         userAnswers[3] = { user_answers: Object.values(userInputAnswers), task_id: quizTasks[3].task_id, quiz_theme: quizTasks[3].quiz_theme };
         setUserAnswers([...userAnswers]);
-        Object.values(userInputAnswers).forEach((value, index) => {
-          value = value.replace(/\s/g, '');
-          if (quizTasks[3].right_answer[index] === value) {
-
-          }
-        });
+        countEnteredValues(quizTasks[3]);
         break;
       case 3:
         userAnswers[4] = { user_answers: Object.values(userInputAnswers), task_id: quizTasks[4].task_id, quiz_theme: quizTasks[4].quiz_theme };
         setUserAnswers([...userAnswers]);
-        Object.values(userInputAnswers).forEach((value, index) => {
-          value = value.replace(/\s/g, '');
-          if (quizTasks[4].right_answer[index] === value) {
-          }
-        });
+        countEnteredValues(quizTasks[4]);
         break;
       default:
         break;
     }
     setResultChecked(true);
   };
+
+  const countEnteredValues = (quizTasks) => {
+    Object.values(userInputAnswers).forEach((value, index) => {
+      if (value) {
+        value = value.replace(/\s/g, '');
+        if (Object.values(quizTasks.right_answer)[index] === value) {
+          const elements = document.querySelectorAll(`#pre-input-answer-${index}`);
+          elements.forEach((element) => {
+            element.classList.add("correct");
+          });
+
+        }
+      } else {
+        const elements = document.querySelectorAll(`#pre-input-answer-${index}`);
+        elements.forEach((element) => {
+          element.classList.add("wrong");
+        });
+      }
+    });
+  }
 
   const finishQuiz = () => {
     setQuizFinished(true);
@@ -194,15 +205,6 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
     return all_questions;
   };
 
-  const handleCodeContent = (html: string, css: string) => {
-    return `
-          <html>
-            <body>${html}</body>
-            <style>${css}</style>
-          </html>
-        `
-
-  };
   const handleRadioChange = (key, taskIndex) => {
     const newValue = key;
     //setResultChecked(false);
@@ -246,74 +248,57 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
         }
         {currentPage === 2 && !quizFinished && quizTasks.map((task, taskIndex) => (
           task.task_type === "enterValue" && taskIndex == 3 && (
-            <div className="quiz-task-code-editor">
-              <div className="code-editor">
-                <CodeEditor
-                  language="xml"
-                  displayName="HTML"
-                  value={task.htmlCode}
-                  readOnly={true}
-                />
-              </div>
-              <div className="quiz-interactive-task-question">
-                <div className="quiz-interactive-task-question-header fs-5">4. {task.question}</div>
-                <img src={quizTask4} alt="quiz-task-4 flexbox" className="quiz-task-4-img flexbox" />
-              </div>
-              <div className="code-editor">
-                <CssCodeInput
-                  cssCode={task.cssCode}
-                  displayName="CSS"
-                  setUserInputAnswers={setUserInputAnswers}
-                  setApplyCss={setApplyCss}
-                />
-              </div>
-              <div className="output-area-iframe">
-                <div className="output-area-header">Output</div>
-                <iframe
-                  id="iframe-flexbox-question4"
-                  srcDoc={handleCodeContent(task.htmlCode, applyCss)}
-                  title="output"
-                  sandbox="allow-scripts"
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-            </div>
+            // <div className="quiz-task-code-editor">
+            //   <div className="code-editor">
+            //     <CodeEditor
+            //       language="xml"
+            //       displayName="HTML"
+            //       value={task.htmlCode}
+            //       readOnly={true}
+            //     />
+            //   </div>
+            //   <div className="quiz-interactive-task-question">
+            //     <div className="quiz-interactive-task-question-header fs-5">4. {task.question}</div>
+            //     <img src={quizTask4} alt="quiz-task-4 flexbox" className="quiz-task-4-img flexbox" />
+            //   </div>
+            //   <div className="code-editor">
+            //     <CssCodeInput
+            //       cssCode={task.cssCode}
+            //       displayName="CSS"
+            //       setUserInputAnswers={setUserInputAnswers}
+            //       setApplyCss={setApplyCss}
+            //     // checkEnteredValue={}
+            //     />
+            //   </div>
+            //   <div className="output-area-iframe">
+            //     <div className="output-area-header">Output</div>
+            //     <iframe
+            //       id="iframe-flexbox-question4"
+            //       srcDoc={handleCodeContent(task.htmlCode, applyCss)}
+            //       title="output"
+            //       sandbox="allow-scripts"
+            //       width="100%"
+            //       height="100%"
+            //     />
+            //   </div>
+            // </div>
+            <InteractiveQuizTask
+              setUserInputAnswers={setUserInputAnswers}
+              quizTask={task}
+              taskIndex={taskIndex}
+            />
           )
-          // <InteractiveQuizTask 
-          //   htmlCode={htmlCode[0].htmlCode}
-          //   cssCode={cssCode[0].cssCode}
-          //   setUserInputAnswers={setUserInputAnswers}
-          //   quizTasks={quizTasks}
-          // />
+
         ))}
-        {currentPage === 3 && !quizFinished && (
-          <div className="quiz-task-code-editor">
-            <div className="pane top-pane">
-              <CodeEditor
-                language="xml"
-                displayName="HTML"
-                value={htmlCode[1].htmlCode}
-                readOnly={true}
-              />
-              <CssCodeInput
-                cssCode={cssCode[1].cssCode}
-                displayName="CSS"
-                setUserInputAnswers={setUserInputAnswers}
-              />
-            </div>
-            <div className="output-area-iframe small-size">
-              <div className="output-area-header">Output</div>
-              <iframe
-                srcDoc={handleCodeContent(htmlCode[1].htmlCode, cssCode[1].cssCode)}
-                title="output"
-                sandbox="allow-scripts"
-                width="100%"
-                height="100%"
-              />
-            </div>
-          </div>
-        )}
+        {currentPage === 3 && !quizFinished && quizTasks.map((task, taskIndex) => (
+          task.task_type === "enterValue" && taskIndex == 4 && (
+            <InteractiveQuizTask
+              setUserInputAnswers={setUserInputAnswers}
+              quizTask={task}
+              taskIndex={taskIndex}
+            />
+          )
+        ))}
         {quizFinished && (
           <div className="quiz-fished-container">
             <div className="quiz-finished-content">

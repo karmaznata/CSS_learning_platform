@@ -52,6 +52,33 @@
     border-radius: 5px;
     padding: 2px;
 }
+.cssCode-content pre.correct input{
+    border: 2px solid green;
+    background: #c4ffc4;
+}
+.cssCode-content pre.wrong input{
+    border: 2px solid red;
+    background: #ffcccc;
+}
+.cssCode-content pre.correct .result-answer-icon.correct{
+    display: inline-block;
+    align-items: center;
+    color: #7aff7a;
+   
+}
+.cssCode-content pre.wrong .result-answer-icon.wrong{
+    display: inline-block;
+    align-items: center;
+    color: red;
+}
+.result-answer-icon{
+    display: none;
+    position: relative;
+    z-index: 2;
+    font-size: 19px;
+    transform: translate(-18px, 3px);
+    margin-right: -12px;
+}
 
 .quiz-fished-container{
     border-radius: 1rem;
@@ -73,7 +100,7 @@
 }
 .action-buttons{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 11rem;
 }
 .quiz-task-code-editor{

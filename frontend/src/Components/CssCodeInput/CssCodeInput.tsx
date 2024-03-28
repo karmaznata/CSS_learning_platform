@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./CssCodeInput.css";
 import Button from 'react-bootstrap/esm/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPlay, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const CssCodeInput = (props) => {
 
@@ -36,7 +36,7 @@ const CssCodeInput = (props) => {
             if (regexProperty.test(string.substring)) {
                 const parts = string.substring.split(regexProperty);
                 parts.forEach((item, index) => {
-                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `            : ${item}`, position: 'after' });
+                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t       :${item}`, position: 'after' });
                 });
             } else {
                 modifiedCssCodeStrings.push(string);
@@ -45,6 +45,7 @@ const CssCodeInput = (props) => {
         let arrayWithUserAnswers: any[] = Array.from({ length: modifiedCssCodeStrings.length - 1 });
         setUserInput(arrayWithUserAnswers);
         setCssCodeString(modifiedCssCodeStrings);
+        applyStyle(modifiedCssCodeStrings);
     }, [cssCode]);
 
     useEffect(() => {
@@ -60,12 +61,13 @@ const CssCodeInput = (props) => {
         let stringToPush: string = "";
         cssCode.forEach((string, stringIndex) => {
             if (userInput[stringIndex]) {
-                string.position === "before" ? stringToPush = (string.substring + userInput[stringIndex].toString() + ";") 
-                : stringToPush = (string.substring + userInput[stringIndex].toString());
+                string.position === "before" ? stringToPush = (string.substring + userInput[stringIndex].toString() + ";")
+                    : stringToPush = (string.substring + userInput[stringIndex].toString());
                 styleString.push(stringToPush);
             }
             else {
-                styleString.push(string.substring);
+                string.position === "before" ? stringToPush = (string.substring + ";") : stringToPush = string.substring;
+                styleString.push(stringToPush);
                 return string;
             }
         })
@@ -81,18 +83,24 @@ const CssCodeInput = (props) => {
             </div>
             <div className="cssCode-content">
                 {cssCodeString.map((item, index) => (
-                    <pre className={`${item.position === "before" ? "before" : "after"}`} key={index}>
+                    <pre id={`pre-input-answer-${index}`} className={`${item.position === "before" ? "before" : "after"}`} key={index}>
                         {item.substring}
-                        {index !== cssCodeString.length - 1 &&
-                            <input
-                                type="text"
-                                name={`userInput${index}`}
-                                id={`userInput${index}`}
-                                value={userInput[index] || ''}
-                                onChange={(e) => changeHandler(e, index)}
-                            />
-                        }
-                        {item.position === "before" && <>;</>}
+                        {index !== cssCodeString.length - 1 && (
+                            <>
+                                {item.position === "before" && <>;</>}
+                                <input
+                                    type="text"
+                                    name={`user-input-answer-${index}`}
+                                    id={`user-input-answer-${index}`}
+                                    value={userInput[index] || ''}
+                                    onChange={(e) => changeHandler(e, index)}
+                                />
+                                <FontAwesomeIcon icon={faXmark} className="result-answer-icon wrong" />
+                                <FontAwesomeIcon icon={faCheck} className="result-answer-icon correct" />
+                                {item.position === "before" && <>;</>}
+                            </>
+                        )}
+
                     </pre>
                 ))}
             </div>
