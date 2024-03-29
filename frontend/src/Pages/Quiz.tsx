@@ -24,8 +24,6 @@ interface UserProps {
 const Quiz: React.FC<UserProps> = ({ user }) => {
 
   const navigate = useNavigate();
-  const [htmlCode, setHtmlCode] = useState<QuizTask[]>([]);
-  const [cssCode, setCssCode] = useState<QuizTask[]>([]);
   const [selectedRadioValue, setSelectedRadioValue] = useState<any[]>([]);
   const [quizTasks, setQuizTasks] = useState<QuizTask[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,13 +34,6 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   const [allQuizTasks, setAllQuizTasks] = useState<QuizTask[]>([]);
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
   const [userScore, setUserScore] = useState<UserScore>();
-
-  // const [userSelection, setUserSelection] = useState([]);
-  // const [mistakes, setMistakes] = useState([]);
-  // const [checkResult, setCheckResult] = useState();
-  // incorrect answers[key]
-  // score = usersanswers*100/count the amount of the all possible answers from one quiz.
-  // disable radio buttons
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,26 +51,29 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
 
   useEffect(() => {
     const filteredTasks = allQuizTasks.filter((task) => task.quiz_theme === quizTheme);
-    const filteredHtmlCode = allQuizTasks.filter((task) => task.quiz_theme === quizTheme && task.htmlCode !== undefined);
-    const filteredCssCode = allQuizTasks.filter((task) => task.quiz_theme === quizTheme && task.cssCode !== undefined);
-    setCssCode(filteredCssCode);
-    setHtmlCode(filteredHtmlCode);
     setQuizTasks(filteredTasks.sort((a, b) => a.task_id - b.task_id));
-    // const initialCss =
-    // setApplyCss(filteredTasks.filter((task)=> task.cssCode));
-
   }, [allQuizTasks, quizTheme]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage < 3 ? prevPage + 1 : 1));
     setResultChecked(false);
   };
-
+  
   useEffect(() => {
-    const radioSelection = Object.values(selectedRadioValue);
-    const missedAnswer = radioSelection.length == 3 && radioSelection.some(answer => answer !== null);
-    setAnswerAllQuestions(missedAnswer);
-  }, [selectedRadioValue]);
+    const handleBeforeUnload = (e) => {
+      e.preventDefault(); 
+      e.returnValue = ''; 
+      const message = 'Are you sure you want to leave this page?';
+      e.returnValue = message;
+      return message;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     const radioSelection = Object.values(selectedRadioValue);
@@ -207,15 +201,11 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
 
   const handleRadioChange = (key, taskIndex) => {
     const newValue = key;
-    //setResultChecked(false);
     setSelectedRadioValue(prevValues => {
       let newValues = [...prevValues];
       newValues[taskIndex] = newValue;
       return newValues;
     });
-    // if(selectedRadioValue.length!==3){
-    //   setResultChecked(true);
-    // }
   }
 
   return (
@@ -248,40 +238,6 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
         }
         {currentPage === 2 && !quizFinished && quizTasks.map((task, taskIndex) => (
           task.task_type === "enterValue" && taskIndex == 3 && (
-            // <div className="quiz-task-code-editor">
-            //   <div className="code-editor">
-            //     <CodeEditor
-            //       language="xml"
-            //       displayName="HTML"
-            //       value={task.htmlCode}
-            //       readOnly={true}
-            //     />
-            //   </div>
-            //   <div className="quiz-interactive-task-question">
-            //     <div className="quiz-interactive-task-question-header fs-5">4. {task.question}</div>
-            //     <img src={quizTask4} alt="quiz-task-4 flexbox" className="quiz-task-4-img flexbox" />
-            //   </div>
-            //   <div className="code-editor">
-            //     <CssCodeInput
-            //       cssCode={task.cssCode}
-            //       displayName="CSS"
-            //       setUserInputAnswers={setUserInputAnswers}
-            //       setApplyCss={setApplyCss}
-            //     // checkEnteredValue={}
-            //     />
-            //   </div>
-            //   <div className="output-area-iframe">
-            //     <div className="output-area-header">Output</div>
-            //     <iframe
-            //       id="iframe-flexbox-question4"
-            //       srcDoc={handleCodeContent(task.htmlCode, applyCss)}
-            //       title="output"
-            //       sandbox="allow-scripts"
-            //       width="100%"
-            //       height="100%"
-            //     />
-            //   </div>
-            // </div>
             <InteractiveQuizTask
               setUserInputAnswers={setUserInputAnswers}
               quizTask={task}

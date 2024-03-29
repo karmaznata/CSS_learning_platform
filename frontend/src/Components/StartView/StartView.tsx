@@ -2,6 +2,7 @@ import React from "react";
 import "./StartView.css";
 import Typed from 'typed.js';
 import { Link } from "react-router-dom";
+import { EventRegister } from "react-native-event-listeners";
 
 const StartView = () => {
     // Create reference to store the DOM element containing the animation
@@ -20,6 +21,12 @@ const StartView = () => {
         };
     }, []);
 
+    const handleMenuClick = () =>{
+        const activeMenu = 'tutorials'; // Set the desired menu value
+        localStorage.setItem('activeMenu', activeMenu);
+        EventRegister.emit("setMenuActive", activeMenu);
+    }
+
     return (
         <div className="start-view-div">
 
@@ -31,7 +38,7 @@ const StartView = () => {
                 <Link 
                     to='/tutorials' 
                     className="cta" 
-                    onClick={()=> localStorage.setItem('activeMenu', 'tutorials')} onKeyDown={() => {}} >
+                    onClick={handleMenuClick} onKeyDown={() => {}} >
                     <span className="fs-6 fw-bold text-uppercase">Start to learn</span>
                     <svg width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>

@@ -15,6 +15,4 @@ export interface User {
     /**question*/
     password: string,
 
-    scores: UserScore[]
-
 }

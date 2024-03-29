@@ -6,6 +6,7 @@ import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
 import Button from 'react-bootstrap/Button';
 import TutorialsMenu from "../TutorialsMenu/TutorialsMenu.js";
+import { EventRegister } from "react-native-event-listeners";
 
 const Navbar = (prop) => {
 
@@ -14,17 +15,33 @@ const Navbar = (prop) => {
     const [menu, setMenu] = useState("");
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
+    useEffect(()=>{
+        const activeMenu = localStorage.getItem('activeMenu');
+        setMenu(activeMenu);
+
+    },[])
+
+    useEffect(() => {
+        const handleMenuUpdate = data => setMenu(data);
+        EventRegister.addEventListener("setMenuActive", handleMenuUpdate);
+        console.log("setMenuActive", menu);
+        return () => {
+            //@ts-ignore
+            EventRegister.removeEventListener("setMenuActive", handleMenuUpdate);
+        };
+    }, []);
+
+
     // Load active menu tab from localStorage on component mount
     useEffect(() => {
-        const menu = localStorage.getItem('activeMenu');
-        if (menu) {
-            setMenu(menu);
-        }
-    }, [menu]);
+        const activeMenu = localStorage.getItem('activeMenu');
+        setMenu(activeMenu || "homePage"); // Default value if no active menu is found
+    }, []);
 
     // Update active menu tab in state and localStorage
     const handleMenuClick = (menuName) => {
         localStorage.setItem('activeMenu', menuName);   
+        setMenu(menuName);
     };
 
     return (
@@ -34,7 +51,7 @@ const Navbar = (prop) => {
             </div>
             <ul className="nav-menu nav nav-underline fs-6">
                 <li className="nav-item" onClick={() => {handleMenuClick("homePage") }} >
-                    <Link to='/' className={`nav-link ${localStorage.getItem('activeMenu') === "homePage" ? "active" : ""}`}>Home Page</Link>
+                    <Link to='/' className={`nav-link ${menu === "homePage" ? "active" : ""}`}>Home Page</Link>
                 </li>
                 <div className="tutorial-menu-dropdown"
                     onMouseEnter={() => setDropdownVisible(true)}
@@ -42,7 +59,7 @@ const Navbar = (prop) => {
                     role="button"
                 >
                     <li className="nav-item" onClick={() => {handleMenuClick("tutorials") }} >
-                        <Link to='/tutorials' className={`nav-link ${localStorage.getItem('activeMenu') === "tutorials" ? "active" : ""}`} >Tutorials</Link>
+                        <Link to='/tutorials' className={`nav-link ${menu === "tutorials" ? "active" : ""}`} >Tutorials</Link>
                     </li>
                     {/* {isDropdownVisible && <TutorialsMenu handleMenuClick={handleMenuClick}/>} */}
                 </div>

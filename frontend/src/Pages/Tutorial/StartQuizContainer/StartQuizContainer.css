@@ -16,6 +16,17 @@
     position: relative;
     z-index: 2;
     padding: 20px;
+    background: none;
+    border: none;
+    color: #000000;
+}
+.start-quiz-button button:hover{
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    background: none;
+    border: none;
+    color: #000000;
 }
 .start-quiz-button{
     cursor:pointer;
