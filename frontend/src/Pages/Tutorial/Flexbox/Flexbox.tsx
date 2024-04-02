@@ -146,7 +146,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     <CodeEditor
                                         language="xml"
                                         displayName="HTML"
-                                        value={`<div class="container">\n\t<div class="item">One</div>\n\t<div class="item">Two</div>\n\t<div class="item">Three</div>\n\t<div class="item">Four</div>\n\t<div class="item">Five</div>\n\t<div class="item">Six</div>\n\t<div class="item">Seven</div>\n</div>`}
+                                        value={`<div class="container">\n\t<div class="item">One</div>\n\t<div class="item">Two</div>\n\t<div class="item">Three</div>\n\t<div class="item">Four</div>\n\t<div class="item">Five</div>\n\t<div class="item">Six</div>\n\t<div class="item">Seven</div>\n\t<div class="item">Eight</div>\n</div>`}
                                         readOnly={true}
                                     />
                                 </div>
@@ -162,13 +162,14 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                             <div className="interactive-component-container">
                                 <div className="example-component">
                                     <div className="example-container" style={{ flexWrap: flexWrap }as any}>
-                                        <div className="item item-1">One</div>
-                                        <div className="item item-2">Two</div>
-                                        <div className="item item-3">Three</div>
-                                        <div className="item item-4">Four</div>
-                                        <div className="item item-5">Five</div>
-                                        <div className="item item-6">Six</div>
-                                        <div className="item item-7">Seven</div>
+                                        <div className="item">One</div>
+                                        <div className="item">Two</div>
+                                        <div className="item">Three</div>
+                                        <div className="item">Four</div>
+                                        <div className="item">Five</div>
+                                        <div className="item">Six</div>
+                                        <div className="item">Seven</div>
+                                        <div className="item">Eight</div>
                                     </div>
                                 </div>
                                 <div className="radio-interaction-container">

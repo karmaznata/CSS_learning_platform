@@ -15,7 +15,16 @@ import { faList, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { EventRegister } from "react-native-event-listeners";
 import { User } from "../Models/User";
 import InteractiveQuizTask from "./InteractiveQuizTask";
-import quizTask4 from "../Components/Assets/quizTask-Flexbox-4.png";
+import quizTaskFlex4 from "../Components/Assets/quizTaskFlex4.png";
+import quizTaskFlex5 from "../Components/Assets/quizTaskFlex5.png";
+import quizTaskGrid4 from "../Components/Assets/quizTaskGrid4.png";
+import quizTaskGrid5 from "../Components/Assets/quizTaskGrid5.png";
+import quizTaskSubgrid4 from "../Components/Assets/quizTaskSubgrid4.png";
+import quizTaskSubgrid5 from "../Components/Assets/quizTaskSubgrid5.png";
+import quizTaskMulticol4 from "../Components/Assets/quizTaskMulticol4.png";
+import quizTaskMulticol5 from "../Components/Assets/quizTaskMulticol5.png";
+import quizTaskQueries4 from "../Components/Assets/gifContainerQueries4.gif";
+import quizTaskQueries5 from "../Components/Assets/gifContainerQueries5.gif";
 
 interface UserProps {
   user: User;
@@ -34,6 +43,8 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   const [allQuizTasks, setAllQuizTasks] = useState<QuizTask[]>([]);
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
   const [userScore, setUserScore] = useState<UserScore>();
+  const [quizFourthTaskImage, setQuizFourthTaskImage] = useState('');
+  const [quizFifthTaskImage, setQuizFifthTaskImage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,17 +63,37 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   useEffect(() => {
     const filteredTasks = allQuizTasks.filter((task) => task.quiz_theme === quizTheme);
     setQuizTasks(filteredTasks.sort((a, b) => a.task_id - b.task_id));
+    switch (quizTheme) {
+      case "Flexbox": {
+        setQuizFourthTaskImage(quizTaskFlex4); setQuizFifthTaskImage(quizTaskFlex5);
+      } break;
+      case "Grid": {
+        setQuizFourthTaskImage(quizTaskGrid4); setQuizFifthTaskImage(quizTaskGrid5);
+      } break;
+      case "CSS Grid Subgrid": {
+       setQuizFourthTaskImage(quizTaskSubgrid4); setQuizFifthTaskImage(quizTaskSubgrid5);
+      } break;
+      case "Multi-column Layout": {
+       setQuizFourthTaskImage(quizTaskMulticol4); setQuizFifthTaskImage(quizTaskMulticol5);
+       } break;
+       case "Container Queries": {
+        setQuizFourthTaskImage(quizTaskQueries4); setQuizFifthTaskImage(quizTaskQueries5);
+       } break;
+      default:
+        break;
+    }
+
   }, [allQuizTasks, quizTheme]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage < 3 ? prevPage + 1 : 1));
     setResultChecked(false);
   };
-  
+
   useEffect(() => {
     const handleBeforeUnload = (e) => {
-      e.preventDefault(); 
-      e.returnValue = ''; 
+      e.preventDefault();
+      e.returnValue = '';
       const message = 'Are you sure you want to leave this page?';
       e.returnValue = message;
       return message;
@@ -119,6 +150,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   };
 
   const countEnteredValues = (quizTasks) => {
+    console.log("userInputAnswers", userInputAnswers)
     Object.values(userInputAnswers).forEach((value, index) => {
       if (value) {
         value = value.replace(/\s/g, '');
@@ -127,7 +159,11 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
           elements.forEach((element) => {
             element.classList.add("correct");
           });
-
+        } else {
+          const elements = document.querySelectorAll(`#pre-input-answer-${index}`);
+          elements.forEach((element) => {
+            element.classList.add("wrong");
+          });
         }
       } else {
         const elements = document.querySelectorAll(`#pre-input-answer-${index}`);
@@ -242,6 +278,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
               setUserInputAnswers={setUserInputAnswers}
               quizTask={task}
               taskIndex={taskIndex}
+              quizTaskImage={quizFourthTaskImage}
             />
           )
 
@@ -252,6 +289,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
               setUserInputAnswers={setUserInputAnswers}
               quizTask={task}
               taskIndex={taskIndex}
+              quizTaskImage={quizFifthTaskImage}
             />
           )
         ))}

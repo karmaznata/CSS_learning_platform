@@ -48,16 +48,16 @@ function all_quiz_tasks() {
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: ['column', 'space-around'],
       htmlCode: `<div class="flexbox-panel">\n  <div class="flexbox-item">1</div>\n  <div class="flexbox-item">2</div>\n  <div class="flexbox-item">3</div>\n</div>`,
-      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  \n  flex-wrap: nowrap;\n  justify-content:  \n  align-items: center;\n}\n\n.flexbox-item {\n  flex: 0 0 auto;\n}`,
+      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  @cssValue\n  gap : 8px;\n  justify-content:  @cssValue\n}\n\n.flexbox-item {\n  background: #99c5e9ff;\n  padding: 3rem;\n  border-radius: 6px;\n}`,
     },
     {
       task_id: 7280105,
       quiz_theme: "Flexbox",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
-      right_answer: ['flex-end', '8px', 'flex-grow', 'flex-grow', 'flex-grow'],
+      right_answer: ['flex-wrap', '10px', 'flex-grow', 'flex-grow', 'flex-grow'],
       htmlCode:`<form>\n  <label class="name" for="name-field">Name:<input id="name-field" /></label>\n  <label class="email" for="email-field">Email:<input id="email-field" type="email" /></label>\n  <button>Submit</button>\n</form>`,
-      cssCode:`form {\n  display: flex;\n  align-items:  \n  flex-wrap: wrap;\n  gap:  \n}\n\n.name {\n   : 1;\n  flex-basis: 120px;\n}\n\n.email {\n   : 2;\n  flex-basis: 170px;\n}\n\nbutton {\n   : 3;\n  flex-basis: 70px;\n}`,
+      cssCode:`form {\n  display: flex;\n    @cssProperty : wrap;\n  gap:  @cssValue\n  padding: 10rem;\n  font-size: 25px;\n}\n\n.name {\n    @cssProperty : 1;\n  flex-basis: calc(25% - 4px);\n}\n\n.email {\n    @cssProperty : 2;\n  flex-basis: calc(50% - 4px);\n}\n\nbutton {\n    @cssProperty : 3;\n  flex-basis: 100%;\n   height: 40px;\n}\n\ninput {\n   height: 25px;\n   width: 98%;\n}`,
     },
     {
       task_id: 3900201,
@@ -103,9 +103,9 @@ function all_quiz_tasks() {
       quiz_theme: "Grid",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
-      right_answer: { 1: '1fr3fr1fr', 2: 'header', 3: 'sidebar', 4: 'main-content', 5: 'footer' },
+      right_answer: { 1: '1fr3fr', 2: 'header', 3: 'sidebar', 4: 'main-content', 5: 'footer' },
       htmlCode:`<div class="container">\n  <header class="header">Header</header>\n  <nav class="sidebar">Sidebar</nav>\n  <main class="main-content">\n    <section class="content">Content</section>\n    <aside class="aside">Aside</aside>\n  </main>\n  <footer class="footer">Footer</footer>\n</div>`,
-      cssCode:`.container {\n    display: grid;\n    grid-template-columns:  \n    grid-template-rows: auto 1fr auto;\n    grid-template-areas:\n        "header header header"\n        "sidebar main-content aside"\n        "footer footer footer";\n    min-height: 50vh;\n}\n\n.header{\n    grid-area:  \n    background-color: #333;\n    color: white;\n    padding: 10px;\n}\n\n.sidebar {\n    grid-area:  \n    background-color: #f0f0f0;\n    padding: 10px;\n}\n\n.main-content {\n    grid-area:  \n    display: grid;\n    grid-template-columns: 2fr 1fr;\n}\n\n.content {\n    background-color: #eaeaea;\n    padding: 10px;\n}\n\n.aside {\n    background-color: #ddd;\n    padding: 10px;\n}\n\n.footer {\n    grid-area:  \n    background-color: #333;\n    color: white;\n    padding: 10px;\n}`,
+      cssCode:`.container {\n    display: grid;\n    grid-template-columns:  @cssValue\n    grid-template-rows: auto 1fr auto;\n    grid-template-areas:\n        "header header header"\n        "sidebar main-content aside"\n        "footer footer footer";\n    min-height: 90vh;\n}\n\n.header{\n    grid-area:  @cssValue\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}\n\n.sidebar {\n    grid-area:  @cssValue\n    background-color: #f0f0f0;\n    padding: 10px;\n}\n\n.main-content {\n    grid-area:  @cssValue\n    display: grid;\n    grid-template-columns: 2fr 1fr;\n}\n\n.content {\n    background-color: #eaeaea;\n    padding: 10px;\n}\n\n.aside {\n    background-color: #ddd;\n    padding: 10px;\n}\n\n.footer {\n    grid-area:  @cssValue\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}`,
     },
     {
       task_id: 3900205,
@@ -114,7 +114,7 @@ function all_quiz_tasks() {
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: { 1: 'auto1frauto', 2: 'grid-column', 3: '3fr1fr'},
       htmlCode:`<div class="container">\n  <header class="header">Header</header>\n  <nav class="sidebar">Sidebar</nav>\n  <main class="main-content">\n    <section class="content">Content</section>\n    <aside class="aside">Aside</aside>\n  </main>\n  <footer class="footer">Footer</footer>\n</div>`,
-      cssCode: `.container {\n    display: grid;\n    grid-template-columns: 200px 1fr;\n    grid-template-rows:  \n    grid-template-areas:\n        "header header"\n        "nav main"\n        "footer footer";\n    min-height: 50vh;\n}\n\n.header, .footer {\n   : 1 / span 2;\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}\n\n.nav {\n    grid-area: nav;\n    background-color: #f0f0f0;\n    padding: 10px;\n}\n\n.main {\n    grid-area: main;\n    grid-template-columns:  \n    display: grid;\n}\n\n.content {\n    background-color: #eaeaea;\n    padding: 10px;\n}\n\n.sidebar {\n    background-color: #ddd;\n    padding: 10px;\n}\n\n.footer {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}`
+      cssCode: `.container {\n    display: grid;\n    grid-template-columns: 200px 1fr;\n    grid-template-rows:  @cssValue\n    grid-template-areas:\n        "header header"\n        "nav main"\n        "footer footer";\n    min-height: 50vh;\n}\n\n.main {\n    grid-area: main;\n    grid-template-columns:  @cssValue\n    display: grid;\n}\n\n.header, .footer {\n    @cssProperty : 1 / span 2;\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}\n\n.nav {\n    grid-area: nav;\n    background-color: #f0f0f0;\n    padding: 10px;\n}\n\n.content {\n    background-color: #eaeaea;\n    padding: 10px;\n}\n\n.sidebar {\n    background-color: #ddd;\n    padding: 10px;\n}\n\n.footer {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n}`
     },
     {
       task_id: 7200301,
@@ -162,7 +162,7 @@ function all_quiz_tasks() {
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: { 1: '2/4', 2: '1/3', 3: 'grid-template-columns', 4: 'grid-template-rows'},
       htmlCode:`<div class="grid">\n  <p>One</p>\n  <p>Two</p>\n  <p>Three</p>\n  <p>Four</p>\n  <section class="subgrid">\n    <p>Five/One</p>\n    <p>Five/Two</p>\n    <p>Five/Three</p>\n    <p>Five/Four</p>\n  </section>\n  <p>Six</p>\n  <p>Seven</p>\n  <p>Eight</p>\n  <p>Nine</p>\n</div>`,
-      cssCode: `.grid {\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr;\n    grid-template-rows: 50px 50vh 50px;\n}\n\n.subgrid {\n    grid-column:  \n    grid-row:  \n    display: grid;\n   : subgrid;\n   : subgrid;\n}\n\n.subgrid p {\n    background: #00375fff;\n    color: black;\n}\n\ndiv {\n    margin: 40px 40px 40px 20px;\n}\n\np,section{\n    background-color: #669dc5ff;\n    color: white;\n    margin: 0;\n    font-size: 1.25rem;\n    border: 1px white solid;\n}\n\np {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}`
+      cssCode: `.grid {\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr;\n    grid-template-rows: 50px 50vh 50px;\n}\n\n.subgrid {\n    grid-column:  @cssValue\n    grid-row:  @cssValue\n    display: grid;\n    @cssProperty : subgrid;\n    @cssProperty : subgrid;\n}\n\n.subgrid p {\n    background: #00375fff;\n    color: black;\n}\n\ndiv {\n    margin: 40px 40px 40px 20px;\n}\n\np,section{\n    background-color: #669dc5ff;\n    color: white;\n    margin: 0;\n    font-size: 1.25rem;\n    border: 1px white solid;\n}\n\np {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}`
     },
     {
       task_id: 7200305,
@@ -171,7 +171,7 @@ function all_quiz_tasks() {
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: { 1: 'subgrid', 2: '1fr2fr3fr'},
       htmlCode:`<div class="grid">\n  <div class="subgrid">\n    <div class="item"></div>\n  </div>\n</div>`,
-      cssCode: `.grid {\n    background-color: #99c5e9ff;\n    height: 300px;\n    display: grid;\n    grid-template-columns: repeat(5, 1fr);\n    grid-template-rows: repeat(3, 1fr);\n}\n\n.item {\n    background-color: black;\n    grid-column: 2 / 3;\n    grid-row: inherit;\n}\n\n.subgrid {\n    background-color: #669dc5ff;\n    grid-column: 2 / 5;\n    grid-row: 1 / 3;\n    display: grid;\n    grid-template-columns:  \n    grid-template-rows:  \n}`
+      cssCode: `.grid {\n    background-color: #99c5e9ff;\n    height: 300px;\n    display: grid;\n    grid-template-columns: repeat(5, 1fr);\n    grid-template-rows: repeat(3, 1fr);\n}\n\n.item {\n    background-color: black;\n    grid-column: 2 / 3;\n    grid-row: inherit;\n}\n\n.subgrid {\n    background-color: #669dc5ff;\n    grid-column: 2 / 5;\n    grid-row: 1 / 3;\n    display: grid;\n    grid-template-columns:  @cssValue\n    grid-template-rows:  @cssValue\n}`
     },
     {
       task_id: 8410401,
@@ -220,7 +220,7 @@ function all_quiz_tasks() {
       right_answer: { 1: '3', 2: 'column-gap'},
       htmlCode:`<div class="container">\n  <div class="article">\n    <h2>Article Title 1</h2>\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet augue vel libero tempor, eu tincidunt velit accumsan.</p>\n    <p>Integer consequat justo in tortor convallis, ut ultrices urna dignissim. Vivamus tincidunt tortor vitae orci dapibus, id facilisis arcu tincidunt.</p>\n  </div>\n  <div class="article">\n    <h2>Article Title 2</h2>\n    <p>Phasellus ut justo nec mauris venenatis tempor ac eget est. 
       Nullam quis urna ac ex fermentum faucibus.</p>\n    <p>Nullam tincidunt metus ut mi posuere, sit amet tincidunt libero vestibulum. Duis bibendum urna nec massa dictum, at feugiat mauris consequat.</p>\n  </div>\n  <div class="article">\n    <h2>Article Title 3</h2>\n    <p>Etiam placerat libero vel ante efficitur, eu vestibulum mauris mattis. Suspendisse potenti. </p>\n    <p>Sed sit amet justo pretium, molestie elit nec, laoreet quam. Pellentesque id ipsum luctus, eleifend arcu id, egestas tortor.</p>\n  </div>\n</div>`,
-      cssCode: `.container {\n    column-count:  \n   : 25px;\n}\n\n.article {\n    margin-bottom: 20px;\n    break-inside: avoid;\n    padding: 10px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    background-color: #f9f9f9;\n    overflow: hidden;\n}\n\nh2 {\n    margin-top: 0;\n}\n\np {\n    margin-bottom: 10px;\n}`
+      cssCode: `.container {\n    column-count:  @cssValue\n    @cssProperty : 25px;\n}\n\n.article {\n    margin-bottom: 20px;\n    break-inside: avoid;\n    padding: 10px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    background-color: #f9f9f9;\n    overflow: hidden;\n}\n\nh2 {\n    margin-top: 0;\n}\n\np {\n    margin-bottom: 10px;\n}`
     },
     {
       task_id: 8410405,
@@ -230,7 +230,7 @@ function all_quiz_tasks() {
       right_answer: { 1: 'column-rule', 2: 'column-span'},
       htmlCode:`<div class="container">\n  <div class="article">\n    <h2>Article Title 1</h2>\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet augue vel libero tempor, eu tincidunt velit accumsan.</p>\n    <p>Integer consequat justo in tortor convallis, ut ultrices urna dignissim. Vivamus tincidunt tortor vitae orci dapibus, id facilisis arcu tincidunt.</p>\n  </div>\n  <div class="article">\n    <p>Phasellus ut justo nec mauris venenatis tempor ac eget est. Nullam quis urna ac ex fermentum faucibus.</p>\n    
       <p>Nullam tincidunt metus ut mi posuere, sit amet tincidunt libero vestibulum. Duis bibendum urna nec massa dictum, at feugiat mauris consequat.</p>\n  </div>\n  <div class="article">\n    <p>Etiam placerat libero vel ante efficitur, eu vestibulum mauris mattis. Suspendisse potenti. </p>\n    <p>Sed sit amet justo pretium, molestie elit nec, laoreet quam. Pellentesque id ipsum luctus, eleifend arcu id, egestas tortor.</p>\n  </div>\n</div>`,
-      cssCode: `.container {\n    column-count: 3;\n    column-gap: 25px;\n   : 2px solid #ccc;\n}\n\n.article {\n    padding: 10px;\n    border-radius: 5px;\n    background-color: #f9f9f9;\n}\n\n.article h2{\n    background: rgba(255, 0, 0, 0.2);\n   : all;\n}\n\np {\n    margin-bottom: 10px;\n}`
+      cssCode: `.container {\n    column-count: 3;\n    column-gap: 25px;\n    @cssProperty : 2px solid #ccc;\n}\n\n.article {\n    padding: 10px;\n    border-radius: 5px;\n    background-color: #f9f9f9;\n}\n\n.article h2{\n    background: rgba(255, 0, 0, 0.2);\n    @cssProperty : all;\n}\n\np {\n    margin-bottom: 10px;\n}`
     },
     {
       task_id: 9310501,
@@ -240,9 +240,7 @@ function all_quiz_tasks() {
       answer_options: {
         "1": "Media queries focus on user agent or device environment, while container queries focus on elements within the document",
         "2": "Media queries target viewport dimensions, while container queries target box dimensions",
-        "3": "Media queries apply to all elements by default, while container queries require specific declaration with container-type property",
-        "4": "Media queries use @container conditional group rule, while container queries use @media conditional group rule"
-      },
+        "3": "Media queries apply to all elements by default, while container queries require specific declaration with container-type property",      },
       right_answer: 1,
     },
     {
@@ -274,15 +272,20 @@ function all_quiz_tasks() {
     {
       task_id: 9310504,
       quiz_theme: "Container Queries",
-      task_type: "multipleChoice",
-      question: "What determines the applicability of style declarations within the <stylesheet> block of an @container rule?",
-      answer_options: {
-        "1": "The number of conditions listed within the <container-condition>",
-        "2": "Whether the element's query container matches the specified <container-name>",
-        "3": "The presence of nested container queries within the <stylesheet> block",
-        "4": "The evaluation of the container query condition for the element's ancestor query containers"
-      },
-      right_answer: 4,
+      task_type: "enterValue",
+      question: "Add properties to the gaps to arrange the elements as shown in the picture.",
+      right_answer: { 1: 'container-type', 2: '@container'},
+      htmlCode:`<div class="card-container resizable">\n  <div class="card">\n    <div class="card-item">First Card</div>\n    <div class="card-item">Second Card</div>\n     <div class="card-item">Third Card</div>\n  </div>\n</div>`,
+      cssCode: `.card-container {\n    @cssProperty : inline-size;\n}\n\n.card-item{\n    height: 9rem;\n    width: 100%;\n    background: #00375fff;\n    font-size: 20px;\n    text-align: center;\n}\n\n.card {\n    color: white;\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n    @cssProperty (min-width: 400px){\n  .card-item {\n    width: 30%;\n    background: #99c5e9ff;\n    color: black;\n  }\n}\n\n.resizable{\n    height: 30rem;\n    width: 570px;\n    padding: 5px;\n    min-width: 375px;\n    max-width: 43rem;\n    resize: horizontal;\n    overflow: auto;\n    border: 2px solid gray;\n    border-radius: 5px;\n}`
+    },
+    {
+      task_id: 9310505,
+      quiz_theme: "Container Queries",
+      task_type: "enterValue",
+      question: "Add properties to the gaps to arrange the elements as shown in the picture.",
+      right_answer: { 1: 'container', 2: 'grid-template-columns', 3:'font-size'},
+      htmlCode:`<div class="article-container resizable">\n  <article>\n    <h3>Article Title</h3>\n    <p>Article content goes here...</p>\n  </article>\n  <article>\n    <h3>Another Article Title</h3>\n    <p>More article content...</p>\n  </article>\n</div>`,
+      cssCode: `.article-container {\n    @cssProperty : article / inline-size;\n    padding: 1rem;\n}\n\narticle {\n    background-color: #f5f5f5;\n    padding: 1rem\n    margin-bottom: 1rem;\n}\n\nh3 {\n    font-size: 1.5rem;\n    margin-bottom: 0.5rem;\n}\n\np {\n    line-height: 1.5\n}\n\n@container article (inline-size > 400px) {\n  article {\n    display: grid;\n    @cssProperty : 1fr 1fr;\n    gap: 2rem;\n    @cssProperty : 1.2rem;\n  }\n  h3 {\n    font-size: 2rem;\n  }\n}\n\n.resizable{\n    height: 30rem;\n    width: 570px;\n    padding: 5px;\n    min-width: 375px;\n    max-width: 43rem;\n    resize: horizontal;\n    overflow: auto;\n    border: 2px solid gray;\n    border-radius: 5px;\n}`
     },
   ];
 }

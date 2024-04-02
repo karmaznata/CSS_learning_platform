@@ -10,7 +10,7 @@ import containerQuerieslBanner from '../../../Components/Assets/container-querie
 const ContainerQueries = ({ selectedTutorial }) => {
 
     const htmlCodeExample1 = `<div class="card-container resizable">\n  <div class="card">\n    <div class="card-item">Card Title</div>\n    <div class="card-item">Card content</div>\n     <div class="card-item">Card Footer</div>\n  </div>\n</div>`;
-    const [cssCodeExample1, setCssCodeExample1] = useState(`.card-container {\n  background: gray;\n  container-type: inline-size;\n}\n.card-item{\n  height: 45px;\n  width: 150px;\n  width: 23rem;\n  background: black;\n}\n.card {\n  color: white; \n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}
+    const [cssCodeExample1, setCssCodeExample1] = useState(`.card-container {\n   border: 2px solid gray;\n   border-radius: 5px;\n   container-type: inline-size;\n}\n.card-item{\n  height: 45px;\n  width: 150px;\n  width: 23rem;\n  background: black;\n}\n.card {\n  color: white; \n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}
     \n\n@container (min-width: 450px){\n  .card {\n     flex-direction: row; \n  }\n   .card-item {\n     width: 9.5rem;\n     height: 9rem;\n     background: blue;\n  }\n}\n\n.resizable{\n  height: 150px;\n  width: 570px;\n  padding: 5px;\n  min-width: 375px;\n  max-width: 570px;\n  resize: horizontal;\n  overflow: auto;\n}`);
 
 
@@ -130,7 +130,14 @@ const ContainerQueries = ({ selectedTutorial }) => {
                         />
                     </div>
                     <div className="learning-material-text">
-                        <p className="fs-5 black-text subheading">Today, this method is gaining popularity and more and more new browser versions are starting to support this technique. Nevertheless, don't forget to check the support for the browser you need.</p>
+                        <p className="fs-5 black-text subheading">Today, Container Queries is gaining popularity and more and more new browser versions are starting to support this technique. Nevertheless, don't forget to check the support for the browser you need.</p>
+                    </div>
+                    <div className="learning-material-section">
+                        <div className="learning-material-text">
+                            <h2 className="blue-text">Shorthand:</h2>
+                            <p className="fs-5 black-text subheading">The following shorthand is used for the container queries property:</p>
+                            <h5 className="black-text">Specification: container: {`<container-name>`}/{`<container-type>`}; </h5><p className="fs-5 black-text property-description">Example: container: mycontainer / inline-size;</p>
+                        </div>
                     </div>
                 </div>
                 <StartQuizContainer quizTheme={selectedTutorial} />

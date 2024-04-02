@@ -13,8 +13,9 @@ const CssCodeInput = (props) => {
     useEffect(() => {
         setApplyCss(cssCode);
         // const regexValue = /^\s*([^:\s]+):\s\s\s*([^]*?)(?=\s*[^\s:]+:|\s*$)/gm;
-        const regexValue = /^\s*([^\s]+):\s\s\s*(\{.*\}\s*)?$/gm;
-        const regexProperty = /\s:\s*/;
+
+        const regexValue = /^\s*([^\s]+):\s\s@cssValue\s*(\{.*\}\s*)?$/gm;
+        const regexProperty = /\s@cssProperty\s*/;
 
         let cssCodeString = [];
         let lastIndex = 0;
@@ -25,23 +26,25 @@ const CssCodeInput = (props) => {
                 regexValue.lastIndex++;
             }
             let substring = cssCode.substring(lastIndex, match.index + match[0].length);
-            cssCodeString.push({ substring: substring, position: 'before' });
+            cssCodeString.push({ substring: substring.replace(/@cssValue/g, " "), position: 'before' });
+           
             lastIndex = regexValue.lastIndex;
         }
         if (lastIndex < cssCode.length) {
-            cssCodeString.push({ substring: cssCode.substring(lastIndex), position: 'before' });
+            cssCodeString.push({ substring: cssCode.substring(lastIndex).replace(/@cssValue/g, " "), position: 'before' });
         }
         const modifiedCssCodeStrings = [];
         cssCodeString.forEach((string, index) => {
             if (regexProperty.test(string.substring)) {
                 const parts = string.substring.split(regexProperty);
                 parts.forEach((item, index) => {
-                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t       :${item}`, position: 'after' });
+                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t        ${item}`, position: 'after' });
                 });
             } else {
                 modifiedCssCodeStrings.push(string);
             }
         });
+
         let arrayWithUserAnswers: any[] = Array.from({ length: modifiedCssCodeStrings.length - 1 });
         setUserInput(arrayWithUserAnswers);
         setCssCodeString(modifiedCssCodeStrings);
