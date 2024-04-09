@@ -1,7 +1,4 @@
-.footer{
-    /* position: fixed;
-    bottom: 0;
-    width: 100vw; */
+.footer {
     display: flex;
     justify-content: center;
     padding: 7px;
@@ -10,23 +7,26 @@
     flex-shrink: 0;
     border-radius: 10px;
 }
-.footer-links{
+
+.footer-links {
     display: flex;
     justify-content: space-around;
     color: #ffffff;
 }
-.contact-form{
+
+.contact-form {
     color: #ffffff;
 }
-.footer-links>a:hover{
+
+.footer-text a:hover {
     color: #fff;
     text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
 }

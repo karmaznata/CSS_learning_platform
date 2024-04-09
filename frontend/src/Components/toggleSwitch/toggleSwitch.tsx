@@ -11,7 +11,7 @@ const ToggleSwitch = ({setAddFlexgrow})=> {
   }
 
   return (
-    <div className="app" style={{textAlign: "center"}}>
+    <div className="toogle-container" style={{textAlign: "center"}}>
       <ReactSwitch
         checked={checked}
         onChange={handleChange}

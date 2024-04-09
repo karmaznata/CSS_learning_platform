@@ -2,6 +2,7 @@
  * Interface for a quiz task
  */
 export interface QuizTask {
+    
     /** id nuber for quiz task */
     task_id: number,
 

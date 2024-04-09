@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./OverviewQuizzes.css";
 import { UserScore } from "../../Models/UserScores";
-import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface UserScoresProps {
     userScores: UserScore[];

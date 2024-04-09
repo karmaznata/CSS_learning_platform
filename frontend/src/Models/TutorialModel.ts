@@ -2,6 +2,7 @@
  * Interface for a tutorial
  */
 export interface TutorialModel {
+    
     /**
      * Unique identifier for the tutorial
      */

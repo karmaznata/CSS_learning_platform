@@ -15,45 +15,45 @@ import containerQuerieslBanner from '../Assets/container-queries-intro.png';
 
 const TutorialPageTemplate = (props) => {
 
-    const[browserSupportIcon, setBrowserSupportIcon] = useState();
-    const[browserBaselineIcon, setBrowserBaselineIcon] = useState();
-    const[tutorialBanner, setTutorialBanner] = useState();
+    const [browserSupportIcon, setBrowserSupportIcon] = useState();
+    const [browserBaselineIcon, setBrowserBaselineIcon] = useState();
+    const [tutorialBanner, setTutorialBanner] = useState();
 
     const { tutorialName, tutorialIntroText, tutorialDescription, browserSupport, browserSupportLink, usageGoalsHeading, usageGoals } = props;
-    
-   
-    useEffect(()=>{
-        switch(browserSupport){
-            case 'widely' : setBrowserSupportIcon(widelyBrowserSupport); setBrowserBaselineIcon(baselineIconHight)
+
+
+    useEffect(() => {
+        switch (browserSupport) {
+            case 'widely': setBrowserSupportIcon(widelyBrowserSupport); setBrowserBaselineIcon(baselineIconHight)
                 break;
-            case 'supported' : setBrowserSupportIcon(browserSupportBanner); setBrowserBaselineIcon(baselineIcoMedium)
+            case 'supported': setBrowserSupportIcon(browserSupportBanner); setBrowserBaselineIcon(baselineIcoMedium)
                 break;
-            case 'low' : setBrowserSupportIcon(lowBrowserSupport); setBrowserBaselineIcon(baselineIcoLow)
-                break;
-            default:
-                break;
-        }
-        switch(tutorialName){
-            case 'Flexbox' : setTutorialBanner(flexboxBanner)
-                break;
-            case 'Grid' : setTutorialBanner(gridBanner)
-                break;
-            case 'CSS Grid Subgrid' : setTutorialBanner(subgridBanner)
-                break;
-            case 'Multi-column Layout' : setTutorialBanner(multicolBanner)
-                break;
-            case 'Container Queries' : setTutorialBanner(containerQuerieslBanner)
+            case 'low': setBrowserSupportIcon(lowBrowserSupport); setBrowserBaselineIcon(baselineIcoLow)
                 break;
             default:
                 break;
         }
-    },[browserSupport, tutorialName])
+        switch (tutorialName) {
+            case 'Flexbox': setTutorialBanner(flexboxBanner)
+                break;
+            case 'Grid': setTutorialBanner(gridBanner)
+                break;
+            case 'CSS Grid Subgrid': setTutorialBanner(subgridBanner)
+                break;
+            case 'Multi-column Layout': setTutorialBanner(multicolBanner)
+                break;
+            case 'Container Queries': setTutorialBanner(containerQuerieslBanner)
+                break;
+            default:
+                break;
+        }
+    }, [browserSupport, tutorialName])
 
 
     return (
         <div>
             <div className="intro-header">
-                <div className="intro-header-background" style={{backgroundImage : `url(${tutorialBanner})`}}>
+                <div className="intro-header-background" style={{ backgroundImage: `url(${tutorialBanner})` }}>
                     <div className="intro-content">
                         <div className="intro-text">
                             <div className="heading-tutorial display-1">{tutorialName}</div>
@@ -67,7 +67,7 @@ const TutorialPageTemplate = (props) => {
                     <div className="tutorial-definition-content">
                         <div className="heading-tutorial-small fs-2">{tutorialDescription}</div>
                         <Link to={browserSupportLink}>
-                            <div className="browser-supporting-container" style={{backgroundImage : `url(${browserSupportIcon})`}}>
+                            <div className="browser-supporting-container" style={{ backgroundImage: `url(${browserSupportIcon})` }}>
                                 <img className="baseline-icon" src={browserBaselineIcon} alt="baseline-high-dark" />
                             </div>
                         </Link>
@@ -75,15 +75,15 @@ const TutorialPageTemplate = (props) => {
                 </div>
                 <div className="goals-banner">
                     <div className="container-goals">
-                        <div className="method-goals" style={{flex: '1'}}>
+                        <div className="method-goals" style={{ flex: '1' }}>
                             <h1 className="heading">{usageGoalsHeading}</h1>
                         </div>
-                        <div className="goals-list-wrapper" style={{flex: '2'}}>
+                        <div className="goals-list-wrapper" style={{ flex: '2' }}>
                             {usageGoals.map((goal, index) => (
                                 <ul key={index}>
                                     <li className="goals-description fs-5 fw-light">{goal}</li>
                                 </ul>
-                            ))}                        
+                            ))}
                         </div>
                     </div>
                 </div>
