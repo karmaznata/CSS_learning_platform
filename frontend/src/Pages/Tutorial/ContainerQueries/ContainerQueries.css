@@ -4,4 +4,5 @@
 }
 .output-area-iframe.big-size{
     height: 50rem;
+    max-height: none;
 }

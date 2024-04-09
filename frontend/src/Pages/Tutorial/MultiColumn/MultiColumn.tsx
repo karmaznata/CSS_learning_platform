@@ -5,8 +5,13 @@ import "./MultiColumn.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
+import { TutorialModel } from "../../../Models/TutorialModel";
 
-const MultiColumn = ({ selectedTutorial }) => {
+interface MulticolProps {
+    tutorial: TutorialModel;
+}
+
+const MultiColumn: React.FC<MulticolProps> = ({ tutorial }) => {
 
     const [columnSpan, setColumnSpan] = useState('none');
     const [columnFill, setColumnFill] = useState('auto');
@@ -17,7 +22,7 @@ const MultiColumn = ({ selectedTutorial }) => {
     const htmlCodeExample2 = `<div class="container">\n   <h2>A sample header that spanning all columns</h2>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet mauris non sapien interdum, sit amet sodales arcu fermentum. Mauris eu justo sed risus vehicula tempor.</p>\n  <p>Nullam venenatis, risus id consequat sodales, magna odio pharetra orci, eget efficitur felis metus id felis. Integer vel elit vel quam sollicitudin tempor.
     </p>\n  <p>Proin ultrices nisl vel arcu placerat, sed faucibus justo congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>\n  <p>Donec nec fringilla nunc. Nullam vitae eleifend ligula. Nam nec ex ligula. Ut vehicula, lacus at tincidunt tincidunt, justo nulla cursus magna, sed aliquam libero ex vel nulla.
     </p>\n  <p>Maecenas non felis nec est ullamcorper dapibus. Etiam nec nisi felis. Nulla non bibendum justo. Pellentesque pulvinar eleifend nunc, eu scelerisque lacus laoreet non.</p>\n</div>`;
-    
+
     const htmlCodeExample3 = `<div class="container">\n  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus libero libero, placerat at hendrerit nec, vulputate consectetur nisi. Morbi scelerisque lectus id sapien laoreet accumsan.</p>\n</div>`;
     const [cssCodeExample2, setCssCodeExample2] = useState(`.container{\n  column-count: auto;\n  column-width: 10em;\n  column-gap: 2em;\n}`);
     const [cssCodeExample3, setCssCodeExample3] = useState(`.container{\n  column-count: auto;\n  column-width: 10em;\n  column-gap: 2em;\n  column-rule: 3px solid #ccc;\n}`);
@@ -29,7 +34,7 @@ const MultiColumn = ({ selectedTutorial }) => {
         let cssCodeExample5 = `.container{\n  height: 120px;\n  columns: 4;\n  background: #99c5e9ff;\n  column-fill: ${columnFill};\n};`;
         setCssCodeExample4(`${cssCodeExample4}`);
         setCssCodeExample5(`${cssCodeExample5}`);
-    }, [columnSpan, columnFill ])
+    }, [columnSpan, columnFill])
 
     const scrDocExample1 = ` 
     <html>
@@ -48,7 +53,7 @@ const MultiColumn = ({ selectedTutorial }) => {
         <style>${cssCodeExample3}</style>
     </html>
     `;
-    
+
     const scrDocExample4 = ` 
     <html>
         <body>${htmlCodeExample2}</body>
@@ -70,19 +75,19 @@ const MultiColumn = ({ selectedTutorial }) => {
 
     const handleOnChange = (key, e) => {
         const [matchingKey, handleMethod] = handleActions.find(([k]) => k === key);
-        if (matchingKey) {handleMethod(e.target.value);}
+        if (matchingKey) { handleMethod(e.target.value); }
     };
 
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={selectedTutorial}
-                tutorialIntroText={'This tutorial introduces Multi-column layout , an approach of arranging a chunk of content, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={`Multi-column layout is a CSS feature that allows content to flow into multiple columns within a container, facilitating better organization and readability of text-heavy content on a webpage.`}
-                browserSupport={'widely'}
-                browserSupportLink={`https://caniuse.com/?search=multicol`}
-                usageGoalsHeading={`By using multicol you can:`}
-                usageGoals={[`Effectively present long text content, making it easier for users to comprehend its content.`, `Position texts in the styles of magazines, newspapers, textbooks, educational materials, etc.`, `Display lists, such as products, in multiple columns.`, `Create image galleries or portfolios.`, `Provide responsive design.`]}
+                tutorialName={tutorial.tutorial_theme}
+                tutorialIntroText={tutorial.tutorial_intro_text}
+                tutorialDescription={tutorial.description}
+                browserSupport={tutorial.method_browser_support}
+                browserSupportLink={tutorial.browser_support_link}
+                usageGoalsHeading={tutorial.usage_goals_heading}
+                usageGoals={tutorial.usage_goals}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -340,7 +345,7 @@ const MultiColumn = ({ selectedTutorial }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={selectedTutorial} />
+                <StartQuizContainer quizTheme={tutorial.tutorial_theme} />
             </div>
 
         </div>

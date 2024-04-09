@@ -5,9 +5,14 @@ import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/Tutor
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import exampleTwoGrid from "../../../Components/Assets/example-2-grid.png"
+import { TutorialModel } from "../../../Models/TutorialModel";
 
-const Grid = ({ selectedTutorial }) => {
-    
+interface GridProps {
+    tutorial: TutorialModel;
+}
+
+const Grid : React.FC<GridProps> = ({ tutorial }) => {
+
     const [gridLevel, setGridLevel] = useState('');
     const [gridTemplateColumns, setGridTemplateColumns] = useState('repeat(3, 1fr)');
     const [gridTemplateRows, setGridTemplateRows] = useState('repeat(2, 1fr)');
@@ -22,9 +27,9 @@ const Grid = ({ selectedTutorial }) => {
     const [cssCodeExample1, setCssCodeExample1] = useState(`.container {\n  display: grid;\n  height: 500px;\n  grid-template-areas:\n    "header header"\n    "nav  main"\n    "nav  footer";\n  grid-template-rows: 50px 1fr 30px;\n  grid-template-columns: 150px 1fr;\n}\n\n.container > header {\n  grid-area: header;\n  background-color: #add8e6;\n}\n\n.container > nav {\n  grid-area: nav;\n  background-color: #a0c4ff;\n}\n\n.container > main {\n  grid-area: main;\n  background-color: #e0ffff;\n}\n\n.container > footer {\n  grid-area: footer;\n  background-color: #c6f6d5;\n}`);
 
     const [htmlCodeExample2, setHtmlCodeExample2] = useState(`<div class="grid-container">\n  <div class="item item1">1</div>\n  <div class="item item2">2</div>\n  <div class="item item3">3</div>\n  <div class="item item4">4</div>\n</div>`);
-    const [cssCodeExample2, setCssCodeExample2] = useState(`.grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: repeat(2, 0.5fr);\n  gap: 10px;\n}\n\n.item {\n  background-color: lightblue;\n  border: 1px solid darkblue;\n  padding: 10px;\n  text-align: center;\n}\n\n.item1 {\n  grid-column: 1 / 3; \n  grid-row: 1;\n}\n\n.item2 {\n  grid-column: 2; \n  grid-row: 2; \n}\n\n.item3 {\n  grid-column: 3; \n  grid-row: 1 / 3; \n}\n\n.item4 {\n  grid-column: 1; \n  grid-row: 2; \n}`);
+    const [cssCodeExample2, setCssCodeExample2] = useState(`body {\n  height: 32rem;\n}\n\n.grid-container {\n  height: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: repeat(2, 0.5fr);\n  gap: 10px;\n}\n\n.item {\n  background-color: lightblue;\n  border-radius: 1rem;\n  padding: 10px;\n  text-align: center;\n}\n\n.item1 {\n  grid-column: 1 / 3; \n  grid-row: 1;\n}\n\n.item2 {\n  grid-column: 2; \n  grid-row: 2; \n}\n\n.item3 {\n  grid-column: 3; \n  grid-row: 1 / 3; \n}\n\n.item4 {\n  grid-column: 1; \n  grid-row: 2; \n}`);
 
-    const handleActions: [string, any, boolean?][] =  [
+    const handleActions: [string, any, boolean?][] = [
         ['handleRadioChangeLevel', setGridLevel],
         ['handleGridTemplColumns', setGridTemplateColumns],
         ['handleGridTemplRows', setGridTemplateRows],
@@ -65,14 +70,13 @@ const Grid = ({ selectedTutorial }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={selectedTutorial}
-                tutorialIntroText={'This tutorial introduces Grid method for positioning elements on a page , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={'Grid is a two-dimensional layout method for positioning elements in grid.'}
-                browserSupport={'widely'}
-                browserSupportLink={`https://caniuse.com/?search=grid`}
-                usageGoalsHeading={`Grid solves the following tasks:`}
-                usageGoals={[`Create intricate, multi-column layouts with ease.`, `Easily align items within the grid vertically and horizontally.`, `Create grids within grids, providing additional flexibility in layout design.`,
-                    `Precisely control the dimension of elements.`, `Add gaps between grid items, providing spacing and improving readability.`]}
+                tutorialName={tutorial.tutorial_theme}
+                tutorialIntroText={tutorial.tutorial_intro_text}
+                tutorialDescription={tutorial.description}
+                browserSupport={tutorial.method_browser_support}
+                browserSupportLink={tutorial.browser_support_link}
+                usageGoalsHeading={tutorial.usage_goals_heading}
+                usageGoals={tutorial.usage_goals}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -342,7 +346,7 @@ const Grid = ({ selectedTutorial }) => {
                                     />
                                 </div>
                             </div>
-                            <div className="output-area-iframe">
+                            <div className="output-area-iframe" >
                                 <div className="output-area-header">Output</div>
                                 <iframe
                                     srcDoc={scrDocExample6}
@@ -467,7 +471,7 @@ const Grid = ({ selectedTutorial }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={selectedTutorial} />
+                <StartQuizContainer quizTheme={tutorial.tutorial_theme} />
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 
 //answer_options: {a: "", b: "", c: "", d: ""},
-function all_quiz_tasks() {
+function quiz_tasks() {
   return [
     {
       task_id: 7280101,
@@ -289,4 +289,4 @@ function all_quiz_tasks() {
     },
   ];
 }
-module.exports = all_quiz_tasks;
+module.exports = quiz_tasks;

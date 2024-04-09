@@ -29,16 +29,16 @@ const Tutorial = ({selectedTutorial}) => {
                 selectedComponent = <Flexbox tutorial={tutorial} />;
                 break;
             case "Grid":
-                selectedComponent = <Grid selectedTutorial={selectedTutorial} />;
+                selectedComponent = <Grid tutorial={tutorial}/>;
                 break;
             case "CSS Grid Subgrid":
-                selectedComponent = <Subgrid selectedTutorial={selectedTutorial} />;
+                selectedComponent = <Subgrid tutorial={tutorial} />;
                 break;
             case "Multi-column Layout":
-                selectedComponent = <MultiColumn selectedTutorial={selectedTutorial} />;
+                selectedComponent = <MultiColumn tutorial={tutorial} />;
                 break;
             case "Container Queries":
-                selectedComponent = <ContainerQueries selectedTutorial={selectedTutorial} />;
+                selectedComponent = <ContainerQueries tutorial={tutorial}/>;
                 break;
             default:
                 selectedComponent = null;

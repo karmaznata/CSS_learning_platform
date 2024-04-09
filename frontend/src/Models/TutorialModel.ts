@@ -2,25 +2,44 @@
  * Interface for a tutorial
  */
 export interface TutorialModel {
-    /** id nuber for quiz task */
+    /**
+     * Unique identifier for the tutorial
+     */
     tutorial_id: number,
-
-    /** what topic the question relates to */
+    /**
+     * Theme or topic of the tutorial
+     */
     tutorial_theme: string,
-
-    /**question topic: multiple choice or with value entry*/
+    /**
+     * Path to the tutorial resource
+     */
     path: string,
-
-    /**question*/
+    /**
+     * Banner image or content associated with the tutorial
+     */
     tutorial_banner: any,
-
-    /**The correct answer/s to the question*/
+    /**
+     * Description or summary of the tutorial
+     */
     description: string,
-
-    /**answer options optional in cases, where the answers will be entered by user*/
+    /**
+     * Methods or techniques covered in the tutorial with browser support details
+     */
     method_browser_support: string,
+    /**
+     * Introduction text providing context for the tutorial
+     */
     tutorial_intro_text: string,
+    /**
+     * Link to browser support information
+     */
     browser_support_link: string,
+    /**
+     * Heading for the section outlining usage goals
+     */
     usage_goals_heading: string,
+    /**
+     * Array of usage goals for the tutorial
+     */
     usage_goals: string[]
 }

@@ -8,7 +8,6 @@ interface QuizContextProviderProps {
     children: ReactNode;
 }
 
-// Use React.FC to define the component type and specify the type of props
 const QuizContextProvider: React.FC<QuizContextProviderProps> = (props) => {
     const [quizTasks, setQuizTasks] = useState<QuizTask[]>([]);
 

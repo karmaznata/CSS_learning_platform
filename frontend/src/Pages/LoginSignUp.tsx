@@ -137,13 +137,10 @@ const LoginSignUp = () => {
 
     }
 
-    // const changeHandler = (event) =>{
-    //     setFormData({...formData,[event.target.name]: event.target.value});
-    // }
-
     return (
         <div className="login-signup">
             <ToastContainer />
+            <div className="circle-design login big"></div>
             <div className="login-continer">
                 <h1>{state}</h1>
                 <div className="login-container-flex">
@@ -176,18 +173,18 @@ const LoginSignUp = () => {
                         />
                     </div>
                     <div className="login-button">
-                        <Button onClick={() => (state === 'Login' ? handleLogin() : handleSignup())}>
+                        <Button className="btn-light" onClick={() => (state === 'Login' ? handleLogin() : handleSignup())}>
                             {state === 'Login' ? 'Login' : 'Sign Up'}
                         </Button>
                     </div>
                     <div className="signup-redirection-container">
                         {state === 'Sign Up' ? (
-                            <p>
+                            <p className="fw-light" style={{textAlign: "center"}}>
                                 Already have an account?{' '}
                                 <span onClick={() => { setState('Login'); setFormData(initialState); }} onKeyDown={() => { }}>Login here</span>
                             </p>
                         ) : (
-                            <p>
+                            <p className="fw-light" style={{textAlign: "center"}}>
                                 Don't have an account?{' '}
                                 <span onClick={() => { setState('Sign Up'); setFormData(initialState); }} onKeyDown={() => { }}>Sign up</span>
                             </p>
@@ -195,6 +192,7 @@ const LoginSignUp = () => {
                     </div>
                 </div>
             </div>
+            <div className="circle-design login small"></div>
         </div>
     );
 }

@@ -21,9 +21,9 @@ const UserAccount = ({ accountView }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:4000/user');
+        console.log("AGAIN!",response.data.user);
         setUser(response.data.user);
         const getScores = await axios.get('http://localhost:4000/getScores');
-        console.log("getScores", getScores.data);
         setUserScores(getScores.data);
       } catch (error) {
         console.log(error);

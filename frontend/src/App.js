@@ -40,6 +40,7 @@ function App() {
         try {
           const response = await axios.get('http://localhost:4000/user');
           setUser(response.data.user);
+          console.log("response.data.user", response.data.user);
         } catch (error) {
           console.log(error);
         }

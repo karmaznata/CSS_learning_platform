@@ -6,8 +6,13 @@ import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/Tutor
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import containerQuerieslBanner from '../../../Components/Assets/container-queries-intro.png';
+import { TutorialModel } from "../../../Models/TutorialModel";
 
-const ContainerQueries = ({ selectedTutorial }) => {
+interface ContainerQueriesProps {
+    tutorial: TutorialModel;
+}
+
+const ContainerQueries: React.FC<ContainerQueriesProps> = ({ tutorial }) =>{
 
     const htmlCodeExample1 = `<div class="card-container resizable">\n  <div class="card">\n    <div class="card-item">Card Title</div>\n    <div class="card-item">Card content</div>\n     <div class="card-item">Card Footer</div>\n  </div>\n</div>`;
     const [cssCodeExample1, setCssCodeExample1] = useState(`.card-container {\n   border: 2px solid gray;\n   border-radius: 5px;\n   container-type: inline-size;\n}\n.card-item{\n  height: 45px;\n  width: 150px;\n  width: 23rem;\n  background: black;\n}\n.card {\n  color: white; \n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}
@@ -41,14 +46,13 @@ const ContainerQueries = ({ selectedTutorial }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={selectedTutorial}
-                tutorialIntroText={'In this tutorial we are going to consider container queries layout , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={`Container Queries are a highly anticipated feature in CSS that allow developers to apply styles based on the size of a container rather than the viewport.`}
-                browserSupport={'low'}
-                browserSupportLink={`https://caniuse.com/?search=container%20queries`}
-                usageGoalsHeading={`Container Queries layout help with:`}
-                usageGoals={[`Designing components that need to adapt their layout based on their container size, such as navigation menus, cards, or grids building macro and micro layout.`,
-                    `Creating layouts that adjust dynamically to the available space within a container, ensuring optimal presentation across various screen sizes and devices.`, `Implementing complex user interface elements, like interactive widgets or modals, that require responsive behavior based on their container's dimensions.`]}
+                tutorialName={tutorial.tutorial_theme}
+                tutorialIntroText={tutorial.tutorial_intro_text}
+                tutorialDescription={tutorial.description}
+                browserSupport={tutorial.method_browser_support}
+                browserSupportLink={tutorial.browser_support_link}
+                usageGoalsHeading={tutorial.usage_goals_heading}
+                usageGoals={tutorial.usage_goals}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -84,7 +88,7 @@ const ContainerQueries = ({ selectedTutorial }) => {
                                 />
                             </div>
                         </div>
-                        <div className="output-area-iframe small-size">
+                        <div className="output-area-iframe">
                             <div className="output-area-header">Output</div>
                             <iframe
                                 srcDoc={scrDocExample1}
@@ -140,7 +144,7 @@ const ContainerQueries = ({ selectedTutorial }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={selectedTutorial} />
+                <StartQuizContainer quizTheme={tutorial.tutorial_theme} />
             </div>
         </div>
     );

@@ -8,8 +8,12 @@ import subgridExample2 from "../../../Components/Assets/subgrid_example_2.png";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
 import enableGridImage from "../../../Components/Assets/enable-grid-image.png";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
+import { TutorialModel } from "../../../Models/TutorialModel";
 
-const Subgrid = ({ selectedTutorial }) => {
+interface SubgridProps {
+    tutorial: TutorialModel;
+}
+const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
 
     const [htmlCodeExample1, setHtmlCodeExample1] = useState(`<div class="grid">\n  <div class="nested-grid">\n    <div class="item"></div>\n  </div>\n</div>`);
     const [cssCodeExample1, setCssCodeExample1] = useState(`.grid {\n  border-radius: 7px;\n  border: 0.5px solid black;\n  background-color: #cfcbc8ff;\n  height: 300px;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  grid-template-rows: repeat(3, 1fr);\n } 
@@ -36,13 +40,13 @@ const Subgrid = ({ selectedTutorial }) => {
     return (
         <div>
             <TutorialPageTemplate
-                tutorialName={selectedTutorial}
-                tutorialIntroText={'This tutorial introduces Subgrid, a technology for positioning elements on a page inside another grid, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.'}
-                tutorialDescription={`Subgrid is a two-dimensional layout method for positioning elements inside of another already created  grid.`}
-                browserSupport={'supported'}
-                browserSupportLink={`https://caniuse.com/?search=subgrid`}
-                usageGoalsHeading={`Subgrid solves the following case:`}
-                usageGoals={[`Create and position elements within the created grid that will inherit the properties of the parent grid, which allows you to manage a single set of tracks (columns and rows).`]}
+                tutorialName={tutorial.tutorial_theme}
+                tutorialIntroText={tutorial.tutorial_intro_text}
+                tutorialDescription={tutorial.description}
+                browserSupport={tutorial.method_browser_support}
+                browserSupportLink={tutorial.browser_support_link}
+                usageGoalsHeading={tutorial.usage_goals_heading}
+                usageGoals={tutorial.usage_goals}
             />
             <div className="tutorial-content">
                 <div className="learning-material-container">
@@ -171,7 +175,7 @@ const Subgrid = ({ selectedTutorial }) => {
                         </div>
                     </div>
                 </div>
-                <StartQuizContainer quizTheme={selectedTutorial} />
+                <StartQuizContainer quizTheme={tutorial.tutorial_theme} />
             </div>
         </div>
 

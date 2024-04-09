@@ -13,13 +13,18 @@ const Navbar = (prop) => {
     const {isLoggedIn, username} = prop;
 
     const [menu, setMenu] = useState("");
+    const [showUsername, setShowUsername] = useState();
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     useEffect(()=>{
         const activeMenu = localStorage.getItem('activeMenu');
         setMenu(activeMenu);
-
     },[])
+    
+    useEffect(()=>{
+        setShowUsername(username);
+        console.log("!2333", showUsername);
+    },[username])
 
     useEffect(() => {
         const handleMenuUpdate = data => setMenu(data);
@@ -28,6 +33,17 @@ const Navbar = (prop) => {
         return () => {
             //@ts-ignore
             EventRegister.removeEventListener("setMenuActive", handleMenuUpdate);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleUsernameUpdate = data => setShowUsername(data);
+
+        EventRegister.addEventListener("setUsernameUpdate", handleUsernameUpdate);
+        console.log("setUsernameUpdate", showUsername);
+        return () => {
+            //@ts-ignore
+            EventRegister.removeEventListener("setUsernameUpdate", handleUsernameUpdate);
         };
     }, []);
 
@@ -68,11 +84,12 @@ const Navbar = (prop) => {
                 {/* <div className="theme-toggle">
                     <FaSun className="react-icon fs-5" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div> */}
+
                 <div className="nav-login">
                     {isLoggedIn ? 
-                        <Link to='/account'><Button variant="primary" onClick={() => {handleMenuClick("userAccount")}}>Hi, {username}</Button></Link>
+                        <Link to='/account'><Button className="nav-button" onClick={() => {handleMenuClick("userAccount")}}>Hi, {showUsername}</Button></Link>
                         :
-                        <Link to='/login'><Button variant="primary" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
+                        <Link to='/login'><Button className="nav-button" onClick={() => {handleMenuClick("login")}}>Login</Button></Link>       
                     }
                 </div>
             </div>

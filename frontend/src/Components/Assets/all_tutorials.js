@@ -22,32 +22,50 @@ const all_tutorials = [
         tutorial_theme: "Grid",
         path: "grid",
         tutorial_banner: gridBanner,
+        tutorial_intro_text: "This tutorial introduces Grid method for positioning elements on a page , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.",
         description: "Grid is a two-dimensional layout method for positioning elements in grid.",
-        methodBrowserSupport: "widely"
+        method_browser_support: "widely",
+        browser_support_link: "https://caniuse.com/?search=grid",
+        usage_goals_heading: "Grid solves the following tasks:",
+        usage_goals:[`Create intricate, multi-column layouts with ease.`, `Easily align items within the grid vertically and horizontally.`, `Create grids within grids, providing additional flexibility in layout design.`,
+        `Precisely control the dimension of elements.`, `Add gaps between grid items, providing spacing and improving readability.`]
     },
     {
         tutorial_id: 72003,
         tutorial_theme: "CSS Grid Subgrid",
         path: "subgrid",
         tutorial_banner: subgridBanner,
+        tutorial_intro_text: "This tutorial introduces Subgrid, a technology for positioning elements on a page inside another grid, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.",
         description: "Subgrid is a two-dimensional layout method for positioning elements inside of another already created  grid.",
-        methodBrowserSupport: "supported"
+        method_browser_support: "supported",
+        browser_support_link: "https://caniuse.com/?search=subgrid",
+        usage_goals_heading: "Subgrid solves the following case:",
+        usage_goals: [`Create and position elements within the created grid that will inherit the properties of the parent grid, which allows you to manage a single set of tracks (columns and rows).`]
     },
     {
         tutorial_id: 84104,
         tutorial_theme: "Multi-column Layout",
         path: "multi-column",
         tutorial_banner: multicolBanner,
-        description: "Multi-column layout organizes content into multiple vertical columns within a designated container.",
-        methodBrowserSupport: "widely"
+        tutorial_intro_text: "This tutorial introduces Multi-column layout , an approach of arranging a chunk of content, its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.",
+        description: "Multi-column layout is a CSS feature that allows content to flow into multiple columns within a container, facilitating better organization and readability of text-heavy content on a webpage.",
+        method_browser_support: "widely",
+        browser_support_link: "https://caniuse.com/?search=multicol",
+        usage_goals_heading: "By using multicol you can:",
+        usage_goals: [`Effectively present long text content, making it easier for users to comprehend its content.`, `Position texts in the styles of magazines, newspapers, textbooks, educational materials, etc.`, `Display lists, such as products, in multiple columns.`, `Create image galleries or portfolios.`, `Provide responsive design.`]
     },
     {
         tutorial_id: 93105,
         tutorial_theme: "Container Queries",
         path: "container-queries",
         tutorial_banner: containerQuerieslBanner,
-        description: "Container Queries allows styles to adapt based on the size of their containing element rather than the viewport.",
-        methodBrowserSupport: "low"
+        tutorial_intro_text: "In this tutorial we are going to consider container queries layout , its main features, and CSS syntax. At the end of the topic, you will be able to take a short test to consolidate your skills.",
+        description: "Container Queries are a highly anticipated feature in CSS that allow developers to apply styles based on the size of a container rather than the viewport.",
+        method_browser_support: "low",
+        browser_support_link: "https://caniuse.com/?search=container%20queries",
+        usage_goals_heading: "Container Queries layout help with:",
+        usage_goals: [`Designing components that need to adapt their layout based on their container size, such as navigation menus, cards, or grids building macro and micro layout.`,
+        `Creating layouts that adjust dynamically to the available space within a container, ensuring optimal presentation across various screen sizes and devices.`, `Implementing complex user interface elements, like interactive widgets or modals, that require responsive behavior based on their container's dimensions.`]
     },
 ];
 

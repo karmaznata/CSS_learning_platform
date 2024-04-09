@@ -12,11 +12,11 @@ const StartQuizContainer = ({ quizTheme }) => {
 
     const openQuiz = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/quiz/${quizTheme}`,{ withCredentials: true });
+            const response = await axios.get(`http://localhost:4000/quiz/${quizTheme}`, { withCredentials: true });
             console.log(response.data);
             if (response.data.success) {
                 navigate(`/quiz/${quizTheme}`)
-            }else{
+            } else {
                 navigate(`/login`)
             }
         } catch (error) {
@@ -32,7 +32,7 @@ const StartQuizContainer = ({ quizTheme }) => {
                     <p className="fs-4 fw-light">We hope you see how it works. Let's see how well you understand the topic!</p>
                 </div>
                 <div className="start-quiz-button">
-                    <Button onClick={openQuiz}>Start A Quiz: {quizTheme}</Button>
+                    <div className="btn"><a href="#" onClick={openQuiz}>Start A Quiz: {quizTheme}</a></div>
                 </div>
             </div>
         </div>

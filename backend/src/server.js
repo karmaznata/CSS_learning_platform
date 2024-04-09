@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const cors = require('cors');
-const quizzes = require('./all_quiz_tasks');
+const quizzes = require('./quiz_tasks');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -22,9 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: ["http://localhost:3000"],
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "PUT"],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -100,6 +101,41 @@ app.post('/logout', (req, res) => {
   res.json({ success: true });
 });
 
+// Endpoint to update username or email
+app.put('/updateUserData', async (req, res) => {
+  try {
+    const { newUsername, newEmail } = req.body;
+    const userId = req.session.user._id;
+    const user = await User.findById(userId);
+
+    // Check if the new username is already taken
+    if (newUsername) {
+      const existingUserWithUsername = await User.findOne({ username: newUsername });
+      if (existingUserWithUsername && existingUserWithUsername._id.toString() !== userId) {
+        return res.json({ success: false, error: 'username' });
+      }
+      user.username = newUsername;
+    }
+
+    // Check if the new email is already taken
+    if (newEmail) {
+      const existingUserWithEmail = await User.findOne({ email: newEmail });
+      if (existingUserWithEmail && existingUserWithEmail._id.toString() !== userId) {
+        return res.json({ success: false, error: 'email' });
+      }
+      user.email = newEmail;
+    }
+
+    await user.save();
+    // Update session with the latest user data
+    req.session.user = user;
+
+    res.json({ success: true, user });
+  } catch (error) {
+    res.status(500).json({ success: false, error: 'Internal server error during account update' });
+  }
+});
+
 app.get('/quiz/:quizTheme', (req, res) => {
   if (req.session.user) {
     res.json({ success: true });
@@ -141,7 +177,7 @@ app.post('/recordScore', async (req, res) => {
 });
 
 app.get('/getScores', async (req, res) => {
-  try{
+  try {
     if (req.session.user) {
       const result = await getUserScores(req.session.user._id);
       res.status(200).json(result);
@@ -149,7 +185,7 @@ app.get('/getScores', async (req, res) => {
       res.status(401).json({ error: 'Unauthorized' });
     }
   }
-  catch(err){ 
+  catch (err) {
     console.log("Error", err);
   }
 });
@@ -169,11 +205,11 @@ async function getQuizzes() {
     throw err;
   }
 }
-async function getUserScores(userId){
-  try{
+async function getUserScores(userId) {
+  try {
     await mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
-    return await mongoose.connection.db.collection('scores').find({user_id: userId}).toArray();
-  }catch(err){
+    return await mongoose.connection.db.collection('scores').find({ user_id: userId }).toArray();
+  } catch (err) {
     console.log("Error", err);
   }
 }
