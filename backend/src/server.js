@@ -7,10 +7,20 @@ const session = require('express-session');
 const cors = require('cors');
 const quizzes = require('./quiz_tasks');
 const bodyParser = require('body-parser');
+const sanitize = require('mongo-sanitize');
+const helmet = require('helmet');
+
 require('dotenv').config();
 
 // Initialize Express app
 const app = express();
+
+// Disable Express version header
+app.disable('x-powered-by');
+
+// Use Helmet middleware to enhance security
+app.use(helmet());
+
 const port = process.env.PORT || 4000;
 
 // Database connection
@@ -83,13 +93,28 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (user && await bcrypt.compare(password, user.password)) {
-      req.session.user = user;
-      res.json({ success: true, session: req.session.user });
-    } else {
-      res.json({ success: false, error: 'Invalid email or password' });
+
+    // Sanitize input to prevent injection attacks
+    const sanitizedEmail = sanitize(email);
+
+    // Validate input
+    if (!sanitizedEmail || !password) {
+      return res.status(400).json({ success: false, error: 'Email and password are required' });
     }
+
+    // Retrieve user from the database
+    const user = await User.findOne({ email: sanitizedEmail });
+
+    // Check if user exists and compare passwords
+    if (user) {
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (isPasswordValid) {
+        req.session.user = user;
+        return res.json({ success: true, session: req.session.user });
+      }
+    }
+
+    res.status(401).json({ success: false, error: 'Invalid email or password' });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal server error during login' });
   }
@@ -97,38 +122,25 @@ app.post('/login', async (req, res) => {
 
 app.post('/logout', (req, res) => {
   req.session.destroy();
-  // res.cookie('connect.sid', '', { expires: new Date(0) });
   res.json({ success: true });
 });
 
-// Endpoint to update username or email
 app.put('/updateUserData', async (req, res) => {
   try {
     const { newUsername, newEmail } = req.body;
     const userId = req.session.user._id;
+
     const user = await User.findById(userId);
 
-    // Check if the new username is already taken
+    // Update username
     if (newUsername) {
-      const existingUserWithUsername = await User.findOne({ username: newUsername });
-      if (existingUserWithUsername && existingUserWithUsername._id.toString() !== userId) {
-        return res.json({ success: false, error: 'username' });
-      }
-      user.username = newUsername;
+      await updateUserUsername(user, newUsername, userId, res);
     }
 
-    // Check if the new email is already taken
+    // Update email
     if (newEmail) {
-      const existingUserWithEmail = await User.findOne({ email: newEmail });
-      if (existingUserWithEmail && existingUserWithEmail._id.toString() !== userId) {
-        return res.json({ success: false, error: 'email' });
-      }
-      user.email = newEmail;
+      await updateUserEmail(user, newEmail, userId, res);
     }
-
-    await user.save();
-    // Update session with the latest user data
-    req.session.user = user;
 
     res.json({ success: true, user });
   } catch (error) {
@@ -168,7 +180,24 @@ app.get('/quizzes', async (req, res) => {
 app.post('/recordScore', async (req, res) => {
   try {
     const { user_id, quiz_theme, points_scored } = req.body;
-    const updatedScore = await Score.findOneAndUpdate({ user_id, quiz_theme }, { user_id, quiz_theme, points_scored }, { upsert: true, new: true });
+
+    // Sanitize input to prevent injection attacks
+    const sanitizedUserId = sanitize(user_id);
+    const sanitizedQuizTheme = sanitize(quiz_theme);
+    const sanitizedPointsScored = sanitize(points_scored);
+
+    // Ensure required fields are present
+    if (!sanitizedUserId || !sanitizedQuizTheme || !sanitizedPointsScored) {
+      return res.status(400).json({ success: false, error: 'User ID, quiz theme, and points scored are required' });
+    }
+
+    // Find and update the score
+    const filter = { user_id: sanitizedUserId, quiz_theme: sanitizedQuizTheme };
+    const update = { user_id: sanitizedUserId, quiz_theme: sanitizedQuizTheme, points_scored: sanitizedPointsScored };
+    const options = { upsert: true, new: true };
+
+    const updatedScore = await Score.findOneAndUpdate(filter, update, options);
+
     res.json({ success: true, score: updatedScore });
   } catch (error) {
     console.error('Error during record score:', error);
@@ -194,6 +223,30 @@ app.get('/getScores', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+async function updateUserUsername(user, newUsername, userId, res) {
+  const sanitizedNewUsername = sanitize(newUsername);
+
+  const existingUserWithUsername = await User.findOne({ username: sanitizedNewUsername });
+  if (existingUserWithUsername && existingUserWithUsername._id.toString() !== userId) {
+    return res.json({ success: false, error: 'username' });
+  }
+
+  user.username = sanitizedNewUsername;
+  await user.save();
+}
+
+async function updateUserEmail(user, newEmail, userId, res) {
+  const sanitizedNewEmail = sanitize(newEmail);
+
+  const existingUserWithEmail = await User.findOne({ email: sanitizedNewEmail });
+  if (existingUserWithEmail && existingUserWithEmail._id.toString() !== userId) {
+    return res.json({ success: false, error: 'email' });
+  }
+
+  user.email = sanitizedNewEmail;
+  await user.save();
+}
 
 async function getQuizzes() {
   try {

@@ -237,7 +237,7 @@ const MultiColumn: React.FC<MulticolProps> = ({ tutorial }) => {
                                         readOnly={true}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
@@ -296,7 +296,7 @@ const MultiColumn: React.FC<MulticolProps> = ({ tutorial }) => {
                                         readOnly={true}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"

@@ -13,7 +13,7 @@ interface FlexboxProps {
 const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
     
     const [flexDirection, setFlexDirection] = useState('row');
-    const [flexWrap, setFlexWrap] = useState('');
+    const [flexWrap, setFlexWrap] = useState('nowrap');
     const [justifyContent, setJustifyContent] = useState('start');
     const [alignItems, setAlignItems] = useState('normal');
     const [alignContent, setAlignContent] = useState('normal');
@@ -48,14 +48,10 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
         ['handleFlexshrink2Change', setFlexshrink2, true],
     ];
 
-    useEffect(() => {
-        setAddFlexgrow(addFlexgrow);
-    }, [addFlexgrow]);
-
     const handleOnChange = (key, e) => {
-        const [matchingKey, handleMethod, parseInt] = handleActions.find(([k]) => k === key);
+        const [matchingKey, handleMethod, parseToInt] = handleActions.find(([k]) => k === key);
         if (matchingKey) {
-            if (parseInt) {
+            if (parseToInt) {
                 handleMethod(Number(e.target.value));
             }
             else {
@@ -97,7 +93,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
-                                        value={`.container{\n\tdisplay: flex;\n\tflex-direction: row/column/row-reverse/column-reverse;\n }`}
+                                        value={`.container{\n\tdisplay: flex;\n\tflex-direction: ${flexDirection};\n }`}
                                         readOnly={true}
                                     />
                                 </div>
@@ -154,7 +150,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
-                                        value={`.container{\n\tdisplay: flex;\n\tflex-wrap: wrap/wrap-reverse;\n }`}
+                                        value={`.container{\n\tdisplay: flex;\n\tflex-wrap: ${flexWrap};\n }`}
                                         readOnly={true}
                                     />
                                 </div>
@@ -285,7 +281,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
-                                        value={`.container {\n\tdisplay: flex;\n\talign-items: start;\n\theight: 200px;\n\tborder: 1px solid #000;\n}\n\n.special {\n  align-self: center;\n}`}
+                                        value={`.container {\n\tdisplay: flex;\n\talign-items: start;\n\theight: 200px;\n\tborder: 1px solid #000;\n}\n\n.special {\n  align-self: ${alignSelf};\n}`}
                                         readOnly={true}
                                     />
                                 </div>
@@ -300,7 +296,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     </div>
                                 </div>
                                 <div className="dropdown-interaction-component">
-                                    align-content:
+                                    align-self:
                                     <select className="form-select" aria-label="Default select example" onChange={(e) => handleOnChange('handleAlignSelf', e)} style={{ width: '35%' }}>
                                         <option value="normal">normal</option>
                                         <option value="start">start</option>

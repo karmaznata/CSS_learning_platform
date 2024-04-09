@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactSwitch from 'react-switch';
 
 const ToggleSwitch = ({setAddFlexgrow})=> {
+  
   const [checked, setChecked] = useState(false);
 
   const handleChange = val => {

@@ -108,7 +108,7 @@ const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
                         </div>
                         <div className="usage-example-container vertical">
                             <div className="code-editor-container vertical">
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="xml"
                                         displayName="HTML"
@@ -116,7 +116,7 @@ const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
                                         onChange={setHtmlCodeExample1}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
@@ -145,7 +145,7 @@ const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
                         </div>
                         <div className="usage-example-container vertical">
                             <div className="code-editor-container vertical">
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="xml"
                                         displayName="HTML"
@@ -153,7 +153,7 @@ const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
                                         onChange={setHtmlCodeExample2}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"

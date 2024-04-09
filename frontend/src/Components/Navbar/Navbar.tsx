@@ -66,7 +66,7 @@ const Navbar = (prop) => {
                 <img src={adessoLogo} alt="company logo" />
             </div>
             <ul className="nav-menu nav nav-underline fs-6">
-                <li className="nav-item" onClick={() => {handleMenuClick("homePage") }} >
+                <li className="nav-item" role="button" onClick={() => {handleMenuClick("homePage") }} >
                     <Link to='/' className={`nav-link ${menu === "homePage" ? "active" : ""}`}>Home Page</Link>
                 </li>
                 <div className="tutorial-menu-dropdown"
@@ -74,7 +74,7 @@ const Navbar = (prop) => {
                     onMouseLeave={() => setDropdownVisible(false)}
                     role="button"
                 >
-                    <li className="nav-item" onClick={() => {handleMenuClick("tutorials") }} >
+                    <li className="nav-item" role="button" onClick={() => {handleMenuClick("tutorials") }} >
                         <Link to='/tutorials' className={`nav-link ${menu === "tutorials" ? "active" : ""}`} >Tutorials</Link>
                     </li>
                     {/* {isDropdownVisible && <TutorialsMenu handleMenuClick={handleMenuClick}/>} */}
@@ -84,7 +84,6 @@ const Navbar = (prop) => {
                 {/* <div className="theme-toggle">
                     <FaSun className="react-icon fs-5" /><ToggleSwitch /><FaMoon className="react-icon" />
                 </div> */}
-
                 <div className="nav-login">
                     {isLoggedIn ? 
                         <Link to='/account'><Button className="nav-button" onClick={() => {handleMenuClick("userAccount")}}>Hi, {showUsername}</Button></Link>

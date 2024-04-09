@@ -79,7 +79,7 @@ const ContainerQueries: React.FC<ContainerQueriesProps> = ({ tutorial }) =>{
                                     readOnly={true}
                                 />
                             </div>
-                            <div className="code-editor bigger">
+                            <div className="code-editor bigger editable">
                                 <CodeEditor
                                     language="css"
                                     displayName="CSS"
@@ -113,7 +113,7 @@ const ContainerQueries: React.FC<ContainerQueriesProps> = ({ tutorial }) =>{
                                     readOnly={true}
                                 />
                             </div>
-                            <div className="code-editor bigger">
+                            <div className="code-editor bigger editable">
                                 <CodeEditor
                                     language="css"
                                     displayName="CSS"

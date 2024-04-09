@@ -13,7 +13,7 @@ interface GridProps {
 
 const Grid : React.FC<GridProps> = ({ tutorial }) => {
 
-    const [gridLevel, setGridLevel] = useState('');
+    const [gridLevel, setGridLevel] = useState('block');
     const [gridTemplateColumns, setGridTemplateColumns] = useState('repeat(3, 1fr)');
     const [gridTemplateRows, setGridTemplateRows] = useState('repeat(2, 1fr)');
     const [columnGap, setColumnGap] = useState(0);
@@ -43,9 +43,9 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
     ];
 
     const handleOnChange = (key, e) => {
-        const [matchingKey, handleMethod, parseInt] = handleActions.find(([k]) => k === key);
+        const [matchingKey, handleMethod, parseToInt] = handleActions.find(([k]) => k === key);
         if (matchingKey) {
-            if (parseInt) {
+            if (parseToInt) {
                 handleMethod(Number(e.target.value));
             }
             else {
@@ -100,7 +100,7 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
-                                        value={`.container{\n\tdisplay: grid/inline-grid;\n\twidth: 200px;\n}`}
+                                        value={`.container{\n\tdisplay: ${gridLevel};\n\twidth: 200px;\n}`}
                                         readOnly={true}
                                     />
                                 </div>
@@ -275,7 +275,7 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                         </div>
                         <div className="usage-example-container vertical">
                             <div className="code-editor-container vertical">
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="xml"
                                         displayName="HTML"
@@ -283,7 +283,7 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                                         onChange={setHtmlCodeExample1}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
@@ -329,7 +329,7 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                         <p className="fs-5 black-text property-description">Try changing the code to see how the output changes!</p>
                         <div className="usage-example-container vertical">
                             <div className="code-editor-container vertical">
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="xml"
                                         displayName="HTML"
@@ -337,7 +337,7 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                                         onChange={setHtmlCodeExample2}
                                     />
                                 </div>
-                                <div className="code-editor bigger">
+                                <div className="code-editor bigger editable">
                                     <CodeEditor
                                         language="css"
                                         displayName="CSS"
