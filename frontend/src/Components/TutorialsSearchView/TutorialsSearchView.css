@@ -1,13 +1,31 @@
 .search-tutorial-panel{
+  height: 8rem;
   display: grid;
-  justify-content: space-evenly;
+  align-items: center;
   justify-items: center;
   margin: 45px;
   gap: 30px;
 }
-
-.search-area-label{
-  display: flex;
+.circle-design{
+  padding: 20px;
+  background: var(--secondary-blue-2);
+  position: absolute;
+  border-radius: 57px;
+  z-index: 0;
+}
+.circle-design.big{
+  height: 7rem;
+  width: 7rem;
+  transform: translate(-17rem, 1rem);
+}
+.circle-design.small{
+  height: 5rem;
+  width: 5rem;
+  transform: translate(19rem, -2px);
+}
+.search-area.label{
+  position: relative;
+  z-index: 1;
 }
 /* .search-tutorial hr{
     border-width: 4px;
@@ -19,25 +37,58 @@
 .select-tutorial {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 90px;
+    gap: 5rem;
     justify-items: center;
     padding-bottom: 150px;
     padding-top: 40px;
+    width: 85rem;
   }
-  
+  .tutorial-banner-image{
+    width: 22rem;
+    border-radius: 1rem;
+    margin: 7px;
+  }
+  .tutorial-link:hover .open-tutorial-button {
+    cursor: pointer;
+      background-color: var(--secondary-blue);
+      transform: translate(10rem, -2rem) scale(1.2); 
+    
+  }
+  .play-button{
+    border-top: 10px solid transparent;
+    border-left: 22px solid #000000;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    transform: translate(17px, 15px);
+  }
+  .open-tutorial-button{
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    position: absolute;
+    transform: translate(10rem, -2rem);
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+  }
+  /* .open-tutorial-button:hover{
+    cursor: pointer;
+    background-color: var(--secondary-blue);
+    transform: translate(10rem, -2rem) scale(1.2); 
+  } */
   .tutorial-item {
-    width: 303px;
-    height: 300px;;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
   }
-  
-  .tutorial-link {
-    /* Add any styles for the link */
-    text-decoration: none;
-    color: #333;
+  .tutorial-banner-container{
+    width: 25rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17rem;;
+    background-color: var(--dark-blue-3);
+    padding: 10px;
   }
   
   /* Add media query for larger screens */

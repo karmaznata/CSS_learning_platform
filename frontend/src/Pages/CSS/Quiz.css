@@ -21,7 +21,7 @@
     gap: 5px;
 }
 .quiz-page{
-    padding-bottom: 150px;
+    padding-bottom: 5rem;
 }
 .quiz-content hr{
     border-width: 5px;
@@ -43,8 +43,87 @@
     position: static;
 }
 .answer-option.wrong{
-    border: 1px solid red;
+    background: #ffdfdf;
+    border-radius: 5px;
+    padding: 2px;
 }
 .answer-option.correct{
-    border: 1px solid green;
+    background: #c4ffc4;
+    border-radius: 5px;
+    padding: 2px;
+}
+.cssCode-content pre.correct input{
+    border: 2px solid green;
+    background: #c4ffc4;
+}
+.cssCode-content pre.wrong input{
+    border: 2px solid red;
+    background: #ffcccc;
+}
+.cssCode-content pre.correct .result-answer-icon.correct{
+    display: inline-block;
+    align-items: center;
+    color: #46a446;
+}
+.cssCode-content pre.wrong .result-answer-icon.wrong{
+    display: inline-block;
+    align-items: center;
+    color: red;
+}
+.result-answer-icon{
+    display: none;
+    position: relative;
+    z-index: 2;
+    font-size: 19px;
+    transform: translate(-18px, 3px);
+    margin-right: -12px;
+}
+
+.quiz-fished-container{
+    border-radius: 1rem;
+    margin: 5rem;
+    height: 23rem;
+    width: 60rem;
+    background: rgba(255, 255, 255, 0.5);
+}
+.quiz-finished-content{
+    margin: 5.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.redirection-buttons{
+    display: flex;
+    gap: 3rem;
+}
+.action-buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+.quiz-task-code-editor{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+}
+.quiz-interactive-task-question{
+    width: 100%;
+    border: 7px solid var(--dark-blue-1);
+    border-radius: 19px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+.quiz-interactive-task-question>p{
+    color: var(--primary-blue);
+}
+/* .quiz-task-code-editor .output-area-iframe{
+    height: auto;
+} */
+.quiz-task-code-editor .editor-container{
+    height: 100%;
+    width: auto;
 }

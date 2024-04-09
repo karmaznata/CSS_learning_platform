@@ -1,0 +1,8 @@
+.quiz-task-img{
+max-width: 45rem;
+border-radius: 1rem;
+}
+.quiz-task-img-container{
+    display: flex;
+    justify-content: center;
+}

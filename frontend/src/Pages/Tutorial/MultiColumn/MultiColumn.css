@@ -1,0 +1,18 @@
+.output-area-iframe.small-size, #example-multicol-1 .editor-container{
+    height: 20rem;
+}
+#iframe-resizeble .resizible-container{
+    border: 2px solid rgb(48 238 0);
+    border-radius: 7px;
+    min-width: 230px;
+    max-width: 592px;
+    resize: horizontal;
+    overflow: auto hidden;
+    height: 27.5rem;
+}
+.output-area-iframe.medium-size{
+    height: 31rem;
+}
+.interactive-component{
+    width: 605px;
+}

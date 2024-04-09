@@ -17,8 +17,10 @@ body {
   --light-blue-1: #e6eaedff;
   --warm-gray: #cfcbc8ff;
   --secondary-blue: #99c5e9ff;
+  --secondary-blue-2: #669dc5ff;
   --dark-blue-1: #00375fff;
   --dark-blue-2: #00182aff;
+  --dark-blue-3: #003154ff;
   --light-green: #97cf66ff;
   --light-red: #ec9898ff;
 
@@ -68,7 +70,8 @@ p.black-text {
   margin: 20px;
   padding: 20px;
   border-radius: 20px;
-  background: var(--light-blue-1);
+  background: url(./Components/Assets/test.png);
+  background-size: 77rem;
 }
 
 .usage-example-container.vertical {
@@ -165,11 +168,12 @@ p.black-text {
 .intro-content {
   border-radius: 28px;
   background: rgb(255 255 255 / 70%);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 70%;
   max-width: 1140px;
   text-align: center;
   position: static;
+  filter: drop-shadow(0mm -1mm 9mm rgb(222, 222, 222));
 }
 
 .browser-supporting-container {
@@ -191,7 +195,9 @@ p.black-text {
 }
 
 .important-point {
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Consolas, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace;  font-style: normal;
+  font-size: 18px;
+  text-shadow: 0px 2px 2px rgba(0, 78, 147, 0.55);
 }
 
 .learning-material-section {
@@ -224,6 +230,49 @@ h5 {
 .interactive-component-container {
   width: 529px;
   height: 400px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(255 255 255 / 12%);
+}
+
+.output-area-header, .quiz-interactive-task-question-header{
+  height: 2.5rem;
+  padding: 6px;
+  padding-left: 16px;
+  border-top-right-radius: 0.7rem;
+  border-top-left-radius: 0.7rem;
+  background: var(--dark-blue-2);
+  color: white;
+}
+
+.output-area-iframe {
+  height: 36.4rem;
+  width: 100%;
+  max-height: 37rem;
+  border: 7px solid var(--dark-blue-1);
+  border-radius: 19px;
+  background: white;
+}
+.task-editor-container{
+  padding: 0.5rem;
   border-radius: 20px;
   background: var(--dark-blue-1);
+  height: 36.4rem;
+  max-height: 37rem;
+  min-height: 35rem;
+}
+
+.code-editor.editable:hover{  
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 1rem;
+  box-shadow:
+    0 0 7px #141444,
+    0 0 1px #fff,
+    0 0 2px #fff,
+    0 0 4px rgb(0, 102, 255),
+    0 0 8px rgb(0, 102, 255),
+    0 0 9px rgb(0, 102, 255),
+    0 0 10px rgb(0, 102, 255),
+    0 0 15px rgb(0, 102, 255),
 }

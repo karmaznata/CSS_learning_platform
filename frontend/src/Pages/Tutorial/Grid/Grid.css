@@ -11,11 +11,11 @@
 .example-container-grid .item,
 .example-resizable-container-grid .item {
     border-radius: 7px;
-    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
-    border: 0.5px solid black;
     padding: 18px;
-    background-color: var(--warm-gray);
     margin: 1px;
+    background: rgb(191 191 191 / 61%);
+    color: white;
+    box-shadow: 0 4px 30px rgb(255 255 255 / 12%);
 }
 
 .example-container-grid span {
@@ -65,28 +65,11 @@
     width: 45rem;
 }
 
-.grid-area-iframe {
-    width: 100%;
-    height: 36rem;
-    border: 7px solid var(--dark-blue-1);
-    border-radius: 19px;
-}
-
 .property-values-point {
     font-size: 17px;
     font-weight: 600;
     font-style: normal;
     color: #0000a2;
-}
-
-.grid-area-header {
-    height: 2.5rem;
-    padding: 6px;
-    padding-left: 16px;
-    border-top-right-radius: 0.7rem;
-    border-top-left-radius: 0.7rem;
-    background: var(--dark-blue-2);
-    color: white;
 }
 
 #grid-auto-fit {
@@ -96,9 +79,12 @@
 }
 
 #grid-auto-fit .item {
-    background-color: lightblue;
-    border: 1px solid darkblue;
-    padding: 10px;
+    border-radius: 7px;
+    padding: 18px;
+    margin: 1px;
+    background: rgb(191 191 191 / 61%);
+    color: white;
+    box-shadow: 0 4px 30px rgb(255 255 255 / 12%);
     text-align: center;
 }
 

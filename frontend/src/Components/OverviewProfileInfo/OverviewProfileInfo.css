@@ -1,51 +1,64 @@
-.user-info-inputs{
+.user-info-inputs {
     display: flex;
+    flex-direction: column;
     margin: 20px 0px 20px 0px;
     gap: 40px;
 }
 
 .user-info-inputs .input {
     position: relative;
-    flex-basis: 90vh;
+    margin-bottom: 20px;
 }
 
-.user-info-inputs .input__label {
+.input__field {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    transition: border-bottom-color 0.3s;
+}
+
+.input__label {
     position: absolute;
-    left: 0;
-    top: 0;
-    padding: calc(.5rem * 0.75) calc(.5rem * .5);
-    margin: calc(.5rem * 0.75 + 3px) calc(.5rem * .5);
-    background: pink;
-    white-space: nowrap;
-    transform: translate(0, 0);
-    transform-origin: 0 0;
-    background: white;
-    transition: transform 120ms ease-in;
-    font-weight: bold;
-    line-height: 1.2;
-    border: none;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #888;
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
 }
 
-.user-info-inputs .input__field {
-    box-shadow: 1px 5px 5px 1px lightgray;
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    padding: calc(0.5rem * 1.5) 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
+.input__field:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+}
+.input__field.username-invalid {
+    outline: none;
+    border-bottom-color: #ff0000;
+}
+.input__field.username-invalid+.input__label{
+    color: #ff0000 !important;
+}
+.input__field.email-invalid {
+    outline: none;
+    border-bottom-color: #ff0000;
+}
+.input__field.email-invalid+.input__label{
+    color: #ff0000 !important;
 }
 
-.user-info-inputs .input__field:focus,
-.user-info-inputs .input__field:not(:placeholder-shown) + .input__label {
-    transform: translate(.25em, -60%) scale(.9);
-    color:var(--primary-blue);
+.input__field:focus+.input__label,
+.input__field:not(:placeholder-shown)+.input__label {
+    top: -9px;
+    font-size: 14px;
+    color: #007bff;
 }
 
 .profile-info-container {
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    height: 354px;
+    min-height: 35.4rem;
     padding: 30px;
 }
