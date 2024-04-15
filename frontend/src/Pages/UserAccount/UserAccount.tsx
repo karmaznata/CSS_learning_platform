@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./CSS/UserAccount.css";
-import OverviewProfileInfo from "../Components/OverviewProfileInfo/OverviewProfileInfo.tsx";
-import OverviewQuizzes from "../Components/OverviewQuizzes/OverviewQuizzes";
+import "./UserAccount.css";
+import OverviewProfileInfo from "../../Components/OverviewProfileInfo/OverviewProfileInfo.tsx";
+import OverviewQuizzes from "../../Components/OverviewQuizzes/OverviewQuizzes.tsx";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { EventRegister } from 'react-native-event-listeners';
-import { User } from "../Models/User.ts";
-import { UserScore } from "../Models/UserScores.ts";
+import { User } from "../../Models/User.ts";
+import { UserScore } from "../../Models/UserScores.ts";
 
 const UserAccount = ({ accountView }) => {
 
@@ -21,7 +21,6 @@ const UserAccount = ({ accountView }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:4000/user');
-        console.log("AGAIN!",response.data.user);
         setUser(response.data.user);
         const getScores = await axios.get('http://localhost:4000/getScores');
         setUserScores(getScores.data);
@@ -32,15 +31,13 @@ const UserAccount = ({ accountView }) => {
     fetchData();
   }, []);
 
-
-
   if (user) {
     switch (userAccount) {
       case "overview-profile-info":
         accountComponent = <OverviewProfileInfo user={user} />;
         break;
       case "overview-quizzes":
-        accountComponent = <OverviewQuizzes userScores={userScores}/>;
+        accountComponent = <OverviewQuizzes userScores={userScores} />;
         break;
       default:
         accountComponent = null;

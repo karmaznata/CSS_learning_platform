@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import AllTutorials from './Pages/AllTutorials';
-import LoginSignUp from './Pages/LoginSignUp';
-import Quiz from './Pages/Quiz';
+import HomePage from './Pages/HomePage/HomePage';
+import AllTutorials from './Pages/AllTutorials/AllTutorials';
+import LoginSignUp from './Pages/LoginSignUp/LoginSignUp';
+import Quiz from './Pages/Quiz/Quiz';
 import Footer from './Components/Footer/Footer';
-import UserAccount from './Pages/UserAccount';
+import UserAccount from './Pages/UserAccount/UserAccount';
 import Tutorial from './Pages/Tutorial/Tutorial';
 import { EventRegister } from 'react-native-event-listeners';
 import axios from 'axios';
@@ -40,7 +40,6 @@ function App() {
         try {
           const response = await axios.get('http://localhost:4000/user');
           setUser(response.data.user);
-          console.log("response.data.user", response.data.user);
         } catch (error) {
           console.log(error);
         }

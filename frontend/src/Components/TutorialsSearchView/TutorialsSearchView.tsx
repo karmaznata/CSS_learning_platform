@@ -18,7 +18,7 @@ const TutorialsSearchView = () => {
     <div className="tutorials-overview">
       <div className="tutorials-overview-panel">
         <div className="circle-design big"></div>
-        <div className="search-area label fs-1 fw-bold">What do you want to explore?</div>
+        <div className="intro-area label fs-1 fw-bold">What do you want to explore?</div>
         <div className="circle-design small"></div>
       </div>
       <div className="select-tutorial">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import "./CSS/LoginSignUp.css";
+import "./LoginSignUp.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -97,51 +97,11 @@ const LoginSignUp = () => {
             });
     };
 
-    const signup = async () => {
-        const isUsernameValid = state === 'Login' || (state === 'Sign Up' && formData.username.trim() !== '');
-        const isEmailValid = validateEmail(formData.email);
-        const isPasswordValid = validatePassword(formData.password);
-
-        if (isUsernameValid && isEmailValid && isPasswordValid) {
-            let responseData;
-            await fetch('http://localhost:4000/signup', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/form-data',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            }).then((response) => response.json()).then((data) => responseData = data)
-
-            if (responseData.success) {
-                setState("Login");
-                setFormData({
-                    username: '',
-                    password: '',
-                    email: '',
-                });
-                toast.success("You have been successfully registered!");
-            } else {
-                // setInputError("failedSignup");
-                toast.success("The user with this email already exist. Try another email.");
-            }
-        } else {
-            // Show validation errors
-            setInputErrors({
-                username: !isUsernameValid,
-                email: !isEmailValid,
-                password: !isPasswordValid,
-            });
-            toast.error('Invalid input. Please check your information.');
-        }
-
-    }
-
     return (
         <div className="login-signup">
             <ToastContainer />
             <div className="circle-design login big"></div>
-            <div className="login-continer">
+            <form className="login-continer">
                 <h1>{state}</h1>
                 <div className="login-container-flex">
                     <div className="login-fields">
@@ -153,6 +113,7 @@ const LoginSignUp = () => {
                                 type="text"
                                 placeholder="Your Name"
                                 className={inputErrors.username ? 'error' : ''}
+                                autoComplete="current-password"
                             />
                         )}
                         <input
@@ -162,6 +123,7 @@ const LoginSignUp = () => {
                             type="email"
                             placeholder="Email Address"
                             className={inputErrors.email ? 'error' : ''}
+                            autoComplete="email"
                         />
                         <input
                             name="password"
@@ -170,6 +132,7 @@ const LoginSignUp = () => {
                             type="password"
                             placeholder="Password"
                             className={inputErrors.password ? 'error' : ''}
+                            autoComplete="current-password"
                         />
                     </div>
                     <div className="login-button">
@@ -191,7 +154,7 @@ const LoginSignUp = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </form>
             <div className="circle-design login small"></div>
         </div>
     );

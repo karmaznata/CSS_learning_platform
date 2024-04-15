@@ -106,7 +106,6 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                         <div className="item">3</div>
                                     </div>
                                     <div id="primary-axis" className={`vl direction-${flexDirection}`}> <i className="arrow right"></i><span>Primary axis</span></div>
-
                                 </div>
                                 <div className="radio-interaction-container">
                                     <div className="change-radio-container">flex-direction:

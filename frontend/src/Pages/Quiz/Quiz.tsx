@@ -1,30 +1,27 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import './CSS/Quiz.css';
-import { QuizContext } from "../Context/QuizContext";
-import CodeEditor from "../Components/CodeEditor/CodeEditor"
-import CssCodeInput from "../Components/CssCodeInput/CssCodeInput";
-import { UserAnswers } from "../Models/UserAnswer";
-import { QuizTask } from "../Models/QuizTask";
+import './Quiz.css';
+import { UserAnswers } from "../../Models/UserAnswer";
+import { QuizTask } from "../../Models/QuizTask";
 import axios from "axios";
-import { UserScore } from "../Models/UserScores";
+import { UserScore } from "../../Models/UserScores";
 import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { EventRegister } from "react-native-event-listeners";
-import { User } from "../Models/User";
-import InteractiveQuizTask from "./InteractiveQuizTask";
-import quizTaskFlex4 from "../Components/Assets/quizTaskFlex4.png";
-import quizTaskFlex5 from "../Components/Assets/quizTaskFlex5.png";
-import quizTaskGrid4 from "../Components/Assets/quizTaskGrid4.png";
-import quizTaskGrid5 from "../Components/Assets/quizTaskGrid5.png";
-import quizTaskSubgrid4 from "../Components/Assets/quizTaskSubgrid4.png";
-import quizTaskSubgrid5 from "../Components/Assets/quizTaskSubgrid5.png";
-import quizTaskMulticol4 from "../Components/Assets/quizTaskMulticol4.png";
-import quizTaskMulticol5 from "../Components/Assets/quizTaskMulticol5.png";
-import quizTaskQueries4 from "../Components/Assets/gifContainerQueries4.gif";
-import quizTaskQueries5 from "../Components/Assets/gifContainerQueries5.gif";
+import { User } from "../../Models/User";
+import InteractiveQuizTask from "../../Components/InteractiveQuizTask/InteractiveQuizTask";
+import quizTaskFlex4 from "../../Components/Assets/quizTaskFlex4.png";
+import quizTaskFlex5 from "../../Components/Assets/quizTaskFlex5.png";
+import quizTaskGrid4 from "../../Components/Assets/quizTaskGrid4.png";
+import quizTaskGrid5 from "../../Components/Assets/quizTaskGrid5.png";
+import quizTaskSubgrid4 from "../../Components/Assets/quizTaskSubgrid4.png";
+import quizTaskSubgrid5 from "../../Components/Assets/quizTaskSubgrid5.png";
+import quizTaskMulticol4 from "../../Components/Assets/quizTaskMulticol4.png";
+import quizTaskMulticol5 from "../../Components/Assets/quizTaskMulticol5.png";
+import quizTaskQueries4 from "../../Components/Assets/gifContainerQueries4.gif";
+import quizTaskQueries5 from "../../Components/Assets/gifContainerQueries5.gif";
 
 interface UserProps {
   user: User;
@@ -88,6 +85,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage < 3 ? prevPage + 1 : 1));
     setResultChecked(false);
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -150,7 +148,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   };
 
   const countEnteredValues = (quizTasks) => {
-    console.log("userInputAnswers", userInputAnswers)
+
     Object.values(userInputAnswers).forEach((value, index) => {
       if (value) {
         value = value.replace(/\s/g, '');

@@ -54,8 +54,7 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
     const handelChangeEmail = (event) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const validEmail = emailRegex.test(event.target.value);
-        validEmail ? setValidUpdate(true) : setValidUpdate(false);
-        user.email === event.target.value ? setValidUpdate(false) : setValidUpdate(true);
+        validEmail && user.email !== event.target.value ? setValidUpdate(true) : setValidUpdate(false);
         setEmailValid(validEmail);
         setEmail(event.target.value);
     }

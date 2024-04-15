@@ -37,7 +37,7 @@ const CssCodeInput = (props) => {
             if (regexProperty.test(string.substring)) {
                 const parts = string.substring.split(regexProperty);
                 parts.forEach((item, index) => {
-                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t        ${item}`, position: 'after' });
+                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t       ${item}`, position: 'after' });
                 });
             } else {
                 modifiedCssCodeStrings.push(string);

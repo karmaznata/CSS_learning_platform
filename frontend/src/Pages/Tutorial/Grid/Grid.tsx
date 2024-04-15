@@ -11,7 +11,7 @@ interface GridProps {
     tutorial: TutorialModel;
 }
 
-const Grid : React.FC<GridProps> = ({ tutorial }) => {
+const Grid: React.FC<GridProps> = ({ tutorial }) => {
 
     const [gridLevel, setGridLevel] = useState('block');
     const [gridTemplateColumns, setGridTemplateColumns] = useState('repeat(3, 1fr)');
@@ -274,6 +274,18 @@ const Grid : React.FC<GridProps> = ({ tutorial }) => {
                             <p className="fs-5 black-text property-description">Try changing the code to see how the output changes!</p>
                         </div>
                         <div className="usage-example-container vertical">
+                            {/* <iframe
+                                height="300"
+                                style={{ width: '100%', height: "35rem" }}
+                                title="Deployment Diagram"
+                                src="https://codepen.io/pokjbckn-the-scripter/embed/preview/gOyjGyW?default-tab=html%2Cresult&editable=true"
+                                loading="lazy"
+                                allowFullScreen={true}
+                            >
+                                See the Pen <a href="https://codepen.io/pokjbckn-the-scripter/pen/gOyjGyW">Untitled</a> by Наталія Кармазіна (
+                                <a href="https://codepen.io/pokjbckn-the-scripter">@pokjbckn-the-scripter</a>) on{' '}
+                                <a href="https://codepen.io">CodePen</a>.
+                            </iframe> */}
                             <div className="code-editor-container vertical">
                                 <div className="code-editor bigger editable">
                                     <CodeEditor

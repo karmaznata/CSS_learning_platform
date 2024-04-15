@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import "./CSS/AllTutorials.css"
-import TutorialsSearchView from "../Components/TutorialsSearchView/TutorialsSearchView";
+import "./AllTutorials.css"
+import TutorialsSearchView from "../../Components/TutorialsSearchView/TutorialsSearchView";
 
 const AllTutorials = () => {
     return (

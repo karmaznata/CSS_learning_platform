@@ -27,7 +27,6 @@ const Navbar = (prop) => {
     useEffect(() => {
         const handleMenuUpdate = data => setMenu(data);
         EventRegister.addEventListener("setMenuActive", handleMenuUpdate);
-        console.log("setMenuActive", menu);
         return () => {
             //@ts-ignore
             EventRegister.removeEventListener("setMenuActive", handleMenuUpdate);
@@ -37,7 +36,6 @@ const Navbar = (prop) => {
     useEffect(() => {
         const handleUsernameUpdate = data => setShowUsername(data);
         EventRegister.addEventListener("setUsernameUpdate", handleUsernameUpdate);
-        console.log("setUsernameUpdate", showUsername);
         return () => {
             //@ts-ignore
             EventRegister.removeEventListener("setUsernameUpdate", handleUsernameUpdate);
