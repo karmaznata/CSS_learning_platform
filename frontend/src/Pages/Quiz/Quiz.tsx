@@ -298,7 +298,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
                 <h1 className="display-3" style={{ color: "white" }}>Finished!</h1>
               </div>
               <div className="quiz-score">
-                <p className="fs-5">Your score: {userScore.points_scored}%</p>
+                <p className="fs-5">Your score: {userScore.points_scored.toFixed(0)}%</p>
               </div>
               <div className="redirection-buttons">
                 <Button onClick={retakeQuiz}><FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon> Retake</Button>

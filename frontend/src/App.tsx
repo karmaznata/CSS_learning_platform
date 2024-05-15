@@ -12,24 +12,25 @@ import Tutorial from './Pages/Tutorial/Tutorial';
 import { EventRegister } from 'react-native-event-listeners';
 import axios from 'axios';
 import Protected from './Pages/Protected';
+import { User } from './Models/User';
 
 function App() {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("login"));
-  const [selectedTutorial, setSelectedTutorial] = useState(localStorage.getItem('tutorial'));
-  const [user, setUser] = useState('');
-  const [accountView, setAccountView] = useState('overview-profile-info');
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(localStorage.getItem("login") === "true");
+  const [selectedTutorial, setSelectedTutorial] = useState<string | null>(localStorage.getItem('tutorial'));
+  const [user, setUser] = useState<User | undefined>();
+  const [accountView, setAccountView] = useState<string>('overview-profile-info');
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const eventListener = EventRegister.addEventListener(
       'userIsLoggedInEvent',
-      data => {
+      (data: boolean) => {
         setIsLoggedIn(data);
       },
     );
     return () => {
+      //@ts-ignore
       EventRegister.removeEventListener('userIsLoggedInEvent', eventListener);
     };
   }, []);
@@ -38,43 +39,44 @@ function App() {
     if (isLoggedIn) {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:4000/user');
-          setUser(response.data.user);
+          const response = await axios.get<User>('http://localhost:4000/user');
+          setUser(response.data);
         } catch (error) {
           console.log(error);
         }
       };
       fetchData();
     }
-
   }, [isLoggedIn]);
 
   useEffect(() => {
     const eventListener = EventRegister.addEventListener(
       'selectedTutorialEvent',
-      data => {
+      (data: string) => {
         setSelectedTutorial(data);
       },
     );
     return () => {
+      //@ts-ignore
       EventRegister.removeEventListener('selectedTutorialEvent', eventListener);
     };
   }, []);
-  
+
   useEffect(() => {
     const eventListener = EventRegister.addEventListener(
-       'accoutViewEvent',
-         data => setAccountView(data)
-     );
-     return () => {
-       EventRegister.removeEventListener('accoutViewEvent', eventListener);
-     };
-   }, []);
+      'accoutViewEvent',
+      (data: string) => setAccountView(data)
+    );
+    return () => {
+      //@ts-ignore
+      EventRegister.removeEventListener('accoutViewEvent', eventListener);
+    };
+  }, []);
 
   return (
     <div>
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} username={user.username} />
+        <Navbar isLoggedIn={isLoggedIn} username={user?.username} />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/tutorials' element={<AllTutorials />} />

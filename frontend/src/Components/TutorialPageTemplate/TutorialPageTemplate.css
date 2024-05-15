@@ -1,6 +1,4 @@
 .intro-header-background {
-  border-radius: 50px;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,4 +75,9 @@
     max-width: none;
   }
 
+}
+.img-loading{
+  width: 70rem;
+  position: absolute;
+  border-radius: 1rem;
 }

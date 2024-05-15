@@ -5,7 +5,7 @@ import "./Navbar.css";
 import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
 import Button from 'react-bootstrap/Button';
-import { EventRegister } from "react-native-event-listeners";
+import { EventRegister } from 'react-native-event-listeners';
 
 const Navbar = (prop) => {
 

@@ -12,6 +12,8 @@ import gridBanner from '../Assets/grid-intro.png';
 import subgridBanner from '../Assets/subgrid-intro.png';
 import multicolBanner from '../Assets/multicol-intro.png';
 import containerQuerieslBanner from '../Assets/container-queries-intro.png';
+import {Img} from 'react-image';
+import spinner from "../Assets/spinner-load.gif";
 
 const TutorialPageTemplate = (props) => {
 
@@ -53,7 +55,8 @@ const TutorialPageTemplate = (props) => {
     return (
         <div>
             <div className="intro-header">
-                <div className="intro-header-background" style={{ backgroundImage: `url(${tutorialBanner})` }}>
+                <div className="intro-header-background">
+                    <Img className="img-loading" src={tutorialBanner} alt="loading..."></Img>
                     <div className="intro-content">
                         <div className="intro-text">
                             <div className="heading-tutorial display-1">{tutorialName}</div>
