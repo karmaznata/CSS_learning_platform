@@ -311,7 +311,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
       <div className="action-buttons">
         {!resultChecked && <Button onClick={checkResults} disabled={!answerAllQuestions}>Check Result</Button>}
         {(resultChecked && currentPage !== 3) && <Button onClick={handleNextPage}>Next Page</Button>}
-        {(currentPage === 3 && resultChecked && !quizFinished) && <Button onClick={finishQuiz}>Finish the test</Button>}
+        {(currentPage === 3 && resultChecked && !quizFinished) && <Button onClick={finishQuiz}>Finish</Button>}
       </div>
     </div>
   );

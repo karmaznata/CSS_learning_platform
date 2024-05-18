@@ -6,13 +6,18 @@ import ToggleSwitch from '../toggleSwitch/toggleSwitch.js';
 import adessoLogo from "../Assets/Adesso_AG_logo.svg.png";
 import Button from 'react-bootstrap/Button';
 import { EventRegister } from 'react-native-event-listeners';
+import { User } from "../../Models/User.js";
 
-const Navbar = (prop) => {
 
-    const { isLoggedIn, username } = prop;
+interface NavbarProps {
+    isLoggedIn: boolean;
+    user: User;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, user }) => {
 
     const [menu, setMenu] = useState("");
-    const [showUsername, setShowUsername] = useState();
+    const [showUsername, setShowUsername] = useState("");
 
     // Load active menu tab from localStorage on component mount
     useEffect(() => {
@@ -21,8 +26,11 @@ const Navbar = (prop) => {
     }, []);
 
     useEffect(() => {
-        setShowUsername(username);
-    }, [username])
+        if(user){
+            const username = user.username;
+            setShowUsername(username);
+        }
+    }, [user])
 
     useEffect(() => {
         const handleMenuUpdate = data => setMenu(data);

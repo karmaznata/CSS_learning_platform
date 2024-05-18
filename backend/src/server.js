@@ -68,6 +68,11 @@ const Score = mongoose.model('Score', {
   points_scored: Number
 });
 
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 // Routes
 app.get('/', (req, res) => {
   if (req.session.user) {
@@ -99,7 +104,7 @@ app.post('/login', async (req, res) => {
 
     // Validate input
     if (!sanitizedEmail || !password) {
-      return res.status(400).json({ success: false, error: 'Email and password are required' });
+      return res.json({ success: false, error: 'Email and password are required' });
     }
 
     // Retrieve user from the database
@@ -114,7 +119,7 @@ app.post('/login', async (req, res) => {
       }
     }
 
-    res.status(401).json({ success: false, error: 'Invalid email or password' });
+    res.json({ success: false, error: 'Invalid email or password' });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal server error during login' });
   }
@@ -135,14 +140,15 @@ app.put('/updateUserData', async (req, res) => {
     // Update username
     if (newUsername) {
       await updateUserUsername(user, newUsername, userId, res);
+      req.session.user.username = newUsername;
     }
 
     // Update email
     if (newEmail) {
       await updateUserEmail(user, newEmail, userId, res);
+      req.session.user.email = newEmail;
     }
-
-    res.json({ success: true, user });
+    res.json({ success: true, user: req.session.user });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal server error during account update' });
   }
@@ -219,10 +225,6 @@ app.get('/getScores', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 async function updateUserUsername(user, newUsername, userId, res) {
   const sanitizedNewUsername = sanitize(newUsername);
@@ -231,7 +233,6 @@ async function updateUserUsername(user, newUsername, userId, res) {
   if (existingUserWithUsername && existingUserWithUsername._id.toString() !== userId) {
     return res.json({ success: false, error: 'username' });
   }
-
   user.username = sanitizedNewUsername;
   await user.save();
 }

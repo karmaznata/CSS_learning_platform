@@ -40,7 +40,7 @@
 .login-fields {
     display: flex;
     flex-direction: column;
-    gap: 29px;
+    gap: 1rem;
     margin-top: 30px;
 }
 
@@ -99,5 +99,33 @@
 }
 
 .login-fields .error {
-    border-color: red;
+    border: 1px solid red;
+    background: rgb(255 54 54 / 20%);
+}
+
+.warning-message {
+    font-size: 14px;
+}
+
+.email-password-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.email-password-container-wrong{
+    gap: 0px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .login-signup {
+        height: 43.1rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .login-signup {
+        height: 49.5rem;
+    }
 }

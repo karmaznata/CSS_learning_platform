@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import {EventRegister} from 'react-native-event-listeners';
+import { EventRegister } from 'react-native-event-listeners';
 
 const initialState = {
     username: '',
@@ -80,21 +80,26 @@ const LoginSignUp = () => {
     };
 
     const handleLogin = async () => {
-        axios.post('http://localhost:4000/login', formData)
-            .then(res => {
-                console.log(res);
-                if (res.data.success){
-                    navigate('/');
-                    localStorage.setItem("login", "true");
-                    EventRegister.emit('userIsLoggedInEvent', "true");
-                } 
-                else{
-                    toast.error('Wrong email or password. Please try again.');
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        if (formData.email && formData.password) {
+            axios.post('http://localhost:4000/login', formData)
+                .then(res => {
+                    console.log(res);
+                    if (res.data.success) {
+                        navigate('/');
+                        localStorage.setItem("login", "true");
+                        EventRegister.emit('userIsLoggedInEvent', "true");
+                    }
+                    else {
+                        toast.error('Wrong email or password. Please try again.');
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        } else {
+            toast.error('Please enter your email or password');
+        }
+
     };
 
     return (
@@ -116,24 +121,36 @@ const LoginSignUp = () => {
                                 autoComplete="current-password"
                             />
                         )}
-                        <input
-                            name="email"
-                            value={formData.email}
-                            onChange={changeHandler}
-                            type="email"
-                            placeholder="Email Address"
-                            className={inputErrors.email ? 'error' : ''}
-                            autoComplete="email"
-                        />
-                        <input
-                            name="password"
-                            value={formData.password}
-                            onChange={changeHandler}
-                            type="password"
-                            placeholder="Password"
-                            className={inputErrors.password ? 'error' : ''}
-                            autoComplete="current-password"
-                        />
+                        <div className={state === 'Sign Up' && (inputErrors.email && inputErrors.password) ? 'email-password-container-wrong' : 'email-password-container'}>
+                            <div>
+                                <input
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={changeHandler}
+                                    type="email"
+                                    placeholder="Email Address"
+                                    className={inputErrors.email && state === 'Sign Up'  ? 'error' : ''}
+                                    autoComplete="email"
+                                />
+                                {inputErrors.email && state === 'Sign Up' && (
+                                    <label className="warning-message fw-light">Invalid email!</label>
+                                )}
+                            </div>
+                            <div>
+                                <input
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={changeHandler}
+                                    type="password"
+                                    placeholder="Password"
+                                    className={inputErrors.password && state === 'Sign Up' ? 'error' : ''}
+                                    autoComplete="current-password"
+                                />
+                                {inputErrors.password && state === 'Sign Up' &&(
+                                    <label className="warning-message fw-light">Password must contain at least 8 symbols!</label>
+                                )}
+                            </div>
+                        </div>
                     </div>
                     <div className="login-button">
                         <Button className="btn-light" onClick={() => (state === 'Login' ? handleLogin() : handleSignup())}>
@@ -142,12 +159,12 @@ const LoginSignUp = () => {
                     </div>
                     <div className="signup-redirection-container">
                         {state === 'Sign Up' ? (
-                            <p className="fw-light" style={{textAlign: "center"}}>
+                            <p className="fw-light" style={{ textAlign: "center" }}>
                                 Already have an account?{' '}
                                 <span onClick={() => { setState('Login'); setFormData(initialState); }} onKeyDown={() => { }}>Login here</span>
                             </p>
                         ) : (
-                            <p className="fw-light" style={{textAlign: "center"}}>
+                            <p className="fw-light" style={{ textAlign: "center" }}>
                                 Don't have an account?{' '}
                                 <span onClick={() => { setState('Sign Up'); setFormData(initialState); }} onKeyDown={() => { }}>Sign up</span>
                             </p>

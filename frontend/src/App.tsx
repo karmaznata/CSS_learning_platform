@@ -15,17 +15,18 @@ import Protected from './Pages/Protected';
 import { User } from './Models/User';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(localStorage.getItem("login") === "true");
-  const [selectedTutorial, setSelectedTutorial] = useState<string | null>(localStorage.getItem('tutorial'));
-  const [user, setUser] = useState<User | undefined>();
-  const [accountView, setAccountView] = useState<string>('overview-profile-info');
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(localStorage.getItem("login") === "true");
+  const [selectedTutorial, setSelectedTutorial] = useState(localStorage.getItem('tutorial'));
+  const [user, setUser] = useState<User>();
+  const [accountView, setAccountView] = useState('overview-profile-info');
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const eventListener = EventRegister.addEventListener(
       'userIsLoggedInEvent',
-      (data: boolean) => {
+      (data) => {
         setIsLoggedIn(data);
       },
     );
@@ -39,8 +40,8 @@ function App() {
     if (isLoggedIn) {
       const fetchData = async () => {
         try {
-          const response = await axios.get<User>('http://localhost:4000/user');
-          setUser(response.data);
+          const response = await axios.get('http://localhost:4000/user');
+          setUser(response.data.user);
         } catch (error) {
           console.log(error);
         }
@@ -76,7 +77,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} username={user?.username} />
+        <Navbar isLoggedIn={isLoggedIn} user={user}/>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/tutorials' element={<AllTutorials />} />
