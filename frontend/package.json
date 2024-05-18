@@ -24,7 +24,7 @@
     "react-icons": "^4.12.0",
     "react-native-event-listeners": "^1.0.7",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-switch": "^7.0.0",
     "react-toastify": "^10.0.4",
     "sass": "^1.71.1",
@@ -55,5 +55,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

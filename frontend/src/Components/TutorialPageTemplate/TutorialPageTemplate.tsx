@@ -12,7 +12,7 @@ import gridBanner from '../Assets/grid-intro.png';
 import subgridBanner from '../Assets/subgrid-intro.png';
 import multicolBanner from '../Assets/multicol-intro.png';
 import containerQuerieslBanner from '../Assets/container-queries-intro.png';
-import {Img} from 'react-image';
+// import {Img} from 'react-image';
 
 const TutorialPageTemplate = (props) => {
 
@@ -55,7 +55,7 @@ const TutorialPageTemplate = (props) => {
         <div>
             <div className="intro-header">
                 <div className="intro-header-background">
-                    <Img className="img-loading" src={tutorialBanner} alt="loading..."></Img>
+                    <img className="img-loading" src={tutorialBanner} alt="loading..."/>
                     <div className="intro-content">
                         <div className="intro-text">
                             <div className="heading-tutorial display-1">{tutorialName}</div>

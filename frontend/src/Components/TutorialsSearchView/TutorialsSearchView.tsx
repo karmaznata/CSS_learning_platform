@@ -3,8 +3,8 @@ import "./TutorialsSearchView.css";
 import { Link } from 'react-router-dom';
 import { TutorialContext } from '../../Context/TutorialContext';
 import { EventRegister } from 'react-native-event-listeners';
-import {Img} from 'react-image';
-import spinner from "../Assets/spinner-load.gif";
+// import {Img} from 'react-image';
+// import spinner from "../Assets/spinner-load.gif";
 
 const TutorialsSearchView = () => {
 
@@ -34,11 +34,10 @@ const TutorialsSearchView = () => {
                   selectTutorial(`${tutorial.tutorial_theme}`);
                 }}
               >
-                <Img 
+                <img 
                   className="tutorial-banner-image" 
                   src={tutorial.tutorial_banner} 
                   alt={`${tutorial.tutorial_theme} banner`} 
-                  loader={<img src={spinner} alt="loading..."/>}
                   />
                 <div className="open-tutorial-button" >
                   <div className="play-button"></div>
