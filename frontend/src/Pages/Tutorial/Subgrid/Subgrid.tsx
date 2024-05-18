@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import "./Subgrid.css"
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import subgridExample1 from "../../../Components/Assets/subgrid_example_1.png";
@@ -103,7 +101,7 @@ const Subgrid : React.FC<SubgridProps> = ({ tutorial }) => {
                             <p className="fs-5 black-text subheading">By setting the <i className="important-point">subgrid</i> property, the dimensions for <i className="important-point">grid-template-columns</i> and <i className="important-point"> grid-template-rows</i> will be calculated automatically.</p>
                             <p className="fs-5 black-text subheading">Try to change!</p>
                             <div className="note-container">
-                                <p className="fs-5"><i className="fs-5 fw-bold">Note!</i> In your browser console, you can enable the following to see the grid: <img id="enable-grid" src={enableGridImage}></img></p>
+                                <p className="fs-5"><i className="fs-5 fw-bold">Note!</i> In your browser console, you can enable the following to see the grid: <img id="enable-grid" alt="enable-grid-image" src={enableGridImage}></img></p>
                             </div>
                         </div>
                         <div className="usage-example-container vertical">

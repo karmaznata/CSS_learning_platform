@@ -1,5 +1,4 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState} from "react";
 import "./Grid.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";

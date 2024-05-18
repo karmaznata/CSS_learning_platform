@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import StartView from "../../Components/StartView/StartView";
 import "../../Components/StartView/StartView.css";
 

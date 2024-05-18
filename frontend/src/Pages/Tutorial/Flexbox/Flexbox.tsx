@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Flexbox.css";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";
@@ -10,8 +10,8 @@ interface FlexboxProps {
     tutorial: TutorialModel;
 }
 
-const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
-    
+const Flexbox: React.FC<FlexboxProps> = ({ tutorial }) => {
+
     const [flexDirection, setFlexDirection] = useState('row');
     const [flexWrap, setFlexWrap] = useState('nowrap');
     const [justifyContent, setJustifyContent] = useState('start');
@@ -156,7 +156,7 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                             </div>
                             <div className="interactive-component-container">
                                 <div className="example-component">
-                                    <div className="example-container" style={{ flexWrap: flexWrap }as any}>
+                                    <div className="example-container" style={{ flexWrap: flexWrap } as any}>
                                         <div className="item">One</div>
                                         <div className="item">Two</div>
                                         <div className="item">Three</div>
@@ -204,7 +204,12 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     </div>
                                     <div className="dropdown-interaction-component">
                                         justify-content:
-                                        <select className="form-select" aria-label="Default select example" onChange={(e) => handleOnChange('handleJustifyContent', e)} style={{ width: '35%', margin: '2px' }}>
+                                        <select
+                                            className="form-select"
+                                            aria-label="Default select example"
+                                            onChange={(e) => handleOnChange('handleJustifyContent', e)}
+                                            style={{ width: '35%', margin: '2px' }}
+                                        >
                                             <option value="start">start</option>
                                             <option value="end">end</option>
                                             <option value="center">center</option>
@@ -215,7 +220,12 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                     </div>
                                     <div className="dropdown-interaction-component">
                                         align-items:
-                                        <select className="form-select" aria-label="Default select example" onChange={(e) => handleOnChange('handleAlignItems', e)} style={{ width: '35%', margin: '2px' }}>
+                                        <select
+                                            className="form-select"
+                                            aria-label="Default select example"
+                                            onChange={(e) => handleOnChange('handleAlignItems', e)}
+                                            style={{ width: '35%', margin: '2px' }}
+                                        >
                                             <option value="normal">normal</option>
                                             <option value="start">start</option>
                                             <option value="end">end</option>
@@ -246,7 +256,12 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                 </div>
                                 <div className="dropdown-interaction-component">
                                     align-content:
-                                    <select className="form-select" aria-label="Default select example" onChange={(e) => handleOnChange('handleAlignContent', e)} style={{ width: '35%' }}>
+                                    <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                        onChange={(e) => handleOnChange('handleAlignContent', e)}
+                                        style={{ width: '35%' }}
+                                    >
                                         <option value="normal">normal</option>
                                         <option value="start">start</option>
                                         <option value="end">end</option>
@@ -296,7 +311,12 @@ const Flexbox : React.FC<FlexboxProps> = ({ tutorial }) => {
                                 </div>
                                 <div className="dropdown-interaction-component">
                                     align-self:
-                                    <select className="form-select" aria-label="Default select example" onChange={(e) => handleOnChange('handleAlignSelf', e)} style={{ width: '35%' }}>
+                                    <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                        onChange={(e) => handleOnChange('handleAlignSelf', e)}
+                                        style={{ width: '35%' }}
+                                    >
                                         <option value="normal">normal</option>
                                         <option value="start">start</option>
                                         <option value="end">end</option>

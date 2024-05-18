@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./CodeEditor.css"
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import '../../../node_modules/codemirror/lib/codemirror.css';

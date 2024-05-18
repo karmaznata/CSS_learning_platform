@@ -13,7 +13,6 @@ import subgridBanner from '../Assets/subgrid-intro.png';
 import multicolBanner from '../Assets/multicol-intro.png';
 import containerQuerieslBanner from '../Assets/container-queries-intro.png';
 import {Img} from 'react-image';
-import spinner from "../Assets/spinner-load.gif";
 
 const TutorialPageTemplate = (props) => {
 

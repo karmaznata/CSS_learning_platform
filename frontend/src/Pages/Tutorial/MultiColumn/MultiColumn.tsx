@@ -1,6 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./MultiColumn.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";

@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { EventRegister } from 'react-native-event-listeners';
 import { User } from "../../Models/User.ts";
 import { UserScore } from "../../Models/UserScores.ts";
+interface Props {
+  accountView: string;
+}
 
-const UserAccount = ({ accountView }) => {
+const UserAccount : React.FC<Props> = ({ accountView }) => {
 
   const [userAccount, setAccountView] = useState<string>(accountView);
   const [user, setUser] = useState<User>();

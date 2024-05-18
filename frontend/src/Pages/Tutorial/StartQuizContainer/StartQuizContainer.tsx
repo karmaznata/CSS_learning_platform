@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./StartQuizContainer.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";

@@ -1,12 +1,11 @@
-import React, {useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
 import './Quiz.css';
 import { UserAnswers } from "../../Models/UserAnswer";
 import { QuizTask } from "../../Models/QuizTask";
 import axios from "axios";
 import { UserScore } from "../../Models/UserScores";
 import Button from "react-bootstrap/esm/Button";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { EventRegister } from "react-native-event-listeners";
@@ -61,21 +60,21 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
     const filteredTasks = allQuizTasks.filter((task) => task.quiz_theme === quizTheme);
     setQuizTasks(filteredTasks.sort((a, b) => a.task_id - b.task_id));
     switch (quizTheme) {
-      case "Flexbox": {
+      case "Flexbox":
         setQuizFourthTaskImage(quizTaskFlex4); setQuizFifthTaskImage(quizTaskFlex5);
-      } break;
-      case "Grid": {
+        break;
+      case "Grid":
         setQuizFourthTaskImage(quizTaskGrid4); setQuizFifthTaskImage(quizTaskGrid5);
-      } break;
-      case "CSS Grid Subgrid": {
-       setQuizFourthTaskImage(quizTaskSubgrid4); setQuizFifthTaskImage(quizTaskSubgrid5);
-      } break;
-      case "Multi-column Layout": {
-       setQuizFourthTaskImage(quizTaskMulticol4); setQuizFifthTaskImage(quizTaskMulticol5);
-       } break;
-       case "Container Queries": {
+        break;
+      case "CSS Grid Subgrid":
+        setQuizFourthTaskImage(quizTaskSubgrid4); setQuizFifthTaskImage(quizTaskSubgrid5);
+        break;
+      case "Multi-column Layout":
+        setQuizFourthTaskImage(quizTaskMulticol4); setQuizFifthTaskImage(quizTaskMulticol5);
+        break;
+      case "Container Queries":
         setQuizFourthTaskImage(quizTaskQueries4); setQuizFifthTaskImage(quizTaskQueries5);
-       } break;
+        break;
       default:
         break;
     }

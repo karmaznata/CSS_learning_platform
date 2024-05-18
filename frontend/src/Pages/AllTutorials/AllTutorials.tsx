@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./AllTutorials.css"
 import TutorialsSearchView from "../../Components/TutorialsSearchView/TutorialsSearchView";
 

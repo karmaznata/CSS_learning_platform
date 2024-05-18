@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./InteractiveQuizTask.css";
 import CodeEditor from "../CodeEditor/CodeEditor";
 import CssCodeInput from "../CssCodeInput/CssCodeInput";
@@ -6,7 +6,6 @@ import CssCodeInput from "../CssCodeInput/CssCodeInput";
 const InteractiveQuizTask = (props) => {
 
   const { setUserInputAnswers, quizTask, taskIndex, quizTaskImage } = props;
-  const [quizQuestion, setQuizQuestion] = useState([]);
   const [applyCss, setApplyCss] = useState<string>('');
 
   const handleCodeContent = (html: string, css: string) => {

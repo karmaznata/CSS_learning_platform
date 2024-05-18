@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import "./ContainerQueries.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import CodeEditor from "../../../Components/CodeEditor/CodeEditor";

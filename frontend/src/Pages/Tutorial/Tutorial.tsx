@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from 'react-router-dom';
 import Flexbox from "./Flexbox/Flexbox";
 import Grid from "./Grid/Grid";
 import Subgrid from "./Subgrid/Subgrid";

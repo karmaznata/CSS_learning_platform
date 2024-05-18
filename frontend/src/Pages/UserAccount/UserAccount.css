@@ -29,7 +29,6 @@ label.click-label {
 
 label.click-label.active {
     color: rgb(81 123 236);
-    ;
     text-shadow: rgb(222 216 247) 1px 0 6px;
 
 }
