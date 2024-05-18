@@ -9,7 +9,7 @@ import spinner from "../Assets/spinner-load.gif";
 const TutorialsSearchView = () => {
 
   const all_tutorials = useContext(TutorialContext);
-  const [filteredTutorials, setFilteredTutorials] = useState(all_tutorials);
+  const [filteredTutorials] = useState(all_tutorials);
 
   const selectTutorial = (tutorial) => {
     localStorage.setItem('tutorial', tutorial);

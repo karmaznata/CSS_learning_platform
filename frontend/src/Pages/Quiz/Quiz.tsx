@@ -110,9 +110,9 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   }, [selectedRadioValue]);
 
   const checkResults = () => {
+    let user_answers: UserAnswers[] = [];
     switch (currentPage) {
       case 1:
-        let user_answers: UserAnswers[] = [];
         quizTasks.map((task, taskIndex) => {
           const selectedOption = selectedRadioValue[taskIndex];
           user_answers.push({ user_answers: selectedOption, task_id: task.task_id, quiz_theme: task.quiz_theme });
@@ -272,6 +272,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
         {currentPage === 2 && !quizFinished && quizTasks.map((task, taskIndex) => (
           task.task_type === "enterValue" && taskIndex == 3 && (
             <InteractiveQuizTask
+              key={task.task_id}
               setUserInputAnswers={setUserInputAnswers}
               quizTask={task}
               taskIndex={taskIndex}
@@ -283,6 +284,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
         {currentPage === 3 && !quizFinished && quizTasks.map((task, taskIndex) => (
           task.task_type === "enterValue" && taskIndex == 4 && (
             <InteractiveQuizTask
+              key={task.task_id}
               setUserInputAnswers={setUserInputAnswers}
               quizTask={task}
               taskIndex={taskIndex}

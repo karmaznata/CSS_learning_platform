@@ -40,7 +40,7 @@ const Tutorial = ({selectedTutorial}) => {
                 selectedComponent = <ContainerQueries tutorial={tutorial}/>;
                 break;
             default:
-                selectedComponent = null;
+                break;
         }
     }
 

@@ -77,21 +77,3 @@ label.click-label:hover {
         height: 34.9rem;
     }
 }
-
-/* @media only screen and (min-width: 1200px) {
-    .user-account-container{
-      height: 30.8rem;
-    }
-    .account-left-container{
-        height: 30.8rem;
-      }
-      .profile-info-container{
-        max-height: 29rem;
-      }
-  }
-
-  @media only screen and (min-width: 1400px) {
-    .user-account-container{
-      height: 46.4rem;
-    }
-  } */

@@ -62,10 +62,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, user }) => {
                 <img src={adessoLogo} alt="company logo" />
             </div>
             <ul className="nav-menu nav nav-underline fs-6">
-                <li className="nav-item" onClick={() => { handleMenuClick("homePage") }} onKeyDown={() => { }}>
+                <li className="nav-item" onClick={() => { handleMenuClick("homePage") }} onKeyDown={() => { }} role="button">
                     <Link to='/' className={`nav-link ${menu === "homePage" ? "active" : ""}`}>Home Page</Link>
                 </li>
-                <li className="nav-item" onClick={() => { handleMenuClick("tutorials") }} onKeyDown={() => { }}>
+                <li className="nav-item" onClick={() => { handleMenuClick("tutorials") }} onKeyDown={() => { }} role="button">
                     <Link to='/tutorials' className={`nav-link ${menu === "tutorials" ? "active" : ""}`} >Tutorials</Link>
                 </li>
             </ul>

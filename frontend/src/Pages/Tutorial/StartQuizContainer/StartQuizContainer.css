@@ -1,81 +1,25 @@
-.start-quiz-conatiner{
-    border-radius: 50px;
-    background: radial-gradient(circle, rgba(77,77,235,1) 31%, rgba(3,0,99,1) 100%);
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 110px;
+.start-quiz-conatiner {
+	border-radius: 50px;
+	background: radial-gradient(circle, rgba(77, 77, 235, 1) 31%, rgba(3, 0, 99, 1) 100%);
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 110px;
 }
 
-.start-quiz-text{
-    display: grid;
-    justify-items: center;
+.start-quiz-text {
+	display: grid;
+	justify-items: center;
 }
-/* 
-.start-quiz-button button{
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-    background: none;
-    border: none;
-    color: #000000;
-}
-.start-quiz-button button:hover{
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-    background: none;
-    border: none;
-    color: #000000;
-}
-.start-quiz-button{
-    cursor:pointer;
-        position:relative;
-        z-index: 1;
-        padding:10px 20px;
-        background:white;
-        font-size:28px;
-        border-top-right-radius:10px;
-        border-bottom-left-radius:10px;
-        transition:all 1s;
-        &:after,&:before{
-            content:" ";
-            width:10px;
-            height:10px;
-            position:absolute;
-            border :0px solid #fff;
-            transition:all 1s;
-            }
-        &:after{
-            top:-1px;
-            left:-1px;
-            border-top:5px solid black;
-            border-left:5px solid black;
-        }
-        &:before{
-            bottom:-1px;
-            right:-1px;
-            border-bottom:5px solid black;
-            border-right:5px solid black;
-        }
-        &:hover{
-            border-top-right-radius:0px;
-        border-bottom-left-radius:0px;
-            &:before,&:after{
-                width:100%;
-                height:100%;
-            }
-        }
-    } */
 
-    
 .start-quiz-button {
 	width: 1000px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
+
 .start-quiz-button .btn {
 	position: relative;
 	top: 0;
@@ -87,6 +31,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .start-quiz-button .btn a {
 	position: absolute;
 	top: 0;
@@ -111,9 +56,11 @@
 	transition: 0.5s;
 	backdrop-filter: blur(15px);
 }
+
 .start-quiz-button .btn:hover a {
 	letter-spacing: 3px;
 }
+
 .start-quiz-button .btn a::before {
 	content: "";
 	position: absolute;
@@ -126,9 +73,11 @@
 	transition: 0.5s;
 	filter: blur(0px);
 }
+
 .start-quiz-button .btn:hover a::before {
 	transform: skewX(45deg) translate(200px);
 }
+
 .start-quiz-button .btn::before {
 	content: "";
 	position: absolute;
@@ -142,7 +91,8 @@
 	transition: 0.5s;
 	transition-delay: 0.5;
 }
-.start-quiz-button .btn:hover::before /*lightup button*/ {
+
+.start-quiz-button .btn:hover::before{
 	bottom: 0;
 	height: 50%;
 	width: 80%;
@@ -162,12 +112,14 @@
 	transition: 0.5s;
 	transition-delay: 0.5;
 }
-.start-quiz-button .btn:hover::after /*lightup button*/ {
+
+.start-quiz-button .btn:hover::after{
 	top: 0;
 	height: 50%;
 	width: 80%;
 	border-radius: 30px;
 }
+
 .start-quiz-button .btn:nth-child(1)::before,
 .start-quiz-button .btn:nth-child(1)::after {
 	background: var(--secondary-blue-2);

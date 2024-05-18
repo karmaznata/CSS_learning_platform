@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const StartQuizContainer = ({ quizTheme }) => {
 
-    const isLoggedIn = localStorage.getItem('login');
     const navigate = useNavigate();
 
     const openQuiz = async () => {

@@ -63,7 +63,7 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
         <div className="profile-info-container">
             <ToastContainer />
             <div className="profile-info-header fs-4">
-                <label>Profile Info</label>
+                <label className="profile-info-label">Profile Info</label>
                 <hr />
             </div>
             <div className="user-info-inputs">

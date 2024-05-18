@@ -62,16 +62,31 @@ const CssCodeInput = (props) => {
         const styleString: string[] = [];
         let stringToPush: string = "";
         cssCode.forEach((string, stringIndex) => {
+            // if (userInput[stringIndex]) {
+            //     string.position === "before" ? stringToPush = (string.substring + userInput[stringIndex].toString() + ";")
+            //         : stringToPush = (string.substring + userInput[stringIndex].toString());
+            //     styleString.push(stringToPush);
+            // }
+            // else {
+            //     string.position === "before" ? stringToPush = (string.substring + ";") : stringToPush = string.substring;
+            //     styleString.push(stringToPush);
+            //     return string;
+            // }
             if (userInput[stringIndex]) {
-                string.position === "before" ? stringToPush = (string.substring + userInput[stringIndex].toString() + ";")
-                    : stringToPush = (string.substring + userInput[stringIndex].toString());
-                styleString.push(stringToPush);
+                if (string.position === "before") {
+                    stringToPush = string.substring + userInput[stringIndex].toString() + ";";
+                } else {
+                    stringToPush = string.substring + userInput[stringIndex].toString();
+                }
             }
             else {
-                string.position === "before" ? stringToPush = (string.substring + ";") : stringToPush = string.substring;
-                styleString.push(stringToPush);
-                return string;
+                if (string.position === "before") {
+                    stringToPush = string.substring + ";";
+                } else {
+                    stringToPush = string.substring;
+                }
             }
+            styleString.push(stringToPush);
         })
         let mergeString = styleString.map((obj) => obj).join("");
         setApplyCss(mergeString);

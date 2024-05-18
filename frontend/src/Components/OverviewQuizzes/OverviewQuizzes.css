@@ -59,10 +59,6 @@ svg.retake-quiz-icon.hovered {
     transform: scale(1.2) rotate(360deg);
 }
 
-/* .quizzes-score-containers:hover .retake-quiz-icon {
-    transform: scale(1.2) rotate(360deg);
-} */
-
 .vl-2 {
     border-left: 4px solid white;
     height: 6rem;

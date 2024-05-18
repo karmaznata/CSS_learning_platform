@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Grid.css";
 import TutorialPageTemplate from "../../../Components/TutorialPageTemplate/TutorialPageTemplate";
 import StartQuizContainer from "../StartQuizContainer/StartQuizContainer";
@@ -195,8 +195,20 @@ const Grid: React.FC<GridProps> = ({ tutorial }) => {
                                         <label htmlFor="gridTemplRowsInput" className="number-label">grid-template-rows:</label>
                                     </div>
                                     <div className="input-interaction-component">
-                                        <input type="text" id="gridTemplColInputId" className="form-control number-input" value={gridTemplateColumns} onChange={(e) => handleOnChange('handleGridTemplColumns', e)} />;
-                                        <input type="text" id="gridTemplRowsInput" className="form-control number-input" value={gridTemplateRows} onChange={(e) => handleOnChange('handleGridTemplRows', e)} />;
+                                        <input
+                                            type="text"
+                                            id="gridTemplColInputId"
+                                            className="form-control number-input"
+                                            value={gridTemplateColumns}
+                                            onChange={(e) => handleOnChange('handleGridTemplColumns', e)}
+                                        />;
+                                        <input
+                                            type="text"
+                                            id="gridTemplRowsInput"
+                                            className="form-control number-input"
+                                            value={gridTemplateRows}
+                                            onChange={(e) => handleOnChange('handleGridTemplRows', e)}
+                                        />;
                                     </div>
                                 </div>
                             </div>
