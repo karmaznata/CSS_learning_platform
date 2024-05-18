@@ -2,13 +2,16 @@
   .start-view-div {
     flex-direction: column;
   }
+
   .start-view-left,
   .start-view-right {
     max-width: 100%;
   }
+
   p {
     font-size: 15px !important;
   }
+
   .home-page {
     height: 40vw;
   }
@@ -23,66 +26,47 @@
   justify-content: center;
   align-items: center;
   gap: 70px;
-  /* height: 83.4vh; */
 }
 
-@media only screen and (max-width: 1250px){
+@media only screen and (max-width: 1250px) {
   .start-view-div {
-    height: 79.5vh; 
+    height: 79.5vh;
   }
+
   .display-1 {
     font-size: 4rem;
-}
-}
-
-@media only screen and (min-width: 1300px){
-  .start-view-div {
-    height: 82vh; 
   }
 }
 
-@media only screen and (min-width: 1500px){
+@media only screen and (min-width: 1300px) {
   .start-view-div {
-    height: 83.4vh; 
+    height: 82vh;
   }
 }
-@media only screen and (min-width: 1700px){
+
+@media only screen and (min-width: 1500px) {
   .start-view-div {
-    height: 85.4vh; 
+    height: 83.4vh;
   }
 }
-@media only screen and (min-width: 1800px){
+
+@media only screen and (min-width: 1700px) {
   .start-view-div {
-    height: 86.8vh; 
+    height: 85.4vh;
   }
 }
-@media only screen and (min-width: 2000px){
+
+@media only screen and (min-width: 1800px) {
   .start-view-div {
-    height: 87.8vh; 
+    height: 86.8vh;
   }
 }
-/* @media only screen and (min-height: 700px) {
+
+@media only screen and (min-width: 2000px) {
   .start-view-div {
-    height: 85.4vh; 
+    height: 87.8vh;
   }
 }
-@media screen and (min-height: 700px) {
-  .start-view-div {
-    height: 85.4vh; 
-  }
-} */
-/* 
-@media screen and (min-height: 1400px) and (max-height: 1500px) {
-  .start-view-div {
-    height: 89.6vh;
-  }
-} */
-/* 
-@media screen and (min-height: 1701px) {
-  .start-view-div {
-    height: 95.8vh; 
-  }
-} */
 
 .start-view-left {
   display: flex;
@@ -97,7 +81,6 @@
   padding-left: 40px;
   border-radius: 50px;
   background: rgba(0, 0, 0, 0.3);
-  /* Adjust the opacity here */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 

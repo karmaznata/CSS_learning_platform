@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./OverviewQuizzes.css";
 import { UserScore } from "../../Models/UserScores";
-import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface UserScoresProps {
     userScores: UserScore[];
@@ -43,7 +42,7 @@ const OverviewQuizzes: React.FC<UserScoresProps> = ({ userScores }) => {
                         >
                             <div className="left-quizz-content">
                                 <p className="fs-3 fw-normal">Quiz: {value.quiz_theme}</p>
-                                <p className="fs-6 fw-light">Score: <i className={value.points_scored > 65 ? "quiz-passed" : "quiz-failed"}>{value.points_scored}%</i></p>
+                                <p className="fs-6 fw-light">Score: <i className={value.points_scored > 65 ? "quiz-passed" : "quiz-failed"}>{value.points_scored.toFixed(0)}%</i></p>
                             </div>
                             <div className="right-quizz-content">
                                 <div className="vl-2"></div>

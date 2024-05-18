@@ -12,7 +12,6 @@ const CssCodeInput = (props) => {
 
     useEffect(() => {
         setApplyCss(cssCode);
-        // const regexValue = /^\s*([^:\s]+):\s\s\s*([^]*?)(?=\s*[^\s:]+:|\s*$)/gm;
 
         const regexValue = /^\s*([^\s]+):\s\s@cssValue\s*(\{.*\}\s*)?$/gm;
         const regexProperty = /\s@cssProperty\s*/;
@@ -20,14 +19,14 @@ const CssCodeInput = (props) => {
         let cssCodeString = [];
         let lastIndex = 0;
         let match;
-        //you cant add the ; at the end of the string, because of the strings structure
+
         while ((match = regexValue.exec(cssCode)) !== null) {
             if (match.index === regexValue.lastIndex) {
                 regexValue.lastIndex++;
             }
             let substring = cssCode.substring(lastIndex, match.index + match[0].length);
             cssCodeString.push({ substring: substring.replace(/@cssValue/g, " "), position: 'before' });
-           
+
             lastIndex = regexValue.lastIndex;
         }
         if (lastIndex < cssCode.length) {
@@ -38,7 +37,7 @@ const CssCodeInput = (props) => {
             if (regexProperty.test(string.substring)) {
                 const parts = string.substring.split(regexProperty);
                 parts.forEach((item, index) => {
-                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t        ${item}`, position: 'after' });
+                    modifiedCssCodeStrings.push({ substring: index === 0 ? item : `\t\t       ${item}`, position: 'after' });
                 });
             } else {
                 modifiedCssCodeStrings.push(string);

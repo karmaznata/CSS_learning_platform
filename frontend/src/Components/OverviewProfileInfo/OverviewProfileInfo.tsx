@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./OverviewProfileInfo.css";
 import Button from 'react-bootstrap/Button';
 import { User } from "../../Models/User";
@@ -19,10 +19,6 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
     const [usernameValid, setUsernameValid] = useState(true);
     const [validUpdate, setValidUpdate] = useState(false);
 
-    useEffect(() => {
-        console.log("user", user);
-    }, []);
-
     const updateAccountUserData = async () => {
         try {
             const newUsername = username;
@@ -33,11 +29,10 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
             } else {
                 toast.success("Your data has been successfully changed!");
                 newUsername && (user.username = newUsername) && setUsername(newUsername);
-                newEmail && (user.email = newEmail) && setEmail(newEmail);                
+                newEmail && (user.email = newEmail) && setEmail(newEmail);
                 EventRegister.emit("setUsernameUpdate", newUsername);
                 setValidUpdate(false);
             }
-            console.log("response", response.data);
         } catch (error) {
             console.log(error);
         }
@@ -59,8 +54,7 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
     const handelChangeEmail = (event) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const validEmail = emailRegex.test(event.target.value);
-        validEmail ? setValidUpdate(true) : setValidUpdate(false);
-        user.email === event.target.value ? setValidUpdate(false) : setValidUpdate(true);
+        validEmail && user.email !== event.target.value ? setValidUpdate(true) : setValidUpdate(false);
         setEmailValid(validEmail);
         setEmail(event.target.value);
     }
@@ -74,12 +68,12 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
             </div>
             <div className="user-info-inputs">
                 <label className="input">
-                    <input className={`input__field ${usernameValid ? "" : 'username-invalid'}`} type="text" placeholder=" " onChange={handelChangeUsername} value={username} />
-                    <span className="input__label">Username</span>
+                    <input className={`input-field ${usernameValid ? "" : 'username-invalid'}`} type="text" placeholder=" " onChange={handelChangeUsername} value={username} />
+                    <span className="input-label">Username</span>
                 </label>
                 <label className="input">
-                    <input className={`input__field ${emailValid ? "" : 'email-invalid'}`} type="text" placeholder=" " onChange={handelChangeEmail} value={email} />
-                    <span className="input__label">Email</span>
+                    <input className={`input-field ${emailValid ? "" : 'email-invalid'}`} type="text" placeholder=" " onChange={handelChangeEmail} value={email} />
+                    <span className="input-label">Email</span>
                 </label>
             </div>
             <div className="profile-info-footer">

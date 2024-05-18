@@ -10,7 +10,7 @@
     margin-bottom: 20px;
 }
 
-.input__field {
+.input-field {
     width: 50%;
     padding: 10px;
     font-size: 16px;
@@ -20,7 +20,7 @@
     transition: border-bottom-color 0.3s;
 }
 
-.input__label {
+.input-label {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -29,27 +29,31 @@
     transition: top 0.3s, font-size 0.3s, color 0.3s;
 }
 
-.input__field:focus {
+.input-field:focus {
     outline: none;
     border-bottom-color: #007bff;
 }
-.input__field.username-invalid {
+
+.input-field.username-invalid {
     outline: none;
     border-bottom-color: #ff0000;
 }
-.input__field.username-invalid+.input__label{
-    color: #ff0000 !important;
-}
-.input__field.email-invalid {
-    outline: none;
-    border-bottom-color: #ff0000;
-}
-.input__field.email-invalid+.input__label{
+
+.input-field.username-invalid+.input-label {
     color: #ff0000 !important;
 }
 
-.input__field:focus+.input__label,
-.input__field:not(:placeholder-shown)+.input__label {
+.input-field.email-invalid {
+    outline: none;
+    border-bottom-color: #ff0000;
+}
+
+.input-field.email-invalid+.input-label {
+    color: #ff0000 !important;
+}
+
+.input-field:focus+.input-label,
+.input-field:not(:placeholder-shown)+.input-label {
     top: -9px;
     font-size: 14px;
     color: #007bff;

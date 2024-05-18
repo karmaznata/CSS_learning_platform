@@ -1,4 +1,4 @@
-.search-tutorial-panel{
+.tutorials-overview-panel {
   height: 8rem;
   display: grid;
   align-items: center;
@@ -6,151 +6,86 @@
   margin: 45px;
   gap: 30px;
 }
-.circle-design{
+
+.circle-design {
   padding: 20px;
   background: var(--secondary-blue-2);
   position: absolute;
   border-radius: 57px;
   z-index: 0;
 }
-.circle-design.big{
+
+.intro-area.label {
+  position: absolute;
+  z-index: 2;
+}
+
+.circle-design.big {
   height: 7rem;
   width: 7rem;
   transform: translate(-17rem, 1rem);
 }
-.circle-design.small{
+
+.circle-design.small {
   height: 5rem;
   width: 5rem;
   transform: translate(19rem, -2px);
 }
-.search-area.label{
-  position: relative;
-  z-index: 1;
-}
-/* .search-tutorial hr{
-    border-width: 4px;
-    border-top: var(--bs-border-width) solid;
-    opacity: 1;
-    border-color: white;
-    margin: 30px;
-} */
-.select-tutorial {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5rem;
-    justify-items: center;
-    padding-bottom: 150px;
-    padding-top: 40px;
-    width: 85rem;
-  }
-  .tutorial-banner-image{
-    width: 22rem;
-    border-radius: 1rem;
-    margin: 7px;
-  }
-  .tutorial-link:hover .open-tutorial-button {
-    cursor: pointer;
-      background-color: var(--secondary-blue);
-      transform: translate(10rem, -2rem) scale(1.2); 
-    
-  }
-  .play-button{
-    border-top: 10px solid transparent;
-    border-left: 22px solid #000000;
-    border-bottom: 10px solid transparent;
-    position: absolute;
-    transform: translate(17px, 15px);
-  }
-  .open-tutorial-button{
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    position: absolute;
-    transform: translate(10rem, -2rem);
-    transition: transform 0.3s ease, background-color 0.3s ease; 
-  }
-  /* .open-tutorial-button:hover{
-    cursor: pointer;
-    background-color: var(--secondary-blue);
-    transform: translate(10rem, -2rem) scale(1.2); 
-  } */
-  .tutorial-item {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  .tutorial-banner-container{
-    width: 25rem;
-    border-radius: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 17rem;;
-    background-color: var(--dark-blue-3);
-    padding: 10px;
-  }
-  
-  /* Add media query for larger screens */
-  /* @media (min-width: 768px) {
-    .select-tutorial {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-  } */
 
-  .search-box{
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-  }
-  .input-search{
-    height: 50px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    background-color: #0c1c53;
-    padding-right: 40px;
-    color:#fff;
-  }
-  .input-search::placeholder{
-    color:rgba(255,255,255,.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
-  }
-  .btn-search{
-    width: 50px;
-    height: 50px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color:#ffffff ;
-    background-color:transparent;
-    pointer-events: painted;  
-  }
-  .btn-search:focus ~ .input-search{
-    width: 300px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom:1px solid rgba(255,255,255,.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-  .input-search:focus{
-    width: 300px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom:1px solid rgba(255,255,255,.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-  
-  
+.select-tutorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5rem;
+  justify-items: center;
+  padding-bottom: 150px;
+  padding-top: 40px;
+  width: 85rem;
+}
+
+.tutorial-banner-image {
+  width: 22rem;
+  border-radius: 1rem;
+  margin: 7px;
+}
+
+.tutorial-link:hover .open-tutorial-button {
+  cursor: pointer;
+  background-color: var(--secondary-blue);
+  transform: translate(10rem, -2rem) scale(1.2);
+
+}
+
+.play-button {
+  border-top: 10px solid transparent;
+  border-left: 22px solid #000000;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  transform: translate(17px, 15px);
+}
+
+.open-tutorial-button {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  position: absolute;
+  transform: translate(10rem, -2rem);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tutorial-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tutorial-banner-container {
+  width: 25rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 17rem;
+  background-color: var(--dark-blue-3);
+  padding: 10px;
+}

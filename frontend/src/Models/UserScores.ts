@@ -1,16 +1,15 @@
 /**
- * Interface for a user
+ * Interface for a  user's score
  */
+
 export interface UserScore {
 
-    /** what topic the question relates to */
-    user_id: string,
+    /** The ID of the user. */
+    user_id: string;
 
-    /**question topic: multiple choice or with value entry*/
-    /**question*/
-    quiz_theme: string,
+    /** The theme of the quiz for which the score is recorded. */
+    quiz_theme: string;
 
-    points_scored: number,
-
-    // score_type: string
+    /** The number of points scored by the user in the quiz. */
+    points_scored: number;   
 }

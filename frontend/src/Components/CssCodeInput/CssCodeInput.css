@@ -1,37 +1,30 @@
-pre{
+pre {
     color: white;
-    margin-bottom: -24px;   
+    margin-bottom: -24px;
 }
 
-.cssCode-content input{
+.cssCode-content input {
     width: 10rem;
     z-index: 1;
     position: relative;
     padding-right: 20px;
 }
-/* pre.after input{
-    margin-left: -6.2rem;
-} */
-pre.before input{
+
+pre.before input {
     margin-left: -22px;
-    /*-22*/
 }
 
-pre input{
+pre.after input {
+    margin-left: -10px;
+}
+
+pre input {
     margin-bottom: 5px;
     border-radius: 5px;
     outline: none;
 }
-/* .quiz-cssCode-container{
 
-    flex-grow: 1;
-    flex-basis: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    background-color: hsl(225, 6%, 25%);
-} */
-.cssCode-content{
+.cssCode-content {
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     position: sticky;

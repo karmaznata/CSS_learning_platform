@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./CSS/InteractiveQuizTask.css";
-import CodeEditor from "../Components/CodeEditor/CodeEditor";
-import CssCodeInput from "../Components/CssCodeInput/CssCodeInput";
+import "./InteractiveQuizTask.css";
+import CodeEditor from "../CodeEditor/CodeEditor";
+import CssCodeInput from "../CssCodeInput/CssCodeInput";
 
 const InteractiveQuizTask = (props) => {
 
@@ -34,7 +34,6 @@ const InteractiveQuizTask = (props) => {
         <div className="quiz-task-img-container">
           <img src={quizTaskImage} alt="quiz-task-image" className={`quiz-task-img ${quizTask.quiz_theme.toLowerCase()}`} />
         </div>
-        {/* <img src={gif}/> */}
       </div>
       <div className="code-editor">
         <CssCodeInput

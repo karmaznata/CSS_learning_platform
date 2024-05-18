@@ -46,9 +46,9 @@ function quiz_tasks() {
       quiz_theme: "Flexbox",
       task_type: "enterValue",
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
-      right_answer: ['column', 'space-around'],
+      right_answer: ['column', 'space-around', 'center'],
       htmlCode: `<div class="flexbox-panel">\n  <div class="flexbox-item">1</div>\n  <div class="flexbox-item">2</div>\n  <div class="flexbox-item">3</div>\n</div>`,
-      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  @cssValue\n  gap : 8px;\n  justify-content:  @cssValue\n}\n\n.flexbox-item {\n  background: #99c5e9ff;\n  padding: 3rem;\n  border-radius: 6px;\n}`,
+      cssCode: `.flexbox-panel {\n  display: flex;\n  flex-direction:  @cssValue\n  gap: 8px;\n  justify-content:  @cssValue\n  height: 30rem;\n  align-items:  @cssValue\n}\n\n.flexbox-item {\n  background: #99c5e9ff;\n  padding: 3rem;\n  border-radius: 6px;\n}`,
     },
     {
       task_id: 7280105,
@@ -57,7 +57,7 @@ function quiz_tasks() {
       question: "Add properties to the gaps to arrange the elements as shown in the picture.",
       right_answer: ['flex-wrap', '10px', 'flex-grow', 'flex-grow', 'flex-grow'],
       htmlCode:`<form>\n  <label class="name" for="name-field">Name:<input id="name-field" /></label>\n  <label class="email" for="email-field">Email:<input id="email-field" type="email" /></label>\n  <button>Submit</button>\n</form>`,
-      cssCode:`form {\n  display: flex;\n    @cssProperty : wrap;\n  gap:  @cssValue\n  padding: 10rem;\n  font-size: 25px;\n}\n\n.name {\n    @cssProperty : 1;\n  flex-basis: calc(25% - 4px);\n}\n\n.email {\n    @cssProperty : 2;\n  flex-basis: calc(50% - 4px);\n}\n\nbutton {\n    @cssProperty : 3;\n  flex-basis: 100%;\n   height: 40px;\n}\n\ninput {\n   height: 25px;\n   width: 98%;\n}`,
+      cssCode:`form {\n  display: flex;\n    @cssProperty : wrap;\n  gap:  @cssValue\n  padding: 10rem;\n  font-size: 25px;\n}\n\n.name {\n    @cssProperty : 1;\n  flex-basis: calc(25% - 4px);\n}\n\n.email {\n    @cssProperty : 2;\n  flex-basis: calc(50% - 4px);\n}\n\nbutton {\n    @cssProperty : 3;\n   flex-basis: 100%;\n   height: 40px;\n}\n\ninput {\n   height: 25px;\n   width: 98%;\n}`,
     },
     {
       task_id: 3900201,

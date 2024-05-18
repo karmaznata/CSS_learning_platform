@@ -1,18 +1,18 @@
-import { UserScore } from "./UserScores";
-
 /**
- * Interface for a user
+ * Interace for a user
  */
+
 export interface User {
-
+    
+    /** The unique identifier for the user. */
     _id: string;
-    /** what topic the question relates to */
-    username: string,
 
-    /**question topic: multiple choice or with value entry*/
-    email: string,
+    /** Contains the username of the user. */
+    username: string;
 
-    /**question*/
-    password: string,
+    /** Contains the email address of the user. */
+    email: string;
 
+    /** Contains the password of the user. */
+    password: string;
 }

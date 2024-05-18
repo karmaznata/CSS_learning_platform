@@ -9,11 +9,11 @@ interface TutorialContextProviderProps {
     children: ReactNode;
 }
 
-const TutorialContextProvider: React.FC<TutorialContextProviderProps> = (props) =>{
+const TutorialContextProvider: React.FC<TutorialContextProviderProps> = (props) => {
 
-    const contextValue: TutorialModel[]= all_tutorials;
-    
-    return(
+    const contextValue: TutorialModel[] = all_tutorials;
+
+    return (
         <TutorialContext.Provider value={contextValue}>
             {props.children}
         </TutorialContext.Provider>
