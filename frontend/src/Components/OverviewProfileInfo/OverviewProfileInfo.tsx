@@ -6,6 +6,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { EventRegister } from "react-native-event-listeners";
+import {API_URL} from './../../apiConnection.js';
 
 interface UserProps {
     user: User;
@@ -23,7 +24,7 @@ const OverviewProfileInfo: React.FC<UserProps> = ({ user }) => {
         try {
             const newUsername = username;
             const newEmail = email;
-            const response = await axios.put('http://localhost:4000/updateUserData', { newUsername, newEmail });
+            const response = await axios.put(`${API_URL}/updateUserData`, { newUsername, newEmail });
             if (!response.data.success) {
                 toast.error(`The user with this ${response.data.error} already exist`);
             } else {

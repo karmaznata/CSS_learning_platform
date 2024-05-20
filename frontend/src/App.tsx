@@ -13,6 +13,7 @@ import { EventRegister } from 'react-native-event-listeners';
 import axios from 'axios';
 import Protected from './Pages/Protected';
 import { User } from './Models/User';
+import {API_URL} from './apiConnection.js';
 
 function App() {
 
@@ -40,7 +41,7 @@ function App() {
     if (isLoggedIn) {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:4000/user');
+          const response = await axios.get(`${API_URL}/user`);
           setUser(response.data.user);
         } catch (error) {
           console.log(error);

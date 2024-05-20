@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { EventRegister } from 'react-native-event-listeners';
+import {API_URL} from './../../apiConnection.js';
 
 const initialState = {
     username: '',
@@ -53,7 +54,7 @@ const LoginSignUp = () => {
             const isEmailValid = validateEmail(formData.email);
             const isPasswordValid = validatePassword(formData.password);
             if (isUsernameValid && isEmailValid && isPasswordValid) {
-                const response = await axios.post('http://localhost:4000/signup', formData)
+                const response = await axios.post(`${API_URL}/signup`, formData)
                 console.log(response.data);
                 if (response.data.success) {
                     setState("Login");
@@ -81,7 +82,7 @@ const LoginSignUp = () => {
 
     const handleLogin = async () => {
         if (formData.email && formData.password) {
-            axios.post('http://localhost:4000/login', formData)
+            axios.post(`${API_URL}/login`, formData)
                 .then(res => {
                     console.log(res);
                     if (res.data.success) {

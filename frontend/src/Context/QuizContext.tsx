@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 import { QuizTask } from "../Models/QuizTask";
+import {API_URL} from './../apiConnection.js';
 
 export const QuizContext = createContext<QuizTask[]>([]);
 
@@ -14,7 +15,7 @@ const QuizContextProvider: React.FC<QuizContextProviderProps> = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/quizzes", { withCredentials: true });
+                const response = await axios.get(`${API_URL}/quizzes`, { withCredentials: true });
                 setQuizTasks(response.data);
             } catch (error) {
                 console.error("Error fetching quizzes:", error);

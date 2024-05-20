@@ -21,6 +21,7 @@ import quizTaskMulticol4 from "../../Components/Assets/quizTaskMulticol4.png";
 import quizTaskMulticol5 from "../../Components/Assets/quizTaskMulticol5.png";
 import quizTaskQueries4 from "../../Components/Assets/gifContainerQueries4.gif";
 import quizTaskQueries5 from "../../Components/Assets/gifContainerQueries5.gif";
+import {API_URL} from './../../apiConnection.js';
 
 interface UserProps {
   user: User;
@@ -45,7 +46,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/quizzes", { withCredentials: true });
+        const response = await axios.get(`${API_URL}/quizzes`, { withCredentials: true });
         setAllQuizTasks(response.data);
       } catch (error) {
         console.error("Error fetching quizzes:", error);
@@ -198,7 +199,7 @@ const Quiz: React.FC<UserProps> = ({ user }) => {
     setUserScore(userScore);
     const recordScore = async () => {
       try {
-        await axios.post("http://localhost:4000/recordScore", userScore);
+        await axios.post(`${API_URL}/recordScore`, userScore);
       } catch (error) {
         console.error("Error recording score:", error);
       }

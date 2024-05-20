@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { EventRegister } from 'react-native-event-listeners';
 import { User } from "../../Models/User.ts";
 import { UserScore } from "../../Models/UserScores.ts";
+import {API_URL} from './../../apiConnection.js';
 interface Props {
   accountView: string;
 }
@@ -23,9 +24,9 @@ const UserAccount : React.FC<Props> = ({ accountView }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/user');
+        const response = await axios.get(`${API_URL}/user`);
         setUser(response.data.user);
-        const getScores = await axios.get('http://localhost:4000/getScores');
+        const getScores = await axios.get(`${API_URL}/getScores`);
         setUserScores(getScores.data);
       } catch (error) {
         console.log(error);
@@ -49,7 +50,7 @@ const UserAccount : React.FC<Props> = ({ accountView }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/logout', null, { withCredentials: true });
+      const response = await axios.post(`${API_URL}/logout`, null, { withCredentials: true });
       console.log(response.data);
 
       if (response.data.success) {

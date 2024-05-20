@@ -2,6 +2,7 @@ import React from "react";
 import "./StartQuizContainer.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {API_URL} from './../../../apiConnection.js';
 
 const StartQuizContainer = ({ quizTheme }) => {
 
@@ -9,7 +10,7 @@ const StartQuizContainer = ({ quizTheme }) => {
 
     const openQuiz = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/quiz/${quizTheme}`, { withCredentials: true });
+            const response = await axios.get(`${API_URL}/quiz/${quizTheme}`, { withCredentials: true });
             console.log(response.data);
             if (response.data.success) {
                 navigate(`/quiz/${quizTheme}`)
