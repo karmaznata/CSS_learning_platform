@@ -193,7 +193,7 @@ app.get('/quiz/:quizTheme', (req, res) => {
 
 app.get('/user', (req, res) => {
   if (req.session) {
-    res.json({ user: req.session.user });
+    res.json({ user: req.session });
   } else {
     res.status(401).json({ error: 'Unauthorized' });
   }
