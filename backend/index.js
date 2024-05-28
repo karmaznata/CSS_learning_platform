@@ -36,32 +36,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure CORS middleware
-const allowedOrigins = ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"];
 app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin, like mobile apps or curl requests
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ["GET", "POST", "PUT"],
-  credentials: true
-}));
-
-// Handle preflight requests
-app.options('*', cors({
-  origin: function(origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ["GET", "POST", "PUT"],
+  origin: ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"],
+  methods: ["POST", "GET", "PUT"],
   credentials: true
 }));
 
@@ -69,14 +46,8 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_CONNECTION_STRING,
-    ttl: 14 * 24 * 60 * 60 // 14 days
-  }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    sameSite: 'none'
+    secure: false
   }
 }));
 
