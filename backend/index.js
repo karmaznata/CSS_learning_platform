@@ -9,6 +9,7 @@ const quizzes = require('./quiz_tasks');
 const bodyParser = require('body-parser');
 const sanitize = require('mongo-sanitize');
 const helmet = require('helmet');
+const MongoStore = require('connect-mongo');
 
 require('dotenv').config();
 
@@ -64,13 +65,18 @@ app.options('*', cors({
   credentials: true
 }));
 
-app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_CONNECTION_STRING,
+    ttl: 14 * 24 * 60 * 60 // 14 days
+  }),
   cookie: {
-    secure: true
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   }
 }));
 
@@ -96,10 +102,6 @@ const Score = mongoose.model('Score', {
   points_scored: Number
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 // Routes
 app.get('/', (req, res) => {
@@ -192,8 +194,8 @@ app.get('/quiz/:quizTheme', (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-  if (req.session) {
-    res.json({ user: req.session });
+  if (req.session.user) {
+    res.json({ user: req.session.user });
   } else {
     res.status(401).json({ error: 'Unauthorized' });
   }
@@ -254,6 +256,10 @@ app.get('/getScores', async (req, res) => {
   }
 });
 
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 async function updateUserUsername(user, newUsername, userId, res) {
   const sanitizedNewUsername = sanitize(newUsername);
