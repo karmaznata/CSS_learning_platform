@@ -63,7 +63,7 @@ const LoginSignUp = () => {
                         password: '',
                         email: '',
                     });
-                    toast.success("You have been successfully registered!");
+                    toast.error("You have been successfully registered!");
                 } else {
                     toast.success("The user with this email already exist. Try another email.");
                 }
