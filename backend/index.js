@@ -30,9 +30,37 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configure CORS middleware
+const allowedOrigins = ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"];
 app.use(cors({
-  origin: ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"],
-  methods: ["POST", "GET", "PUT"],
+  origin: function(origin, callback) {
+    // Allow requests with no origin, like mobile apps or curl requests
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
+
+// Handle preflight requests
+app.options('*', cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
 
