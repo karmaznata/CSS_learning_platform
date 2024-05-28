@@ -42,6 +42,7 @@ function App() {
       const fetchData = async () => {
         try {
           const response = await axios.get(`${API_URL}/user`);
+          console.log(response);
           setUser(response.data.user);
         } catch (error) {
           console.log(error);
