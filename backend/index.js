@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"],
   methods: ["POST", "GET", "PUT"],
   credentials: true
 }));
