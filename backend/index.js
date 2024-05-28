@@ -48,8 +48,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: false,
-    sameSite: 'none',  
-    httpOnly: true  
+    sameSite: 'none',
+    httpOnly: true
   }
 }));
 
@@ -86,10 +86,18 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
+
   try {
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, email, password: hashedPassword });
+
+    const sanitizedNewEmail = sanitize(email);
+
+    const existingUserWithEmail = await User.findOne({ email: sanitizedNewEmail });
+    if (existingUserWithEmail) {
+      return res.json({ success: false, error: 'email' });
+    }
     await user.save();
     res.json({ success: true });
   } catch (error) {
@@ -98,7 +106,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-  
+
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
