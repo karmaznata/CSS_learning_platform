@@ -63,9 +63,9 @@ const LoginSignUp = () => {
                         password: '',
                         email: '',
                     });
-                    toast.error("You have been successfully registered!");
+                    toast.success("You have been successfully registered!");
                 } else {
-                    toast.success("The user with this email already exist. Try another email.");
+                    toast.error("The user with this email already exist. Try another email.");
                 }
             } else {
                 setInputErrors({
