@@ -1,1 +1,1 @@
-export const API_URL="https://52.29.111.112.nip.io/";
+export const API_URL="https://52.29.111.112.nip.io";
