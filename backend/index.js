@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure CORS middleware
-const allowedOrigins = ["http://localhost:3000", "https://master.d1xjnv8qtw038p.amplifyapp.com"];
+const allowedOrigins = ["http://localhost:3000", "https://52.29.111.112.nip.io"];
 app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin, like mobile apps or curl requests
@@ -46,7 +46,7 @@ app.use(cors({
     }
     return callback(null, true);
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT"],
   credentials: true
 }));
 
@@ -60,7 +60,7 @@ app.options('*', cors({
     }
     return callback(null, true);
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT"],
   credentials: true
 }));
 
@@ -68,7 +68,7 @@ app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     secure: false
   }
