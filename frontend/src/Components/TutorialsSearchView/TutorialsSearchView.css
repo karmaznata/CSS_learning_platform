@@ -89,3 +89,16 @@
   background-color: var(--dark-blue-3);
   padding: 10px;
 }
+
+
+
+@media only screen and (max-width: 1300px) {
+  .intro-area.label {
+    font-size: 3rem !important;
+  }
+
+  .select-tutorial {
+    grid-template-columns: 1fr 1fr;
+    width: 55rem;
+  }
+}
